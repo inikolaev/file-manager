@@ -1,0 +1,25 @@
+import AppKit
+
+/// Shared ten-slot footer for the file panels and viewer.
+@MainActor
+enum TerminalFunctionKeys {
+    static func draw(in rect: NSRect, labels: [Int: String]) {
+        NSColor.black.setFill()
+        rect.fill()
+        let width = rect.width / 10
+        for number in 1...10 {
+            let x = rect.minX + CGFloat(number - 1) * width
+            let numberWidth = ceil(("\(number)" as NSString).size(withAttributes: [.font: TerminalTheme.font]).width)
+            TerminalTheme.text("\(number)", in: NSRect(x: x, y: rect.minY, width: numberWidth, height: rect.height), color: TerminalTheme.white)
+            let button = NSRect(x: x + numberWidth, y: rect.minY, width: max(0, width - numberWidth - 3), height: rect.height)
+            TerminalTheme.selection.setFill()
+            button.fill()
+            TerminalTheme.text(labels[number] ?? "", in: button, color: .black)
+        }
+    }
+
+    static func number(at point: NSPoint, in rect: NSRect) -> Int? {
+        guard rect.width > 0, rect.contains(point) else { return nil }
+        return min(10, Int((point.x - rect.minX) / (rect.width / 10)) + 1)
+    }
+}

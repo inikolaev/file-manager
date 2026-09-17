@@ -3,6 +3,8 @@ import AppKit
 /// Shared ten-slot footer for the file panels and viewer.
 @MainActor
 enum TerminalFunctionKeys {
+    private static let labelLeadingInset: CGFloat = 4
+
     static func draw(in rect: NSRect, labels: [Int: String]) {
         NSColor.black.setFill()
         rect.fill()
@@ -14,7 +16,9 @@ enum TerminalFunctionKeys {
             let button = NSRect(x: x + numberWidth, y: rect.minY, width: max(0, width - numberWidth - 3), height: rect.height)
             TerminalTheme.selection.setFill()
             button.fill()
-            TerminalTheme.text(labels[number] ?? "", in: button, color: .black)
+            let labelRect = NSRect(x: button.minX + labelLeadingInset, y: button.minY,
+                width: max(0, button.width - labelLeadingInset), height: button.height)
+            TerminalTheme.text(labels[number] ?? "", in: labelRect, color: .black)
         }
     }
 

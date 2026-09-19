@@ -4,8 +4,8 @@ Licensed under the [MIT License](LICENSE).
 
 A native macOS two-pane file browser with a custom-drawn, Far-style interface.
 Blue panels, cyan borders, and two columns of monospaced filenames are drawn in
-a plain AppKit view, without native table or scroll widgets. No terminal,
-third-party dependencies, or embedded web view. Requires macOS 13+ and a Swift 6 toolchain.
+a plain AppKit view, without native table or scroll widgets. No terminal or embedded web view. The editor uses TextBuffer behind a private adapter.
+Requires macOS 13+ and a Swift 6.2 or newer toolchain.
 
 ## Run
 
@@ -54,6 +54,7 @@ The universal bundle is also available at `dist/universal/Commander.app`.
 | Command-R | Refresh active pane, preserving selection if possible |
 | Command-period | Toggle hidden files in active pane |
 | F3 | Open selected file in the read-only text viewer |
+| F4 | Open the selected file in the text editor |
 | F5 | Copy selected file to the opposite pane (editable destination) |
 | F6 | Move marked entries or the cursor entry |
 | Shift-F6 | Rename the entry under the cursor |
@@ -63,7 +64,7 @@ The universal bundle is also available at `dist/universal/Commander.app`.
 
 Click to activate a pane; double-click to enter a folder. Mouse wheel/trackpad
 scrolling moves selection; typing a filename prefix selects the first match.
-The prefix resets after one second or Escape. The bottom shortcut strip has ten numbered slots: 3 View, 5 Copy, 6 Move, 7 Mkdir, 8 Delete,
+The prefix resets after one second or Escape. The bottom shortcut strip has ten numbered slots: 3 View, 4 Edit, 5 Copy, 6 Move, 7 Mkdir, 8 Delete,
 and 10 Quit. Other slots are empty; populated slots are clickable. The Navigate menu
 also has a Go Home command. Symbolic links have an arrow suffix; links to folders
 can be navigated. Errors appear in the pane footer, with full details on hover.
@@ -121,11 +122,48 @@ scrolling and End, even for files with no newlines. Use horizontal panning to se
 wide rows. Byte position is displayed instead of a total line count. Tabs expand
 to four-column stops; invalid UTF-8 is replaced with `�`, and other control bytes
 are shown as dots. The text and hex viewer does not render PDF/images;
-UTF-16 and legacy encoding detection, search, and editing are not implemented.
+UTF-16 and legacy encoding detection and search are not implemented. Editing is available separately with F4 from the panes.
 
 The viewer tolerates truncation and growth on subsequent navigation/refresh. It
 keeps the original file descriptor open; if a file is replaced by a new inode,
 close and reopen the viewer to see the replacement. There is no automatic tailing.
+
+### File editor
+
+F4 in the panes opens the file under the cursor in a custom-drawn editor.
+F4 inside the viewer still toggles hex mode.
+
+- Arrows, Home/End, Command-arrows, and Page Up/Down navigate.
+- Shift with movement extends the selection; click/drag also selects.
+- Type, Enter, Tab, Backspace, and forward Delete edit the document.
+- Command-A/C/X/V selects all, copies, cuts, and pastes.
+- Command-Z / Command-Shift-Z undo and redo.
+- F2 or Command-S saves. Escape or F10 closes.
+- Closing a modified document, including quitting Commander, offers Save, Discard,
+  and Cancel. Save failures leave edits available.
+
+The editor supports UTF-8 text without a fixed file-size limit. Files are held in
+memory, so practical limits depend on available RAM and performance. It preserves
+a UTF-8 BOM and consistent LF, CRLF, or CR line endings. Mixed line endings, binary
+files, and other encodings are rejected before displaying the editor. The F3
+viewer still supports large files with bounded reads.
+
+Saving stages a sibling temporary file and replaces the resolved target, preserving
+symlinks, permissions, and extended attributes. External content changes are checked
+before saving and again before replacement; detected conflicts leave the document
+open. This is not a cross-process lock. Saving multiply hard-linked files is currently
+rejected to avoid breaking their relationship. There is no Save As, search, syntax
+highlighting, soft wrapping, or automatic recovery yet.
+
+EditorCore.EditorDocument is the replaceable document interface. Only its private
+adapter imports TextBuffer; neither UI nor file I/O exposes dependency types.
+The adapter uses RopeBuffer, an incremental line-start index, and delta-based undo.
+Line-index updates shift subsequent offsets, so edits near the start are linear in
+the number of following lines. No file-sized snapshot is made during drawing.
+EditorSelection handles cursor/selection behavior, EditorFile handles loading and
+saving, and FileEditorCoordinator owns dialogs and the editor lifetime. TextBuffer
+is pinned to an immutable revision; its MIT notice is in
+[THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt) and bundled in the app.
 
 ### File operations
 
@@ -249,3 +287,15 @@ truncation, scrolling, and restoring pane focus.
 
 Hex tests cover byte formatting, partial rows, round-trip mode switching,
 empty/truncated files, and byte offsets beyond 4 GiB with bounded reads.
+
+### Editor load profiling
+
+Build the standalone release benchmark and profile the same document preparation
+path used by F4:
+
+    swift build -c release --product EditorBenchmark
+    COMMANDER_PROFILE_EDITOR=1 .build/release/EditorBenchmark /path/to/file
+
+Stage logging is opt-in and never includes document contents.
+See [the 100 MiB baseline](docs/performance/editor-loading.md) for measured results
+and the comparison conditions.

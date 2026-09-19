@@ -31,7 +31,8 @@ public final class ApplicationDelegate: NSObject, NSApplicationDelegate {
         controller.isExitPromptVisible = true
         exitCoordinator.request(window: window, operationInProgress: controller.fileOperationInProgress) { confirmed in
             controller.isExitPromptVisible = false
-            sender.reply(toApplicationShouldTerminate: confirmed)
+            if confirmed { controller.prepareForTermination { sender.reply(toApplicationShouldTerminate: $0) } }
+            else { sender.reply(toApplicationShouldTerminate: false) }
         }
         return .terminateLater
     }
@@ -83,9 +84,10 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
     private let moveCoordinator = MoveCoordinator()
     private let createDirectoryCoordinator = CreateDirectoryCoordinator()
     private let deleteCoordinator = DeleteCoordinator()
+    private var editor: FileEditorCoordinator?
     private var viewer: FileViewerCoordinator?
-    var fileOperationInProgress: Bool { renameCoordinator.isBusy || moveCoordinator.isBusy || createDirectoryCoordinator.isBusy || copyCoordinator.isBusy || deleteCoordinator.isBusy }
-    private var operationInProgress: Bool { isExitPromptVisible || fileOperationInProgress || viewer != nil }
+    var fileOperationInProgress: Bool { editor?.isBusy == true || renameCoordinator.isBusy || moveCoordinator.isBusy || createDirectoryCoordinator.isBusy || copyCoordinator.isBusy || deleteCoordinator.isBusy }
+    private var operationInProgress: Bool { isExitPromptVisible || fileOperationInProgress || viewer != nil || editor != nil }
     private var activePane: PaneViewController { panes[activeIndex] }
 
     init() {
@@ -116,6 +118,7 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
             guard let self else { return }
             switch command {
             case .viewFile: self.viewSelected()
+            case .editFile: self.editSelected()
             case .copy: self.copySelected()
             case .move: self.moveSelected()
             case .rename: self.renameSelected()
@@ -181,6 +184,7 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
         case .open: panes[index].openSelected()
         case .parent: panes[index].goToParent()
         case .viewFile: viewSelected()
+        case .editFile: editSelected()
         case .copy: copySelected()
         case .move: moveSelected()
         case .rename: renameSelected()
@@ -220,6 +224,23 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
         guard !operationInProgress, !activePane.isLoading else { return }
         let destination = panes[1 - activeIndex]
         destination.load(activePane.state.directory, preferredSelection: activePane.state.selectedRow?.url)
+    }
+
+    func prepareForTermination(_ completion: @escaping (Bool) -> Void) {
+        if let editor { editor.requestClose(completion: completion) }
+        else { completion(true) }
+    }
+
+    private func editSelected() {
+        guard let window, !operationInProgress, !activePane.isLoading,
+              case .entry(let entry) = activePane.state.selectedRow, !entry.isDirectory else { return }
+        let coordinator = FileEditorCoordinator()
+        coordinator.onClose = { [weak self] in
+            self?.editor = nil
+            self?.panes.forEach { $0.refresh() }
+        }
+        editor = coordinator
+        coordinator.present(url: entry.url, window: window)
     }
 
     private func viewSelected() {

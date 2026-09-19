@@ -1,0 +1,14 @@
+{
+  "originHash" : "afaded0696d2917edc30d21dda5fcf7ff3121a3dfc14c3475a64e3d8ec0269b6",
+  "pins" : [
+    {
+      "identity" : "textbuffer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CleanCocoa/TextBuffer.git",
+      "state" : {
+        "revision" : "3dfbfc13fe4e7f898a3b7c3d13d3eb1451eb8386"
+      }
+    }
+  ],
+  "version" : 3
+}

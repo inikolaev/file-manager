@@ -1,0 +1,885 @@
+Analysis of sampling EditorBenchmark (pid 66849) every 1 millisecond
+Process:         EditorBenchmark [66849]
+Path:            /Users/USER/*/EditorBenchmark
+Load Address:    0x104230000
+Identifier:      EditorBenchmark
+Version:         ???
+Code Type:       ARM64
+Parent Process:  Python [66801]
+Target Type:     live task
+
+Date/Time:       2026-09-19 13:45:52.908 +0300
+Launch Time:     2026-09-19 13:45:52.869 +0300
+OS Version:      macOS 27.0 (26A428)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+
+Physical footprint:         233.0M
+Physical footprint (peak):  360.2M
+Idle exit:                  untracked
+----
+
+Call graph:
+    280 Thread_1945934: Main Thread
+    + 252 _dyld_start  (in dyld) + 0  [0x104354bf0]
+    + 25 start  (in dyld) + 6596  [0x1947cbe24]
+    + ! 25 dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const  (in dyld) + 320  [0x1947cca84]
+    + !   24 dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)  (in dyld) + 4500  [0x1947cdc34]
+    + !   : 24 dyld4::RuntimeState::notifyDebuggerLoad(std::span<dyld4::Loader const*, 18446744073709551615ul> const&)  (in dyld) + 592  [0x1947de4cc]
+    + !   :   24 dyld4::ExternallyViewableState::addImages(lsl::Allocator&, lsl::Allocator&, std::span<dyld4::ExternallyViewableState::ImageInfo, 18446744073709551615ul> const&)  (in dyld) + 1280  [0x1947e9ef8]
+    + !   :     24 dyld4::ExternallyViewableState::triggerNotifications(dyld_image_mode, unsigned int, dyld_image_info const*)  (in dyld) + 304  [0x1947e9704]
+    + !   :       24 dyld4::RemoteNotificationResponder::blockOnSynchronousEvent(unsigned int)  (in dyld) + 48  [0x19480e20c]
+    + !   :         24 dyld4::RemoteNotificationResponder::sendMessage(int, unsigned int, mach_msg_header_t*)  (in dyld) + 244  [0x19480de54]
+    + !   :           24 mach_msg_overwrite  (in dyld) + 244  [0x19481a7e8]
+    + !   :             24 mach_msg2_internal  (in dyld) + 76  [0x19481a640]
+    + !   :               24 mach_msg2_trap  (in dyld) + 8  [0x19479b72c]
+    + !   1 dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)  (in dyld) + 2508  [0x1947cd46c]
+    + !     1 dyld4::JustInTimeLoader::applyFixups(Diagnostics&, dyld4::RuntimeState&, dyld4::DyldCacheDataConstLazyScopedWriter&, bool, lsl::Vector<std::pair<dyld4::Loader const*, char const*>>*) const  (in dyld) + 616  [0x1947ef8cc]
+    + !       1 dyld4::Loader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void (unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&) block_pointer, bool, void (dyld4::Loader::ResolvedSymbol const&, bool&) block_pointer, void (dyld4::Loader::ResolvedSymbol const&, bool&) block_pointer) const  (in dyld) + 308  [0x1947f9014]
+    + !         1 mach_o::Image::forEachBindTarget(void (mach_o::Fixup::BindTarget const&, bool&) block_pointer, void (mach_o::Fixup::BindTarget const&, bool&) block_pointer) const  (in dyld) + 72  [0x19482fc70]
+    + !           1 mach_o::ChainedFixups::forEachBindTarget(void (mach_o::Fixup::BindTarget const&, bool&) block_pointer, mach_o::Error*) const  (in dyld) + 224  [0x19481f884]
+    + !             1 invocation function for block in dyld4::Loader::forEachBindTarget(Diagnostics&, dyld4::RuntimeState&, void (unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&) block_pointer, bool, void (dyld4::Loader::ResolvedSymbol const&, bool&) block_pointer, void (dyld4::Loader::ResolvedSymbol const&, bool&) block_pointer) const  (in dyld) + 180  [0x1947f90e4]
+    + !               1 dyld4::Loader::resolveSymbol(Diagnostics&, dyld4::RuntimeState&, int, char const*, bool, bool, void (unsigned int, unsigned int, dyld4::Loader::ResolvedSymbol const&) block_pointer, bool) const  (in dyld) + 552  [0x1947f74ec]
+    + !                 1 dyld4::Loader::hasExportedSymbol(Diagnostics&, dyld4::RuntimeState&, char const*, dyld4::Loader::ExportedSymbolMode, dyld4::Loader::ResolverMode, dyld4::Loader::ResolvedSymbol*, bool, dyld3::Array<dyld4::Loader const*>*) const  (in dyld) + 644  [0x1947f9c6c]
+    + !                   1 mach_o::ExportsTrie::hasExportedSymbol(CString, mach_o::Symbol&, bool) const  (in dyld) + 48  [0x19482320c]
+    + !                     1 mach_o::GenericTrie::find(CString, bool) const  (in dyld) + 368  [0x194822c28]
+    + 1 start  (in dyld) + 3228  [0x1043810fc]
+    + ! 1 dyld4::ExternallyViewableState::createMinimalInfo(lsl::Allocator&, unsigned long long, char const*, unsigned long long, char const*, DyldSharedCache const*)  (in dyld) + 856  [0x10439ebd0]
+    + !   1 dyld4::ExternallyViewableState::atlasAddImage(PropertyList::Dictionary&, unsigned long long, char const*)  (in dyld) + 392  [0x10439f59c]
+    + !     1 mach_o::UnsafeHeader::forEachSegment(void (mach_o::UnsafeHeader::SegmentInfo const&, bool&) block_pointer) const  (in dyld) + 128  [0x1043f07dc]
+    + !       1 mach_o::UnsafeHeader::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const  (in dyld) + 208  [0x1043edd00]
+    + !         1 invocation function for block in mach_o::UnsafeHeader::forEachSegment(void (mach_o::UnsafeHeader::SegmentInfo const&, bool&) block_pointer) const  (in dyld) + 248  [0x1043f0c9c]
+    + !           1 invocation function for block in dyld4::ExternallyViewableState::atlasAddImage(PropertyList::Dictionary&, unsigned long long, char const*)  (in dyld) + 240  [0x1043a10d8]
+    + !             1 <deduplicated_symbol>  (in dyld) + 196  [0x1043a131c]
+    + !               1 PropertyList::Integer::Integer(PropertyList&, long long)  (in dyld) + 92  [0x1043657ac]
+    + !                 1 <deduplicated_symbol>  (in dyld) + 412  [0x1043680d0]
+    + !                   1 lsl::Allocator::free(void*)  (in dyld) + 100  [0x1043c27c4]
+    + !                     1 lsl::Allocator::AllocationMetadata::deallocate()  (in dyld) + 36  [0x1043c2820]
+    + !                       1 lsl::Allocator::AllocationMetadata::pool(bool) const  (in dyld) + 56  [0x1043c270c]
+    + 1 start  (in dyld) + 6112  [0x104381c40]
+    + ! 1 dyld4::ExternallyViewableState::createMinimalInfo(lsl::Allocator&, unsigned long long, char const*, unsigned long long, char const*, DyldSharedCache const*)  (in dyld) + 1528  [0x10439ee70]
+    + !   1 dyld4::ExternallyViewableState::triggerNotifications(dyld_image_mode, unsigned int, dyld_image_info const*)  (in dyld) + 304  [0x10439f704]
+    + !     1 dyld4::RemoteNotificationResponder::blockOnSynchronousEvent(unsigned int)  (in dyld) + 48  [0x1043c420c]
+    + !       1 dyld4::RemoteNotificationResponder::sendMessage(int, unsigned int, mach_msg_header_t*)  (in dyld) + 244  [0x1043c3e54]
+    + !         1 mach_msg_overwrite  (in dyld) + 244  [0x1043d07e8]
+    + !           1 mach_msg2_internal  (in dyld) + 76  [0x1043d0640]
+    + !             1 mach_msg2_trap  (in dyld) + 8  [0x10435172c]
+    + 1 start  (in dyld) + 2560  [0x1947cae60]
+    +   1 dyld4::ExternallyViewableState::createMinimalInfo(lsl::Allocator&, unsigned long long, char const*, unsigned long long, char const*, DyldSharedCache const*)  (in dyld) + 1528  [0x1947e8e70]
+    +     1 dyld4::ExternallyViewableState::triggerNotifications(dyld_image_mode, unsigned int, dyld_image_info const*)  (in dyld) + 304  [0x1947e9704]
+    +       1 dyld4::RemoteNotificationResponder::blockOnSynchronousEvent(unsigned int)  (in dyld) + 48  [0x19480e20c]
+    +         1 dyld4::RemoteNotificationResponder::sendMessage(int, unsigned int, mach_msg_header_t*)  (in dyld) + 244  [0x19480de54]
+    +           1 mach_msg_overwrite  (in dyld) + 244  [0x19481a7e8]
+    +             1 mach_msg2_internal  (in dyld) + 76  [0x19481a640]
+    +               1 mach_msg2_trap  (in dyld) + 8  [0x19479b72c]
+    7590 Thread_1945934   DispatchQueue_1: com.apple.main-thread  (serial)
+    + 7588 start  (in dyld) + 6688  [0x1947cbe80]
+    + ! 7587 EditorBenchmark_main  (in EditorBenchmark) + 1012  [0x10423185c]  main.swift:29
+    + ! : 3963 benchmarkLoad(_:)  (in EditorBenchmark) + 216  [0x104232034]  main.swift:16
+    + ! : | 3963 static EditorDocuments.make(file:)  (in EditorBenchmark) + 104  [0x104233a2c]  EditorDocument.swift:0
+    + ! : |   3962 RopeDocument.init(text:lineStarts:)  (in EditorBenchmark) + 152  [0x104233adc]  EditorDocument.swift:67
+    + ! : |   + 3894 TextRope.init(_:)  (in EditorBenchmark) + 136  [0x10425a7b8]  TextRope+Construction.swift:9
+    + ! : |   + ! 3035 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 420  [0x10425b31c]  TextRope+Construction.swift:18
+    + ! : |   + ! : 2981 specialized static TextRope.Summary.of(_:)  (in EditorBenchmark) + 104,128,...  [0x10425a4f0,0x10425a508,...]  Summary.swift:25
+    + ! : |   + ! : 18 specialized static TextRope.Summary.of(_:)  (in EditorBenchmark) + 296  [0x10425a5b0]  Summary.swift:31
+    + ! : |   + ! : 13 specialized static TextRope.Summary.of(_:)  (in EditorBenchmark) + 44  [0x10425a4b4]  /<compiler-generated>:0
+    + ! : |   + ! : | 8 swift_retain  (in libswiftCore.dylib) + 56,4,...  [0x1a9113490,0x1a911345c,...]
+    + ! : |   + ! : | 3 swift_bridgeObjectRetain  (in libswiftCore.dylib) + 0  [0x1a9112804]
+    + ! : |   + ! : | 2 DYLD-STUB$$swift_bridgeObjectRetain  (in EditorBenchmark) + 4  [0x104260f74]
+    + ! : |   + ! : 10 specialized static TextRope.Summary.of(_:)  (in EditorBenchmark) + 308  [0x10425a5bc]  /<compiler-generated>:0
+    + ! : |   + ! : | 7 swift_release  (in libswiftCore.dylib) + 4,92,...  [0x1a9113568,0x1a91135c0,...]
+    + ! : |   + ! : | 2 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 4  [0x104260f5c]
+    + ! : |   + ! : | 1 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 8  [0x1a91133a0]
+    + ! : |   + ! : 7 specialized static TextRope.Summary.of(_:)  (in EditorBenchmark) + 88  [0x10425a4e0]  Summary.swift:25
+    + ! : |   + ! : | 4 String.UTF16View._nativeGetOffset(for:)  (in libswiftCore.dylib) + 52,16,...  [0x1a9118180,0x1a911815c,...]
+    + ! : |   + ! : | 2 specialized Collection.underestimatedCount.getter  (in libswiftCore.dylib) + 0  [0x1a93efdac]
+    + ! : |   + ! : | 1 DYLD-STUB$$String.UTF16View.count.getter  (in EditorBenchmark) + 4  [0x104260b00]
+    + ! : |   + ! : 3 String.UTF16View._nativeGetOffset(for:)  (in libswiftCore.dylib) + 104  [0x1a91181b4]
+    + ! : |   + ! : 3 specialized static TextRope.Summary.of(_:)  (in EditorBenchmark) + 20  [0x10425a49c]  Summary.swift:21
+    + ! : |   + ! 383 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 392  [0x10425b300]  TextRope+Construction.swift:18
+    + ! : |   + ! : 190 specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 128  [0x1a95517d4]
+    + ! : |   + ! : | 185 specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 40  [0x1a95516fc]
+    + ! : |   + ! : | + 137 _allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 192  [0x1a94467fc]
+    + ! : |   + ! : | + ! 132 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : |   + ! : | + ! : 130 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : |   + ! : | + ! : | 48 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 640,320,...  [0x1949bcccc,0x1949bcb8c,...]
+    + ! : |   + ! : | + ! : | 41 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1949be0f8]
+    + ! : |   + ! : | + ! : | + 35 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 860  [0x1949bebec]
+    + ! : |   + ! : | + ! : | + ! 33 xzm_chunk_mark_used  (in libsystem_malloc.dylib) + 160  [0x19499c268]
+    + ! : |   + ! : | + ! : | + ! : 32 _xzm_reclaim_mark_used  (in libsystem_malloc.dylib) + 124  [0x19499c318]
+    + ! : |   + ! : | + ! : | + ! : | 32 _xzm_reclaim_mark_used_locked  (in libsystem_malloc.dylib) + 60  [0x19499ee24]
+    + ! : |   + ! : | + ! : | + ! : |   29 mach_vm_reclaim_try_cancel  (in libsystem_kernel.dylib) + 260  [0x194b706b8]
+    + ! : |   + ! : | + ! : | + ! : |   + 29 mach_absolute_time  (in libsystem_kernel.dylib) + 108  [0x194b5d0f8]
+    + ! : |   + ! : | + ! : | + ! : |   3 mach_vm_reclaim_try_cancel  (in libsystem_kernel.dylib) + 88,184,...  [0x194b7060c,0x194b7066c,...]
+    + ! : |   + ! : | + ! : | + ! : 1 _xzm_reclaim_mark_used  (in libsystem_malloc.dylib) + 140  [0x19499c328]
+    + ! : |   + ! : | + ! : | + ! 2 xzm_chunk_mark_used  (in libsystem_malloc.dylib) + 40  [0x19499c1f0]
+    + ! : |   + ! : | + ! : | + 3 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 788  [0x1949beba4]
+    + ! : |   + ! : | + ! : | + ! 3 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 72,156  [0x1949bf21c,0x1949bf270]
+    + ! : |   + ! : | + ! : | + 1 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 224  [0x1949bf2b4]
+    + ! : |   + ! : | + ! : | + 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 584  [0x1949bead8]
+    + ! : |   + ! : | + ! : | + ! 1 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 48  [0x1949bf204]
+    + ! : |   + ! : | + ! : | + 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 72  [0x1949be8d8]
+    + ! : |   + ! : | + ! : | 17 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 768,84  [0x1949be2b4,0x1949be008]
+    + ! : |   + ! : | + ! : | 11 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 92,116,...  [0x1949c3864,0x1949c387c,...]
+    + ! : |   + ! : | + ! : | 6 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 248  [0x1949be0ac]
+    + ! : |   + ! : | + ! : | + 6 _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 68,28,...  [0x1949be4e4,0x1949be4bc,...]
+    + ! : |   + ! : | + ! : | 3 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 260  [0x1949be0b8]
+    + ! : |   + ! : | + ! : | + 3 _malloc_ulock_self_owner_value  (in libsystem_malloc.dylib) + 0,4  [0x1949be880,0x1949be884]
+    + ! : |   + ! : | + ! : | 3 malloc_type_malloc  (in libsystem_malloc.dylib) + 16,92  [0x1949a774c,0x1949a7798]
+    + ! : |   + ! : | + ! : | 1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 1892  [0x1949beff4]
+    + ! : |   + ! : | + ! : 1 ???  (in <unknown binary>)  [0x1ac40015c]
+    + ! : |   + ! : | + ! : 1 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 40  [0x1a917b254]
+    + ! : |   + ! : | + ! 5 swift_allocObject  (in libswiftCore.dylib) + 28,156  [0x1a9110e68,0x1a9110ee8]
+    + ! : |   + ! : | + 24 _allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 200  [0x1a9446804]
+    + ! : |   + ! : | + ! 12 malloc_size  (in libsystem_malloc.dylib) + 124  [0x194990208]
+    + ! : |   + ! : | + ! : 12 xzm_malloc_zone_size  (in libsystem_malloc.dylib) + 24,48,...  [0x1949b831c,0x1949b8334,...]
+    + ! : |   + ! : | + ! 10 malloc_size  (in libsystem_malloc.dylib) + 16,120,...  [0x19499019c,0x194990204,...]
+    + ! : |   + ! : | + ! 2 xzm_malloc_zone_size  (in libsystem_malloc.dylib) + 708  [0x1949b85c8]
+    + ! : |   + ! : | + 7 swift_allocObject  (in libswiftCore.dylib) + 168,164  [0x1a9110ef4,0x1a9110ef0]
+    + ! : |   + ! : | + 5 _allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 180  [0x1a94467f0]
+    + ! : |   + ! : | + ! 3 type metadata accessor for __StringStorage  (in libswiftCore.dylib) + 24  [0x1a95666d0]
+    + ! : |   + ! : | + ! : 3 objc_opt_self  (in libobjc.A.dylib) + 24,0  [0x194732784,0x19473276c]
+    + ! : |   + ! : | + ! 2 ???  (in <unknown binary>)  [0x1ac4022dc]
+    + ! : |   + ! : | + 4 _allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 12,200,...  [0x1a9446748,0x1a9446804,...]
+    + ! : |   + ! : | + 3 ???  (in <unknown binary>)  [0x1ac403d0c]
+    + ! : |   + ! : | + 3 malloc_size  (in libsystem_malloc.dylib) + 252,248  [0x194990288,0x194990284]
+    + ! : |   + ! : | + 2 type metadata accessor for __StringStorage  (in libswiftCore.dylib) + 32  [0x1a95666d8]
+    + ! : |   + ! : | 4 specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 64,0,...  [0x1a9551714,0x1a95516d4,...]
+    + ! : |   + ! : | 1 _allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 152  [0x1a94467d4]
+    + ! : |   + ! : 92 specialized static String._copying(_:)  (in libswiftCore.dylib) + 104  [0x1a9551a24]
+    + ! : |   + ! : | 92 _allASCII(_:)  (in libswiftCore.dylib) + 40,48,...  [0x1a9430ea4,0x1a9430eac,...]
+    + ! : |   + ! : 74 specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 148  [0x1a95517e8]
+    + ! : |   + ! : | 73 _platform_memmove  (in libsystem_platform.dylib) + 180,0,...  [0x194babe14,0x194babd60,...]
+    + ! : |   + ! : | 1 specialized UnsafeMutablePointer.initialize(from:count:)  (in libswiftCore.dylib) + 24  [0x1a925206c]
+    + ! : |   + ! : 9 specialized static String._copying(_:)  (in libswiftCore.dylib) + 16,64,...  [0x1a95519cc,0x1a95519fc,...]
+    + ! : |   + ! : 9 specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 148,16,...  [0x1a95517e8,0x1a9551764,...]
+    + ! : |   + ! : 4 Substring.description.getter  (in libswiftCore.dylib) + 0  [0x1a95551c4]
+    + ! : |   + ! : 2 DYLD-STUB$$static String._fromSubstring(_:)  (in EditorBenchmark) + 4  [0x104260a28]
+    + ! : |   + ! : 1 ???  (in <unknown binary>)  [0x1ac40018c]
+    + ! : |   + ! : 1 specialized UnsafeMutablePointer.initialize(from:count:)  (in libswiftCore.dylib) + 84  [0x1a92520a8]
+    + ! : |   + ! : 1 specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 120  [0x1a955174c]
+    + ! : |   + ! 188 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 172  [0x10425b224]  TextRope+Construction.swift:17
+    + ! : |   + ! : 135 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 364  [0x104259638]  Node+Split.swift:156
+    + ! : |   + ! : | 48 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 244  [0x1a9442b74]
+    + ! : |   + ! : | + 39 swift_dynamicCast  (in libswiftCore.dylib) + 96  [0x1a9113c34]
+    + ! : |   + ! : | + ! 35 tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib) + 96,1576,...  [0x1a916c644,0x1a916cc0c,...]
+    + ! : |   + ! : | + ! 4 tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib) + 1008  [0x1a916c9d4]
+    + ! : |   + ! : | + !   4 tryCastToString(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib) + 28,48  [0x1a916def0,0x1a916df04]
+    + ! : |   + ! : | + 6 swift_dynamicCast  (in libswiftCore.dylib) + 176  [0x1a9113c84]
+    + ! : |   + ! : | + ! 4 swift_release  (in libswiftCore.dylib) + 32,4  [0x1a9113584,0x1a9113568]
+    + ! : |   + ! : | + ! 2 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0  [0x1a9113398]
+    + ! : |   + ! : | + 3 tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib) + 1028,1040  [0x1a916c9e8,0x1a916c9f4]
+    + ! : |   + ! : | 28 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 412  [0x1a9442c1c]
+    + ! : |   + ! : | + 16 Substring._isValidIndex(_:)  (in libswiftCore.dylib) + 180  [0x1a9442d80]
+    + ! : |   + ! : | + ! 15 _StringGuts._slowRoundDownToNearestCharacter(_:in:)  (in libswiftCore.dylib) + 60  [0x1a947749c]
+    + ! : |   + ! : | + ! : 6 _StringGuts._opaqueCharacterStride(endingAt:in:)  (in libswiftCore.dylib) + 1784  [0x1a945be78]
+    + ! : |   + ! : | + ! : | 6 hasBreakWhenPaired #1 (_:) in _quickHasGraphemeBreakBetween(_:_:)  (in libswiftCore.dylib) + 80,52,...  [0x1a94771d8,0x1a94771bc,...]
+    + ! : |   + ! : | + ! : 5 _StringGuts._opaqueCharacterStride(endingAt:in:)  (in libswiftCore.dylib) + 1772  [0x1a945be6c]
+    + ! : |   + ! : | + ! : | 4 hasBreakWhenPaired #1 (_:) in _quickHasGraphemeBreakBetween(_:_:)  (in libswiftCore.dylib) + 80  [0x1a94771d8]
+    + ! : |   + ! : | + ! : | 1 _StringGuts._opaqueCharacterStride(endingAt:in:)  (in libswiftCore.dylib) + 1772  [0x1a945be6c]
+    + ! : |   + ! : | + ! : 2 _StringGuts._opaqueCharacterStride(endingAt:in:)  (in libswiftCore.dylib) + 0,16  [0x1a945b780,0x1a945b790]
+    + ! : |   + ! : | + ! : 2 _StringGuts._slowRoundDownToNearestCharacter(_:in:)  (in libswiftCore.dylib) + 60  [0x1a947749c]
+    + ! : |   + ! : | + ! :   2 _StringGuts._opaqueCharacterStride(endingAt:in:)  (in libswiftCore.dylib) + 60,1752  [0x1a945b7bc,0x1a945be58]
+    + ! : |   + ! : | + ! 1 _StringGuts._slowRoundDownToNearestCharacter(_:in:)  (in libswiftCore.dylib) + 80  [0x1a94774b0]
+    + ! : |   + ! : | + 8 Substring._isValidIndex(_:)  (in libswiftCore.dylib) + 128  [0x1a9442d4c]
+    + ! : |   + ! : | + ! 5 _StringGuts.isOnUnicodeScalarBoundary(_:)  (in libswiftCore.dylib) + 32,0,...  [0x1a944b8ac,0x1a944b88c,...]
+    + ! : |   + ! : | + ! 2 Substring._isValidIndex(_:)  (in libswiftCore.dylib) + 128,132  [0x1a9442d4c,0x1a9442d50]
+    + ! : |   + ! : | + ! 1 Substring._isValidIndex(_:)  (in libswiftCore.dylib) + 128  [0x1a9442d4c]
+    + ! : |   + ! : | + !   1 _StringGuts.isOnUnicodeScalarBoundary(_:)  (in libswiftCore.dylib) + 112  [0x1a944b8fc]
+    + ! : |   + ! : | + 4 Substring._isValidIndex(_:)  (in libswiftCore.dylib) + 220  [0x1a9442da8]
+    + ! : |   + ! : | 14 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 424  [0x1a9442c28]
+    + ! : |   + ! : | + 10 swift_release  (in libswiftCore.dylib) + 56,4,...  [0x1a911359c,0x1a9113568,...]
+    + ! : |   + ! : | + 4 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0,8  [0x1a9113398,0x1a91133a0]
+    + ! : |   + ! : | 11 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 76,300,...  [0x1a9442acc,0x1a9442bac,...]
+    + ! : |   + ! : | 8 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 360  [0x1a9442be8]
+    + ! : |   + ! : | + 5 swift_release  (in libswiftCore.dylib) + 56,0,...  [0x1a911359c,0x1a9113564,...]
+    + ! : |   + ! : | + 3 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0,8  [0x1a9113398,0x1a91133a0]
+    + ! : |   + ! : | 7 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 304  [0x1a9442bb0]
+    + ! : |   + ! : | + 4 initializeWithCopy for Substring  (in libswiftCore.dylib) + 40  [0x1a95911b8]
+    + ! : |   + ! : | + ! 3 swift_bridgeObjectRetain  (in libswiftCore.dylib) + 0,8  [0x1a9112804,0x1a911280c]
+    + ! : |   + ! : | + ! 1 swift_retain  (in libswiftCore.dylib) + 4  [0x1a911345c]
+    + ! : |   + ! : | + 3 initializeWithCopy for Substring  (in libswiftCore.dylib) + 0  [0x1a9591190]
+    + ! : |   + ! : | 7 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 332  [0x1a9442bcc]
+    + ! : |   + ! : | + 4 swift_dynamicCast  (in libswiftCore.dylib) + 96  [0x1a9113c34]
+    + ! : |   + ! : | + ! 4 tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib) + 208,20,...  [0x1a916c6b4,0x1a916c5f8,...]
+    + ! : |   + ! : | + 2 swift_dynamicCast  (in libswiftCore.dylib) + 40  [0x1a9113bfc]
+    + ! : |   + ! : | + 1 tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib) + 1040  [0x1a916c9f4]
+    + ! : |   + ! : | 5 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 216  [0x1a9442b58]
+    + ! : |   + ! : | + 3 initializeWithCopy for Substring  (in libswiftCore.dylib) + 40  [0x1a95911b8]
+    + ! : |   + ! : | + ! 3 swift_retain  (in libswiftCore.dylib) + 4,56,...  [0x1a911345c,0x1a9113490,...]
+    + ! : |   + ! : | + 2 initializeWithCopy for Substring  (in libswiftCore.dylib) + 32  [0x1a95911b0]
+    + ! : |   + ! : | 4 initializeWithCopy for Substring  (in libswiftCore.dylib) + 52  [0x1a95911c4]
+    + ! : |   + ! : | 1 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 140  [0x1a9442b0c]
+    + ! : |   + ! : | + 1 ___chkstk_darwin  (in libsystem_pthread.dylib) + 44  [0x194b9cd1c]
+    + ! : |   + ! : | 1 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 180  [0x1a9442b34]
+    + ! : |   + ! : | + 1 ___chkstk_darwin  (in libsystem_pthread.dylib) + 28  [0x194b9cd0c]
+    + ! : |   + ! : | 1 swift_dynamicCast  (in libswiftCore.dylib) + 204  [0x1a9113ca0]
+    + ! : |   + ! : 14 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 136  [0x104259554]  Node+Split.swift:0
+    + ! : |   + ! : | 10 swift_retain  (in libswiftCore.dylib) + 4,56,...  [0x1a911345c,0x1a9113490,...]
+    + ! : |   + ! : | 3 DYLD-STUB$$swift_bridgeObjectRetain  (in EditorBenchmark) + 4  [0x104260f74]
+    + ! : |   + ! : | 1 swift_bridgeObjectRetain  (in libswiftCore.dylib) + 8  [0x1a911280c]
+    + ! : |   + ! : 13 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 640  [0x10425974c]  Node+Split.swift:0
+    + ! : |   + ! : | 8 swift_release  (in libswiftCore.dylib) + 4,56,...  [0x1a9113568,0x1a911359c,...]
+    + ! : |   + ! : | 3 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 0,4  [0x104260f58,0x104260f5c]
+    + ! : |   + ! : | 2 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0,8  [0x1a9113398,0x1a91133a0]
+    + ! : |   + ! : 12 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 340  [0x104259620]  /<compiler-generated>:0
+    + ! : |   + ! : | 11 swift_retain  (in libswiftCore.dylib) + 4,56,...  [0x1a911345c,0x1a9113490,...]
+    + ! : |   + ! : | 1 swift_bridgeObjectRetain  (in libswiftCore.dylib) + 0  [0x1a9112804]
+    + ! : |   + ! : 3 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 172  [0x104259578]  Node+Split.swift:0
+    + ! : |   + ! : 3 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 20,0  [0x1042594e0,0x1042594cc]  Node+Split.swift:147
+    + ! : |   + ! : 2 String.Index.init<A>(_:within:)  (in libswiftCore.dylib) + 532,536  [0x1a9442c94,0x1a9442c98]
+    + ! : |   + ! : 2 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 44  [0x1042594f8]  Node+Split.swift:149
+    + ! : |   + ! : 2 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 216  [0x1042595a4]  Node+Split.swift:152
+    + ! : |   + ! : 1 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 228  [0x1042595b0]  /<compiler-generated>:0
+    + ! : |   + ! : 1 specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark) + 328  [0x104259614]  Node+Split.swift:156
+    + ! : |   + ! 137 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 816  [0x10425b4a8]  TextRope+Construction.swift:22
+    + ! : |   + ! : 92 specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark) + 164,112,...  [0x10425ac64,0x10425ac30,...]  TextRope+Construction.swift:34
+    + ! : |   + ! : 15 specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark) + 156  [0x10425ac5c]  /<compiler-generated>:0
+    + ! : |   + ! : | 10 swift_retain  (in libswiftCore.dylib) + 32,4,...  [0x1a9113478,0x1a911345c,...]
+    + ! : |   + ! : | 4 swift_bridgeObjectRetain  (in libswiftCore.dylib) + 0,8  [0x1a9112804,0x1a911280c]
+    + ! : |   + ! : | 1 DYLD-STUB$$swift_bridgeObjectRetain  (in EditorBenchmark) + 4  [0x104260f74]
+    + ! : |   + ! : 13 specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark) + 144  [0x10425ac50]  TextRope+Construction.swift:34
+    + ! : |   + ! : | 6 swift_beginAccess  (in libswiftCore.dylib) + 196,40,...  [0x1a910eff8,0x1a910ef5c,...]
+    + ! : |   + ! : | 4 <deduplicated_symbol>  (in libswiftCore.dylib) + 4  [0x1a9177850]
+    + ! : |   + ! : | 2 DYLD-STUB$$swift_beginAccess  (in EditorBenchmark) + 4  [0x104260f50]
+    + ! : |   + ! : | 1 swift_beginAccess  (in libswiftCore.dylib) + 108  [0x1a910efa0]
+    + ! : |   + ! : |   1 <deduplicated_symbol>  (in libswiftCore.dylib) + 4  [0x1a9177844]
+    + ! : |   + ! : 8 specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark) + 176  [0x10425ac70]  /<compiler-generated>:0
+    + ! : |   + ! : | 4 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 8,0  [0x1a91133a0,0x1a9113398]
+    + ! : |   + ! : | 3 swift_release  (in libswiftCore.dylib) + 56  [0x1a911359c]
+    + ! : |   + ! : | 1 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 4  [0x104260f5c]
+    + ! : |   + ! : 6 specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark) + 124  [0x10425ac3c]  TextRope+Construction.swift:34
+    + ! : |   + ! : | 5 swift_retain  (in libswiftCore.dylib) + 56,4,...  [0x1a9113490,0x1a911345c,...]
+    + ! : |   + ! : | 1 DYLD-STUB$$swift_retain  (in EditorBenchmark) + 4  [0x104261118]
+    + ! : |   + ! : 3 specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark) + 164  [0x10425ac64]  /<compiler-generated>:0
+    + ! : |   + ! :   3 swift_release  (in libswiftCore.dylib) + 56,32  [0x1a911359c,0x1a9113584]
+    + ! : |   + ! 45 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 532  [0x10425b38c]  TextRope+Construction.swift:18
+    + ! : |   + ! : 42 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : |   + ! : | 39 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : |   + ! : | + 25 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 88,404,...  [0x1949bcaa4,0x1949bcbe0,...]
+    + ! : |   + ! : | + 6 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 92,0,...  [0x1949c3864,0x1949c3808,...]
+    + ! : |   + ! : | + 3 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1949be0f8]
+    + ! : |   + ! : | + ! 3 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 860  [0x1949bebec]
+    + ! : |   + ! : | + !   3 xzm_chunk_mark_used  (in libsystem_malloc.dylib) + 160  [0x19499c268]
+    + ! : |   + ! : | + !     3 _xzm_reclaim_mark_used  (in libsystem_malloc.dylib) + 124  [0x19499c318]
+    + ! : |   + ! : | + !       3 _xzm_reclaim_mark_used_locked  (in libsystem_malloc.dylib) + 60  [0x19499ee24]
+    + ! : |   + ! : | + !         2 mach_vm_reclaim_try_cancel  (in libsystem_kernel.dylib) + 260  [0x194b706b8]
+    + ! : |   + ! : | + !         : 2 mach_absolute_time  (in libsystem_kernel.dylib) + 108  [0x194b5d0f8]
+    + ! : |   + ! : | + !         1 mach_vm_reclaim_try_cancel  (in libsystem_kernel.dylib) + 144  [0x194b70644]
+    + ! : |   + ! : | + 3 malloc_type_malloc  (in libsystem_malloc.dylib) + 16,92  [0x1949a774c,0x1949a7798]
+    + ! : |   + ! : | + 1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 768  [0x1949be2b4]
+    + ! : |   + ! : | + 1 xzm_malloc_zone_malloc_type_malloc_main  (in libsystem_malloc.dylib) + 0  [0x1949c3314]
+    + ! : |   + ! : | 3 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 40  [0x1a917b254]
+    + ! : |   + ! : 3 swift_allocObject  (in libswiftCore.dylib) + 28,92  [0x1a9110e68,0x1a9110ea8]
+    + ! : |   + ! 30 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 384  [0x10425b2f8]  TextRope+Construction.swift:18
+    + ! : |   + ! : 21 Substring.subscript.getter  (in libswiftCore.dylib) + 24  [0x1a945b5d4]
+    + ! : |   + ! : | 14 specialized Substring.subscript.getter  (in libswiftCore.dylib) + 52,464,...  [0x1a955467c,0x1a9554818,...]
+    + ! : |   + ! : | 7 specialized Substring.subscript.getter  (in libswiftCore.dylib) + 464  [0x1a9554818]
+    + ! : |   + ! : |   4 _StringGuts.scalarAlignSlow(_:)  (in libswiftCore.dylib) + 156,0,...  [0x1a946909c,0x1a9469000,...]
+    + ! : |   + ! : |   3 specialized Substring.subscript.getter  (in libswiftCore.dylib) + 464  [0x1a9554818]
+    + ! : |   + ! : |     3 _StringGuts.scalarAlignSlow(_:)  (in libswiftCore.dylib) + 52,48  [0x1a9469034,0x1a9469030]
+    + ! : |   + ! : 6 Substring.subscript.getter  (in libswiftCore.dylib) + 48  [0x1a945b5ec]
+    + ! : |   + ! : | 6 swift_retain  (in libswiftCore.dylib) + 4,96,...  [0x1a911345c,0x1a91134b8,...]
+    + ! : |   + ! : 2 specialized Substring.subscript.getter  (in libswiftCore.dylib) + 272  [0x1a9554758]
+    + ! : |   + ! : 1 DYLD-STUB$$Substring.subscript.getter  (in EditorBenchmark) + 4  [0x104260c08]
+    + ! : |   + ! 13 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 712  [0x10425b440]  /<compiler-generated>:0
+    + ! : |   + ! : 9 swift_release  (in libswiftCore.dylib) + 56,32,...  [0x1a911359c,0x1a9113584,...]
+    + ! : |   + ! : 3 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 4  [0x104260f5c]
+    + ! : |   + ! : 1 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0  [0x1a9113398]
+    + ! : |   + ! 12 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 688  [0x10425b428]  TextRope+Construction.swift:19
+    + ! : |   + ! : 6 Substring.subscript.getter  (in libswiftCore.dylib) + 48  [0x1a945b5ec]
+    + ! : |   + ! : | 5 swift_retain  (in libswiftCore.dylib) + 4,32,...  [0x1a911345c,0x1a9113478,...]
+    + ! : |   + ! : | 1 swift_bridgeObjectRetain  (in libswiftCore.dylib) + 8  [0x1a911280c]
+    + ! : |   + ! : 3 specialized Substring.subscript.getter  (in libswiftCore.dylib) + 272  [0x1a9554758]
+    + ! : |   + ! : 2 Substring.subscript.getter  (in libswiftCore.dylib) + 24  [0x1a945b5d4]
+    + ! : |   + ! : | 2 specialized Substring.subscript.getter  (in libswiftCore.dylib) + 20,52  [0x1a955465c,0x1a955467c]
+    + ! : |   + ! : 1 DYLD-STUB$$Substring.subscript.getter  (in EditorBenchmark) + 4  [0x104260c08]
+    + ! : |   + ! 11 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 408  [0x10425b310]  /<compiler-generated>:0
+    + ! : |   + ! : 7 swift_release  (in libswiftCore.dylib) + 56,32  [0x1a911359c,0x1a9113584]
+    + ! : |   + ! : 2 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 4  [0x104260f5c]
+    + ! : |   + ! : 2 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 8,12  [0x1a91133a0,0x1a91133a4]
+    + ! : |   + ! 8 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 436,568,...  [0x10425b32c,0x10425b3b0,...]  TextRope+Construction.swift:18
+    + ! : |   + ! 5 Substring.subscript.getter  (in libswiftCore.dylib) + 76  [0x1a945b608]
+    + ! : |   + ! 5 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 120  [0x10425b1f0]  TextRope+Construction.swift:17
+    + ! : |   + ! : 3 DYLD-STUB$$Substring.UTF8View.distance(from:to:)  (in EditorBenchmark) + 4  [0x104260be4]
+    + ! : |   + ! : 2 Substring.UTF8View.distance(from:to:)  (in libswiftCore.dylib) + 44  [0x1a945e168]
+    + ! : |   + ! 5 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 520  [0x10425b380]  TextRope+Construction.swift:18
+    + ! : |   + ! : 5 type metadata accessor for TextRope.Node  (in EditorBenchmark) + 20  [0x10425a3f0]  /<compiler-generated>:0
+    + ! : |   + ! :   3 DYLD-STUB$$objc_opt_self  (in EditorBenchmark) + 4  [0x104260eb4]
+    + ! : |   + ! :   2 objc_opt_self  (in libobjc.A.dylib) + 0  [0x19473276c]
+    + ! : |   + ! 4 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 568  [0x10425b3b0]  TextRope+Construction.swift:18
+    + ! : |   + ! : 3 swift_isUniquelyReferenced_nonNull_bridgeObject  (in libswiftCore.dylib) + 0,80  [0x1a91d3494,0x1a91d34e4]
+    + ! : |   + ! : 1 DYLD-STUB$$swift_isUniquelyReferenced_nonNull_bridgeObject  (in EditorBenchmark) + 4  [0x1042610dc]
+    + ! : |   + ! 3 specialized static String._copying(_:)  (in libswiftCore.dylib) + 144  [0x1a9551a4c]
+    + ! : |   + ! 3 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 764  [0x10425b474]  TextRope+Construction.swift:18
+    + ! : |   + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 140  [0x10425ff44]  /<compiler-generated>:0
+    + ! : |   + ! : | 1 specialized _ContiguousArrayBuffer.init(_uninitializedCount:minimumCapacity:)  (in EditorBenchmark) + 72  [0x10425a92c]  /<compiler-generated>:0
+    + ! : |   + ! : |   1 malloc_size  (in libsystem_malloc.dylib) + 124  [0x194990208]
+    + ! : |   + ! : |     1 xzm_malloc_zone_size  (in libsystem_malloc.dylib) + 104  [0x1949b836c]
+    + ! : |   + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 200  [0x10425ff80]  /<compiler-generated>:0
+    + ! : |   + ! : | 1 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |   + ! : |   1 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |   + ! : |     1 swift_deallocClassInstance  (in libswiftCore.dylib) + 36  [0x1a9117368]
+    + ! : |   + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 72  [0x10425ff00]  /<compiler-generated>:0
+    + ! : |   + ! 2 Substring.UTF8View.distance(from:to:)  (in libswiftCore.dylib) + 100  [0x1a945e1a0]
+    + ! : |   + ! 2 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 120,332  [0x10425b1f0,0x10425b2c4]  TextRope+Construction.swift:17
+    + ! : |   + ! 1 specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 540  [0x1a9551970]
+    + ! : |   + ! 1 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 728  [0x10425b450]  TextRope+Construction.swift:16
+    + ! : |   + ! 1 specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark) + 616  [0x10425b3e0]  TextRope+Construction.swift:18
+    + ! : |   + !   1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 228  [0x10425ff9c]  /<compiler-generated>:0
+    + ! : |   + !     1 specialized _ArrayBuffer._copyContents(subRange:initializing:)  (in EditorBenchmark) + 168  [0x104260180]  /<compiler-generated>:0
+    + ! : |   + !       1 swift_release  (in libswiftCore.dylib) + 92  [0x1a91135c0]
+    + ! : |   + 62 TextRope.init(_:)  (in EditorBenchmark) + 156  [0x10425a7cc]  TextRope+Construction.swift:9
+    + ! : |   + ! 14 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 780  [0x10425b7e4]  TextRope+Construction.swift:61
+    + ! : |   + ! : 9 swift_arrayInitWithCopy  (in libswiftCore.dylib) + 364  [0x1a9113b7c]
+    + ! : |   + ! : | 8 swift::metadataimpl::ValueWitnesses<swift::metadataimpl::SwiftRetainableBox>::initializeWithCopy(swift::OpaqueValue*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*)  (in libswiftCore.dylib) + 28  [0x1a911c898]
+    + ! : |   + ! : | + 8 swift_retain  (in libswiftCore.dylib) + 32,4,...  [0x1a9113478,0x1a911345c,...]
+    + ! : |   + ! : | 1 swift::metadataimpl::ValueWitnesses<swift::metadataimpl::SwiftRetainableBox>::initializeWithCopy(swift::OpaqueValue*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*)  (in libswiftCore.dylib) + 16  [0x1a911c88c]
+    + ! : |   + ! : 3 swift::metadataimpl::ValueWitnesses<swift::metadataimpl::SwiftRetainableBox>::initializeWithCopy(swift::OpaqueValue*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*)  (in libswiftCore.dylib) + 40  [0x1a911c8a4]
+    + ! : |   + ! : 2 swift_arrayInitWithCopy  (in libswiftCore.dylib) + 360  [0x1a9113b78]
+    + ! : |   + ! 8 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 864  [0x10425b838]  TextRope+Construction.swift:62
+    + ! : |   + ! : 8 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : |   + ! :   8 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : |   + ! :     4 malloc_type_malloc  (in libsystem_malloc.dylib) + 28,68,...  [0x1949a7758,0x1949a7780,...]
+    + ! : |   + ! :     2 <deduplicated_symbol>  (in libsystem_malloc.dylib) + 92  [0x1949c3864]
+    + ! : |   + ! :     2 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 276,320  [0x1949bcb60,0x1949bcb8c]
+    + ! : |   + ! 7 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 684  [0x10425b784]  TextRope+Construction.swift:61
+    + ! : |   + ! : 6 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : |   + ! : | 4 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : |   + ! : | + 2 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 180,404  [0x1949bcb00,0x1949bcbe0]
+    + ! : |   + ! : | + 1 malloc_type_malloc  (in libsystem_malloc.dylib) + 44  [0x1949a7768]
+    + ! : |   + ! : | + 1 mfm_alloc  (in libsystem_malloc.dylib) + 532  [0x1949a85f4]
+    + ! : |   + ! : | 2 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 40  [0x1a917b254]
+    + ! : |   + ! : 1 swift_allocObject  (in libswiftCore.dylib) + 92  [0x1a9110ea8]
+    + ! : |   + ! 6 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 516,504,...  [0x10425b6dc,0x10425b6d0,...]  TextRope+Construction.swift:62
+    + ! : |   + ! 4 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 356  [0x10425b63c]  TextRope+Construction.swift:61
+    + ! : |   + ! : 4 type metadata accessor for __ContiguousArrayStorageBase  (in libswiftCore.dylib) + 24  [0x1a9113388]
+    + ! : |   + ! :   4 objc_msgSend  (in libobjcMsgSend.dylib) + 0  [0x19c314800]
+    + ! : |   + ! 3 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 808  [0x10425b800]  /<compiler-generated>:0
+    + ! : |   + ! : 2 swift_unknownObjectRelease  (in libswiftCore.dylib) + 0,36  [0x1a91137e4,0x1a9113808]
+    + ! : |   + ! : 1 swift_release  (in libswiftCore.dylib) + 4  [0x1a9113568]
+    + ! : |   + ! 3 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 1108  [0x10425b92c]  TextRope+Construction.swift:0
+    + ! : |   + ! : 3 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |   + ! :   3 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |   + ! :     3 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |   + ! :       3 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |   + ! :         3 swift_release  (in libswiftCore.dylib) + 56,92  [0x1a911359c,0x1a91135c0]
+    + ! : |   + ! 2 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 424  [0x10425b680]  /<compiler-generated>:0
+    + ! : |   + ! : 2 swift_release  (in libswiftCore.dylib) + 4,32  [0x1a9113568,0x1a9113584]
+    + ! : |   + ! 2 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 692  [0x10425b78c]  TextRope+Construction.swift:61
+    + ! : |   + ! : 2 malloc_size  (in libsystem_malloc.dylib) + 124  [0x194990208]
+    + ! : |   + ! :   2 xzm_malloc_zone_size  (in libsystem_malloc.dylib) + 488  [0x1949b84ec]
+    + ! : |   + ! 2 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 760  [0x10425b7d0]  TextRope+Construction.swift:61
+    + ! : |   + ! : 2 type metadata accessor for TextRope.Node  (in EditorBenchmark) + 20  [0x10425a3f0]  /<compiler-generated>:0
+    + ! : |   + ! :   1 DYLD-STUB$$objc_opt_self  (in EditorBenchmark) + 4  [0x104260eb4]
+    + ! : |   + ! :   1 objc_opt_self  (in libobjc.A.dylib) + 0  [0x19473276c]
+    + ! : |   + ! 2 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 852  [0x10425b82c]  TextRope+Construction.swift:62
+    + ! : |   + ! : 1 type metadata accessor for TextRope.Node  (in EditorBenchmark) + 20  [0x10425a3f0]  /<compiler-generated>:0
+    + ! : |   + ! : | 1 objc_opt_self  (in libobjc.A.dylib) + 0  [0x19473276c]
+    + ! : |   + ! : 1 type metadata accessor for TextRope.Node  (in EditorBenchmark) + 24  [0x10425a3f4]  /<compiler-generated>:0
+    + ! : |   + ! 2 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 1040  [0x10425b8e8]  TextRope+Construction.swift:62
+    + ! : |   + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 140  [0x10425ff44]  /<compiler-generated>:0
+    + ! : |   + ! : | 1 specialized _ContiguousArrayBuffer.init(_uninitializedCount:minimumCapacity:)  (in EditorBenchmark) + 64  [0x10425a924]  /<compiler-generated>:0
+    + ! : |   + ! : |   1 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : |   + ! : |     1 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : |   + ! : |       1 _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 120  [0x1949bcac4]
+    + ! : |   + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 188  [0x10425ff74]  /<compiler-generated>:0
+    + ! : |   + ! :   1 _platform_memmove  (in libsystem_platform.dylib) + 104  [0x194babdc8]
+    + ! : |   + ! 1 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 372  [0x10425b64c]  /<compiler-generated>:0
+    + ! : |   + ! : 1 swift_retain_n  (in libswiftCore.dylib) + 60  [0x1a91133f8]
+    + ! : |   + ! 1 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 416  [0x10425b678]  /<compiler-generated>:0
+    + ! : |   + ! : 1 swift_unknownObjectRelease  (in libswiftCore.dylib) + 56  [0x1a911381c]
+    + ! : |   + ! 1 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 1012  [0x10425b8cc]  TextRope+Construction.swift:53
+    + ! : |   + ! 1 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 172  [0x10425b584]  TextRope+Construction.swift:56
+    + ! : |   + ! 1 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 380  [0x10425b654]  TextRope+Construction.swift:61
+    + ! : |   + ! : 1 swift_dynamicCastClass  (in libswiftCore.dylib) + 124  [0x1a9113718]
+    + ! : |   + ! 1 specialized static TextRope.buildTree(from:)  (in EditorBenchmark) + 900  [0x10425b85c]  TextRope+Construction.swift:62
+    + ! : |   + ! : 1 swift_isUniquelyReferenced_nonNull_bridgeObject  (in libswiftCore.dylib) + 4  [0x1a91d3498]
+    + ! : |   + ! 1 swift_allocObject  (in libswiftCore.dylib) + 168  [0x1a9110ef4]
+    + ! : |   + 6 TextRope.init(_:)  (in EditorBenchmark) + 168  [0x10425a7d8]  TextRope+Construction.swift:0
+    + ! : |   +   6 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |   +     6 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |   +       6 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |   +         5 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |   +         : 3 objc_release  (in libobjc.A.dylib) + 120,0  [0x19471fc44,0x19471fbcc]
+    + ! : |   +         : 2 swift_release  (in libswiftCore.dylib) + 4,32  [0x1a9113568,0x1a9113584]
+    + ! : |   +         1 ???  (in <unknown binary>)  [0x1ac4022ec]
+    + ! : |   1 RopeDocument.init(text:lineStarts:)  (in EditorBenchmark) + 104  [0x104233aac]  EditorDocument.swift:66
+    + ! : |     1 EditorLoadTrace.init()  (in EditorBenchmark) + 116  [0x1042397b8]  EditorLoadTrace.swift:5
+    + ! : |       1 @objc _NSSwiftProcessInfo.environment.getter  (in Foundation) + 16  [0x196a0cc58]
+    + ! : |         1 specialized String.init(cString:)  (in libswiftCore.dylib) + 80  [0x1a955f800]
+    + ! : 2891 benchmarkLoad(_:)  (in EditorBenchmark) + 200  [0x104232024]  main.swift:15
+    + ! : | 2759 static EditorFile.open(_:)  (in EditorBenchmark) + 1068  [0x1042363b0]  EditorFile.swift:26
+    + ! : | + 2459 specialized static EditorTextPreparation.prepareFile(_:)  (in EditorBenchmark) + 464  [0x10423b0d0]  EditorTextPreparation.swift:73
+    + ! : | + ! 555 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 244,268,...  [0x10423a950,0x10423a968,...]  EditorTextPreparation.swift:25
+    + ! : | + ! 399 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 272  [0x10423a96c]  EditorTextPreparation.swift:32
+    + ! : | + ! 290 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 784,788  [0x10423ab6c,0x10423ab70]  EditorTextPreparation.swift:27
+    + ! : | + ! 232 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 168,176,...  [0x10423a904,0x10423a90c,...]  EditorTextPreparation.swift:21
+    + ! : | + ! 229 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 412  [0x10423a9f8]  EditorTextPreparation.swift:54
+    + ! : | + ! 228 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 156  [0x10423a8f8]  EditorTextPreparation.swift:17
+    + ! : | + ! 214 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 184,188  [0x10423a914,0x10423a918]  EditorTextPreparation.swift:22
+    + ! : | + ! 84 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 492  [0x10423aa48]  EditorTextPreparation.swift:57
+    + ! : | + ! 63 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 152  [0x10423a8f4]  EditorTextPreparation.swift:58
+    + ! : | + ! 50 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 392,396  [0x10423a9e4,0x10423a9e8]  EditorTextPreparation.swift:51
+    + ! : | + ! 37 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 288,284  [0x10423a97c,0x10423a978]  EditorTextPreparation.swift:33
+    + ! : | + ! 33 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 960  [0x10423ac1c]  EditorTextPreparation.swift:55
+    + ! : | + ! : 25 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 208  [0x1042353a8]  /<compiler-generated>:0
+    + ! : | + ! : | 25 _platform_memmove  (in libsystem_platform.dylib) + 88  [0x194babdb8]
+    + ! : | + ! : 4 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 0  [0x1042352d8]  /<compiler-generated>:0
+    + ! : | + ! : 2 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 128  [0x104235358]  /<compiler-generated>:0
+    + ! : | + ! : | 2 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : | + ! : |   2 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : | + ! : |     2 _xzm_malloc_large_huge  (in libsystem_malloc.dylib) + 968  [0x1949bc4ac]
+    + ! : | + ! : |       1 xzm_segment_group_alloc_chunk  (in libsystem_malloc.dylib) + 344  [0x19499c850]
+    + ! : | + ! : |       + 1 _xzm_segment_group_cache_mark_used  (in libsystem_malloc.dylib) + 60  [0x19499f33c]
+    + ! : | + ! : |       +   1 _xzm_reclaim_mark_used  (in libsystem_malloc.dylib) + 72  [0x19499c2e4]
+    + ! : | + ! : |       1 xzm_segment_group_alloc_chunk  (in libsystem_malloc.dylib) + 300  [0x19499c824]
+    + ! : | + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 136  [0x104235360]  /<compiler-generated>:0
+    + ! : | + ! : | 1 malloc_size  (in libsystem_malloc.dylib) + 0  [0x19499018c]
+    + ! : | + ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark) + 232  [0x1042353c0]  /<compiler-generated>:0
+    + ! : | + ! :   1 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : | + ! :     1 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : | + ! :       1 _xzm_free_main  (in libsystem_malloc.dylib) + 1152  [0x1949c533c]
+    + ! : | + ! 20 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 404,408  [0x10423a9f0,0x10423a9f4]  EditorTextPreparation.swift:53
+    + ! : | + ! 11 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 792  [0x10423ab74]  EditorTextPreparation.swift:28
+    + ! : | + ! 10 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 456,424,...  [0x10423aa24,0x10423aa04,...]  EditorTextPreparation.swift:55
+    + ! : | + ! 4 specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark) + 216,228,...  [0x10423a934,0x10423a940,...]  EditorTextPreparation.swift:24
+    + ! : | + 300 specialized static EditorTextPreparation.prepareFile(_:)  (in EditorBenchmark) + 648  [0x10423b188]  EditorTextPreparation.swift:77
+    + ! : | +   300 specialized String.init<A>(bytes:encoding:)  (in Foundation) + 2288  [0x196b41df4]
+    + ! : | +     170 static String._tryFromUTF8(_:)  (in libswiftCore.dylib) + 56  [0x1a92d3c08]
+    + ! : | +     : 169 specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 148  [0x1a95517e8]
+    + ! : | +     : | 169 _platform_memmove  (in libsystem_platform.dylib) + 88,104,...  [0x194babdb8,0x194babdc8,...]
+    + ! : | +     : 1 specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib) + 8  [0x1a955175c]
+    + ! : | +     130 static String._tryFromUTF8(_:)  (in libswiftCore.dylib) + 28  [0x1a92d3bec]
+    + ! : | +       130 validateUTF8(_:)  (in libswiftCore.dylib) + 36  [0x1a942b640]
+    + ! : | +         130 _allASCII(_:)  (in libswiftCore.dylib) + 40,24,...  [0x1a9430ea4,0x1a9430e94,...]
+    + ! : | 114 static EditorFile.open(_:)  (in EditorBenchmark) + 692  [0x104236238]  EditorFile.swift:22
+    + ! : | + 114 NSFileHandle.readToEnd()  (in Foundation) + 60  [0x196cefcbc]
+    + ! : | +   114 -[NSConcreteFileHandle readDataToEndOfFileAndReturnError:]  (in Foundation) + 36  [0x196353f48]
+    + ! : | +     114 -[NSConcreteFileHandle readDataOfLength:]  (in Foundation) + 236  [0x196354118]
+    + ! : | +       114 _NSReadFromFileDescriptorWithProgress  (in Foundation) + 180  [0x196335d38]
+    + ! : | +         114 read  (in libsystem_kernel.dylib) + 8  [0x194b5d910]
+    + ! : | 8 static EditorFile.open(_:)  (in EditorBenchmark) + 208  [0x104236054]  EditorFile.swift:15
+    + ! : | + 8 EditorLoadTrace.init()  (in EditorBenchmark) + 116  [0x1042397b8]  EditorLoadTrace.swift:5
+    + ! : | +   7 @objc _NSSwiftProcessInfo.environment.getter  (in Foundation) + 16  [0x196a0cc58]
+    + ! : | +   ! 3 specialized _ProcessInfo.environment.getter  (in Foundation) + 616  [0x196a0bb0c]
+    + ! : | +   ! : 3 specialized _NativeDictionary._copyOrMoveAndResize(capacity:moveElements:)  (in Foundation) + 108  [0x1966076e0]
+    + ! : | +   ! :   3 static _DictionaryStorage.resize(original:capacity:move:)  (in libswiftCore.dylib) + 40  [0x1a911d7e4]
+    + ! : | +   ! :     3 static _DictionaryStorage.allocate(scale:age:seed:)  (in libswiftCore.dylib) + 268  [0x1a92f76d8]
+    + ! : | +   ! :       3 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : | +   ! :         3 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : | +   ! :           3 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1949be0f8]
+    + ! : | +   ! :             2 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 84,212  [0x1949be8e4,0x1949be964]
+    + ! : | +   ! :             1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 160  [0x1949be930]
+    + ! : | +   ! :               1 _xzm_chunk_list_pop  (in libsystem_malloc.dylib) + 56  [0x1949bf20c]
+    + ! : | +   ! 1 specialized _ProcessInfo.environment.getter  (in Foundation) + 188  [0x196a0b960]
+    + ! : | +   ! : 1 specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in Foundation) + 228  [0x1966cbe98]
+    + ! : | +   ! :   1 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : | +   ! :     1 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : | +   ! :       1 _xzm_free_main  (in libsystem_malloc.dylib) + 300  [0x1949c4fe8]
+    + ! : | +   ! 1 specialized _ProcessInfo.environment.getter  (in Foundation) + 324  [0x196a0b9e8]
+    + ! : | +   ! : 1 specialized Collection<>.firstIndex(of:)  (in Foundation) + 100  [0x1967aa448]
+    + ! : | +   ! 1 specialized _ProcessInfo.environment.getter  (in Foundation) + 400  [0x196a0ba34]
+    + ! : | +   ! : 1 String._uncheckedIndex(after:)  (in libswiftCore.dylib) + 228  [0x1a942d550]
+    + ! : | +   ! 1 specialized _ProcessInfo.environment.getter  (in Foundation) + 564  [0x196a0bad8]
+    + ! : | +   !   1 specialized __RawDictionaryStorage.find<A>(_:)  (in Foundation) + 72  [0x1965f676c]
+    + ! : | +   !     1 Hasher._finalize()  (in libswiftCore.dylib) + 192  [0x1a926192c]
+    + ! : | +   1 @objc _NSSwiftProcessInfo.environment.getter  (in Foundation) + 40  [0x196a0cc70]
+    + ! : | +     1 _NativeDictionary.bridged()  (in libswiftCore.dylib) + 68  [0x1a9127af4]
+    + ! : | 5 static EditorFile.open(_:)  (in EditorBenchmark) + 340  [0x1042360d8]  EditorFile.swift:17
+    + ! : | + 5 URL.resourceValues(forKeys:)  (in Foundation) + 256  [0x196b85e68]
+    + ! : | +   5 -[NSURL resourceValuesForKeys:error:]  (in CoreFoundation) + 96  [0x194c652dc]
+    + ! : | +     5 CFURLCopyResourcePropertiesForKeys  (in CoreFoundation) + 100  [0x194c653ac]
+    + ! : | +       2 _FSURLCopyResourcePropertiesForKeysInternal(__CFURL const*, __CFArray const*, void*, __CFError**, unsigned char)  (in CoreServicesInternal) + 80  [0x19900fa98]
+    + ! : | +       ! 1 _FileCacheGetForURL(__CFURL const*, void*)  (in CoreServicesInternal) + 36  [0x19902adf0]
+    + ! : | +       ! : 1 initGlobalsOnce()  (in CoreServicesInternal) + 36  [0x19902ff64]
+    + ! : | +       ! :   1 _dispatch_once_callout  (in libdispatch.dylib) + 32  [0x1949e3624]
+    + ! : | +       ! :     1 _dispatch_client_callout  (in libdispatch.dylib) + 16  [0x1949fa5a0]
+    + ! : | +       ! :       1 invocation function for block in initGlobalsOnce()  (in CoreServicesInternal) + 24  [0x19902ff84]
+    + ! : | +       ! :         1 init_logging()  (in CoreServicesInternal) + 40  [0x199023b38]
+    + ! : | +       ! :           1 os_log_create  (in libsystem_trace.dylib) + 96  [0x1948b7e14]
+    + ! : | +       ! :             1 _os_trace_prefs_and_mode_refresh_slow  (in libsystem_trace.dylib) + 228  [0x1948b70e4]
+    + ! : | +       ! :               1 notify_register_check  (in libsystem_notify.dylib) + 1168  [0x199164fc8]
+    + ! : | +       ! :                 1 mach_msg  (in libsystem_kernel.dylib) + 24  [0x194b5cfac]
+    + ! : | +       ! :                   1 mach_msg_overwrite  (in libsystem_kernel.dylib) + 480  [0x194b65a28]
+    + ! : | +       ! :                     1 mach_msg2_internal  (in libsystem_kernel.dylib) + 76  [0x194b6f8e0]
+    + ! : | +       ! :                       1 mach_msg2_trap  (in libsystem_kernel.dylib) + 8  [0x194b5cc20]
+    + ! : | +       ! 1 _FileCacheGetForURL(__CFURL const*, void*)  (in CoreServicesInternal) + 60  [0x19902ae08]
+    + ! : | +       !   1 _CFRuntimeCreateInstance  (in CoreFoundation) + 96  [0x194be453c]
+    + ! : | +       !     1 os_unfair_lock_lock_with_options  (in libsystem_platform.dylib) + 12  [0x194ba892c]
+    + ! : | +       2 _FSURLCopyResourcePropertiesForKeysInternal(__CFURL const*, __CFArray const*, void*, __CFError**, unsigned char)  (in CoreServicesInternal) + 1500  [0x199010024]
+    + ! : | +       ! 2 prepareValuesForBitmap(__CFURL const*, __FileCache*, _FilePropertyBitmap*, __CFError**)  (in CoreServicesInternal) + 468  [0x19900780c]
+    + ! : | +       !   2 corePropertyProviderPrepareValues(__CFURL const*, __FileCache*, __CFString const* const*, void const**, long, void const*, __CFError**)  (in CoreServicesInternal) + 1004  [0x199007c74]
+    + ! : | +       !     2 __getattrlist  (in libsystem_kernel.dylib) + 8  [0x194b5d628]
+    + ! : | +       1 _FSURLCopyResourcePropertiesForKeysInternal(__CFURL const*, __CFArray const*, void*, __CFError**, unsigned char)  (in CoreServicesInternal) + 112  [0x19900fab8]
+    + ! : | +         1 @objc __SwiftDeferredNSArray.count.getter  (in libswiftCore.dylib) + 0  [0x1a9125780]
+    + ! : | 3 static EditorFile.open(_:)  (in EditorBenchmark) + 224  [0x104236064]  EditorFile.swift:16
+    + ! : | + 3 URL.resolvingSymlinksInPath()  (in Foundation) + 72  [0x196b8fd84]
+    + ! : | +   3 protocol witness for _URLProtocol.resolvingSymlinksInPath() in conformance _SwiftURL  (in Foundation) + 36  [0x196c03b6c]
+    + ! : | +     2 _SwiftURL.standardizedFileURL.getter  (in Foundation) + 1272  [0x196c02b2c]
+    + ! : | +     ! 1 String.resolvingSymlinksInPath.getter  (in Foundation) + 444  [0x196b5e63c]
+    + ! : | +     ! : 1 String._resolvingSymlinksInPath()  (in Foundation) + 240  [0x196b62348]
+    + ! : | +     ! :   1 closure #1 in String._resolvingSymlinksInPath()  (in Foundation) + 80  [0x196b62a4c]
+    + ! : | +     ! :     1 static String._resolvingSymlinksInPathUsingFullPathAttribute(_:)  (in Foundation) + 108  [0x196b62880]
+    + ! : | +     ! :       1 __getattrlist  (in libsystem_kernel.dylib) + 8  [0x194b5d628]
+    + ! : | +     ! 1 String.resolvingSymlinksInPath.getter  (in Foundation) + 576  [0x196b5e6c0]
+    + ! : | +     !   1 String.init(unsafeUninitializedCapacity:initializingUTF8With:)  (in libswiftCore.dylib) + 304  [0x1a94210b0]
+    + ! : | +     !     1 specialized static String._fromLargeUTF8Repairing<A>(uninitializedCapacity:initializingWith:)  (in libswiftCore.dylib) + 68  [0x1a9421200]
+    + ! : | +     !       1 specialized static __StringStorage.create<A>(uninitializedCodeUnitCapacity:initializingUncheckedUTF8With:)  (in libswiftCore.dylib) + 144  [0x1a943194c]
+    + ! : | +     !         1 partial apply for thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer<UInt8>) -> (@unowned Int, @error @owned Error)  (in libswiftCore.dylib) + 32  [0x1a959bc90]
+    + ! : | +     !           1 partial apply for specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer<UInt8>) -> (@unowned Int, @error @out A)  (in Foundation) + 16  [0x196b6328c]
+    + ! : | +     !             1 partial apply for specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer<UInt8>) -> (@unowned Int, @error @out A)  (in Foundation) + 20  [0x196b63194]
+    + ! : | +     !               1 specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer<UInt8>) -> (@unowned Int, @error @out A)  (in Foundation) + 28  [0x1966c7e10]
+    + ! : | +     !                 1 partial apply for closure #1 in String._compressingSlashes()  (in Foundation) + 24  [0x196b631b4]
+    + ! : | +     !                   1 closure #1 in String._compressingSlashes()  (in Foundation) + 0  [0x196b61234]
+    + ! : | +     1 _SwiftURL.standardizedFileURL.getter  (in Foundation) + 352  [0x196c02794]
+    + ! : | +       1 static _SetStorage.allocate(scale:age:seed:)  (in libswiftCore.dylib) + 172  [0x1a911a898]
+    + ! : | +         1 swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+    + ! : | +           1 swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+    + ! : | +             1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1949be0f8]
+    + ! : | +               1 _xzm_xzone_find_and_malloc_from_freelist_chunk  (in libsystem_malloc.dylib) + 380  [0x1949bea0c]
+    + ! : | +                 1 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 48  [0x1949bf160]
+    + ! : | 2 static EditorFile.open(_:)  (in EditorBenchmark) + 496  [0x104236174]  EditorFile.swift:19
+    + ! : |   2 @nonobjc NSFileHandle.__allocating_init(forReadingFrom:)  (in EditorBenchmark) + 84  [0x1042365a8]  /<compiler-generated>:0
+    + ! : |     2 +[NSFileHandle fileHandleForReadingFromURL:error:]  (in Foundation) + 48  [0x1963d9970]
+    + ! : |       2 -[NSConcreteFileHandle initWithURL:flags:createMode:error:]  (in Foundation) + 108  [0x196392dd0]
+    + ! : |         2 _NSOpenFileDescriptor  (in Foundation) + 44  [0x196392fc0]
+    + ! : |           2 open  (in libsystem_kernel.dylib) + 64  [0x194b68960]
+    + ! : |             2 __open  (in libsystem_kernel.dylib) + 8  [0x194b5d680]
+    + ! : 726 benchmarkLoad(_:)  (in EditorBenchmark) + 1436  [0x1042324f8]  /<compiler-generated>:0
+    + ! : | 726 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |   726 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     725 RopeDocument.__deallocating_deinit  (in EditorBenchmark) + 16  [0x104234bf4]  /<compiler-generated>:0
+    + ! : |     + 725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +   725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +     725 RopeBuffer.__deallocating_deinit  (in EditorBenchmark) + 16  [0x10424d644]  /<compiler-generated>:0
+    + ! : |     +       725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +         725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +           725 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +             725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +               725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                 725 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |     +                   725 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |     +                     725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                       725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                         725 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +                           725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                             725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                               725 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |     +                                 725 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |     +                                   725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                     725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                       725 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +                                         725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                           725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                             725 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |     +                                               725 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |     +                                                 725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                   725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                     725 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +                                                       725 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                         725 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                           725 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |     +                                                             725 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |     +                                                               722 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                               ! 721 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                               ! : 720 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +                                                               ! : | 720 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                               ! : |   720 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                               ! : |     720 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |     +                                                               ! : |       720 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |     +                                                               ! : |         717 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                               ! : |         + 716 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                               ! : |         + ! 667 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +                                                               ! : |         + ! : 666 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                               ! : |         + ! : | 665 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                               ! : |         + ! : | + 642 _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+    + ! : |     +                                                               ! : |         + ! : | + ! 626 swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+    + ! : |     +                                                               ! : |         + ! : | + ! : 602 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | 594 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 545 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 16  [0x10425a3c0]  /<compiler-generated>:0
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 472 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : 350 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 280 __StringStorage.__deallocating_deinit  (in libswiftCore.dylib) + 100  [0x1a944688c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + 255 outlined destroy of (AnyHashable?, AnyHashable?)  (in libswiftCore.dylib) + 72  [0x1a959c554]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! 252 destroy for ClosedRange<>.Index  (in libswiftCore.dylib) + 92,108,...  [0x1a9593444,0x1a9593454,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! 2 destroy for ClosedRange<>.Index  (in libswiftCore.dylib) + 112  [0x1a9593458]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! : 2 swift::metadataimpl::FixedSizeBufferValueWitnesses<swift::metadataimpl::ValueWitnesses<swift::metadataimpl::SwiftRetainableBox>, true, 8ul, 8ul, true>::getEnumTagSinglePayload(swift::OpaqueValue const*, unsigned int, swift::TargetMetadata<swift::InProcess> const*)  (in libswiftCore.dylib) + 4  [0x1a9120114]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! 1 <deduplicated_symbol>  (in libswiftCore.dylib) + 0  [0x1a959fce8]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + 23 outlined destroy of (AnyHashable?, AnyHashable?)  (in libswiftCore.dylib) + 0,4,...  [0x1a959c50c,0x1a959c510,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + 2 outlined destroy of (AnyHashable?, AnyHashable?)  (in libswiftCore.dylib) + 32  [0x1a959c52c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | +   2 __swift_instantiateConcreteTypeFromMangledNameV2  (in libswiftCore.dylib) + 20  [0x1a9558860]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 25 _xzm_xzone_madvise_batch  (in libsystem_malloc.dylib) + 428  [0x1949bf92c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + 21 xzm_reclaim_mark_free_locked  (in libsystem_malloc.dylib) + 120  [0x19499bcfc]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! 20 mach_vm_reclaim_try_enter  (in libsystem_kernel.dylib) + 316  [0x194b7053c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! : 20 mach_absolute_time  (in libsystem_kernel.dylib) + 108,16,...  [0x194b5d0f8,0x194b5d09c,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + ! 1 mach_vm_reclaim_try_enter  (in libsystem_kernel.dylib) + 300  [0x194b7052c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + 4 xzm_reclaim_mark_free_locked  (in libsystem_malloc.dylib) + 240  [0x19499bd74]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | +   4 mach_vm_reclaim_ring_resize  (in libsystem_kernel.dylib) + 88  [0x194b70370]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | +     4 mach_vm_deferred_reclamation_buffer_resize  (in libsystem_kernel.dylib) + 140  [0x194b85b5c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | +       4 mach_msg2_internal  (in libsystem_kernel.dylib) + 76  [0x194b6f8e0]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | +         4 mach_msg2_trap  (in libsystem_kernel.dylib) + 8  [0x194b5cc20]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 18 _xzm_free_main  (in libsystem_malloc.dylib) + 444,684,...  [0x1949c5078,0x1949c5168,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 9 __StringStorage.__deallocating_deinit  (in libswiftCore.dylib) + 40,44,...  [0x1a9446850,0x1a9446854,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 6 _free  (in libsystem_malloc.dylib) + 76,0,...  [0x1949c915c,0x1949c9110,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 5 swift_deallocClassInstance  (in libswiftCore.dylib) + 76,104,...  [0x1a9117390,0x1a91173ac,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 3 _xzm_chunk_batch_list_push  (in libsystem_malloc.dylib) + 48,120,...  [0x1949bf4a0,0x1949bf4e8,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 1 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 124  [0x1949c1adc]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | + 1 _xzm_chunk_list_push  (in libsystem_malloc.dylib) + 12  [0x1949bf13c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 1 _xzm_chunk_list_slot_push  (in libsystem_malloc.dylib) + 144  [0x1949c1af0]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 1 _xzm_xzone_madvise_batch  (in libsystem_malloc.dylib) + 432  [0x1949bf930]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : | 1 outlined destroy of (AnyHashable?, AnyHashable?)  (in libswiftCore.dylib) + 84  [0x1a959c560]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : 118 _swift_release_dealloc  (in libswiftCore.dylib) + 48,24,...  [0x1a9117294,0x1a911727c,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : 2 swift_deallocClassInstance  (in libswiftCore.dylib) + 172  [0x1a91173f0]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : 1 ???  (in <unknown binary>)  [0x1ac4000ec]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! : 1 _xzm_free_main  (in libsystem_malloc.dylib) + 1080  [0x1949c52f4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 50 swift_release  (in libswiftCore.dylib) + 0,32,...  [0x1a9113564,0x1a9113584,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 11 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 80,12,...  [0x1a917da8c,0x1a917da48,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 6 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0,8,...  [0x1a9113398,0x1a91133a0,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 3 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 4  [0x104260f5c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 3 _swift_release_dealloc  (in libswiftCore.dylib) + 88  [0x1a91172bc]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 24 _xzm_free_main  (in libsystem_malloc.dylib) + 684,892,...  [0x1949c5168,0x1949c5238,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 9 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 8 swift_release  (in libswiftCore.dylib) + 92,4,...  [0x1a91135c0,0x1a9113568,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + ! 1 DYLD-STUB$$swift_release  (in EditorBenchmark) + 4  [0x104261100]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 7 swift_deallocClassInstance  (in libswiftCore.dylib) + 12,36,...  [0x1a9117350,0x1a9117368,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 5 _free  (in libsystem_malloc.dylib) + 0,108  [0x1949c9110,0x1949c917c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 2 DYLD-STUB$$swift_deallocClassInstance  (in EditorBenchmark) + 0,4  [0x104260fa0,0x104260fa4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | + 2 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 64  [0x1a917da7c]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | 4 _xzm_free_main  (in libsystem_malloc.dylib) + 1080  [0x1949c52f4]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | 3 swift_deallocClassInstance  (in libswiftCore.dylib) + 172  [0x1a91173f0]
+    + ! : |     +                                                               ! : |         + ! : | + ! : | 1 ???  (in <unknown binary>)  [0x1ac4000ec]
+    + ! : |     +                                                               ! : |         + ! : | + ! : 15 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 12,108,...  [0x1a917da48,0x1a917daa8,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! : 5 swift_release  (in libswiftCore.dylib) + 4,32  [0x1a9113568,0x1a9113584]
+    + ! : |     +                                                               ! : |         + ! : | + ! : 3 objc_release  (in libobjc.A.dylib) + 0  [0x19471fbcc]
+    + ! : |     +                                                               ! : |         + ! : | + ! : 1 swift_release$lazyLoadStub  (in libobjc.A.dylib) + 4  [0x194757330]
+    + ! : |     +                                                               ! : |         + ! : | + ! 11 swift_arrayDestroy  (in libswiftCore.dylib) + 216,204,...  [0x1a9115794,0x1a9115788,...]
+    + ! : |     +                                                               ! : |         + ! : | + ! 2 ???  (in <unknown binary>)  [0x1ac4022ec]
+    + ! : |     +                                                               ! : |         + ! : | + ! 2 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 64  [0x1a917da7c]
+    + ! : |     +                                                               ! : |         + ! : | + ! 1 swift_arrayDestroy  (in libswiftCore.dylib) + 124  [0x1a9115738]
+    + ! : |     +                                                               ! : |         + ! : | + !   1 swift::TargetMetadata<swift::InProcess>::getTypeContextDescriptor() const  (in libswiftCore.dylib) + 96  [0x1a915b89c]
+    + ! : |     +                                                               ! : |         + ! : | + 20 _xzm_free_main  (in libsystem_malloc.dylib) + 684,236,...  [0x1949c5168,0x1949c4fa8,...]
+    + ! : |     +                                                               ! : |         + ! : | + 2 _xzm_chunk_batch_list_push  (in libsystem_malloc.dylib) + 20  [0x1949bf484]
+    + ! : |     +                                                               ! : |         + ! : | + 1 _free  (in libsystem_malloc.dylib) + 0  [0x1949c9110]
+    + ! : |     +                                                               ! : |         + ! : | 1 swift_deallocClassInstance  (in libswiftCore.dylib) + 172  [0x1a91173f0]
+    + ! : |     +                                                               ! : |         + ! : 1 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 108  [0x1a917daa8]
+    + ! : |     +                                                               ! : |         + ! 41 DYLD-STUB$$swift_deallocClassInstance  (in EditorBenchmark) + 0  [0x104260fa0]
+    + ! : |     +                                                               ! : |         + ! 4 _xzm_free_main  (in libsystem_malloc.dylib) + 120,392,...  [0x1949c4f34,0x1949c5044,...]
+    + ! : |     +                                                               ! : |         + ! 2 TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 16  [0x10425a3c0]  /<compiler-generated>:0
+    + ! : |     +                                                               ! : |         + ! : 1 DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 4  [0x104260f5c]
+    + ! : |     +                                                               ! : |         + ! : 1 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 4  [0x1a911339c]
+    + ! : |     +                                                               ! : |         + ! 2 swift_deallocClassInstance  (in libswiftCore.dylib) + 36,132  [0x1a9117368,0x1a91173c8]
+    + ! : |     +                                                               ! : |         + 1 swift_deallocClassInstance  (in libswiftCore.dylib) + 172  [0x1a91173f0]
+    + ! : |     +                                                               ! : |         2 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 12  [0x1a917da48]
+    + ! : |     +                                                               ! : |         1 swift_release  (in libswiftCore.dylib) + 40  [0x1a911358c]
+    + ! : |     +                                                               ! : 1 _xzm_xzone_madvise_batch  (in libsystem_malloc.dylib) + 428  [0x1949bf92c]
+    + ! : |     +                                                               ! :   1 xzm_reclaim_mark_free_locked  (in libsystem_malloc.dylib) + 120  [0x19499bcfc]
+    + ! : |     +                                                               ! :     1 mach_vm_reclaim_try_enter  (in libsystem_kernel.dylib) + 316  [0x194b7053c]
+    + ! : |     +                                                               ! :       1 mach_absolute_time  (in libsystem_kernel.dylib) + 108  [0x194b5d0f8]
+    + ! : |     +                                                               ! 1 _swift_release_dealloc  (in libswiftCore.dylib) + 24  [0x1a911727c]
+    + ! : |     +                                                               2 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 120,168  [0x1a917dab4,0x1a917dae4]
+    + ! : |     +                                                               1 swift_release  (in libswiftCore.dylib) + 4  [0x1a9113568]
+    + ! : |     1 RopeDocument.__deallocating_deinit  (in EditorBenchmark) + 24  [0x104234bfc]  /<compiler-generated>:0
+    + ! : |       1 swift_bridgeObjectRelease  (in libswiftCore.dylib) + 8  [0x1a91133a0]
+    + ! : 5 benchmarkLoad(_:)  (in EditorBenchmark) + 416  [0x1042320fc]  main.swift:18
+    + ! : | 5 RopeDocument.text(in:)  (in EditorBenchmark) + 100  [0x104233d0c]  EditorDocument.swift:81
+    + ! : |   5 RopeBuffer.content(in:)  (in EditorBenchmark) + 20  [0x10424cd3c]
+    + ! : |     5 RopeBuffer.wordRange(for:)  (in EditorBenchmark) + 264  [0x10424ce4c]
+    + ! : |       3 TextRope.composedCharacterSequences(in:)  (in EditorBenchmark) + 340  [0x104251970]  TextRope+ComposedSequences.swift:32
+    + ! : |       + 3 TextRope.content(in:)  (in EditorBenchmark) + 84  [0x10425f820]  TextRope+Navigation.swift:65
+    + ! : |       +   3 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+    + ! : |       +     3 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+    + ! : |       +       3 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+    + ! : |       +         2 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+    + ! : |       +         ! 2 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+    + ! : |       +         !   2 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+    + ! : |       +         !     1 DefaultStringInterpolation.appendLiteral(_:)  (in libswiftCore.dylib) + 80  [0x1a944529c]
+    + ! : |       +         !     1 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 372  [0x10425f9ac]  /<compiler-generated>:0
+    + ! : |       +         !       1 swift_retain  (in libswiftCore.dylib) + 56  [0x1a9113490]
+    + ! : |       +         1 specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 208  [0x10425f908]  /<compiler-generated>:0
+    + ! : |       +           1 swift_release  (in libswiftCore.dylib) + 56  [0x1a911359c]
+    + ! : |       1 TextRope.composedCharacterSequences(in:)  (in EditorBenchmark) + 232  [0x104251904]  TextRope+ComposedSequences.swift:32
+    + ! : |       + 1 TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 128  [0x10425fad0]  TextRope+Navigation.swift:117
+    + ! : |       +   1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+    + ! : |       +     1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+    + ! : |       +       1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+    + ! : |       +         1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+    + ! : |       +           1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+    + ! : |       +             1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+    + ! : |       +               1 specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 228  [0x10425fbd8]  TextRope+Navigation.swift:100
+    + ! : |       1 TextRope.composedCharacterSequences(in:)  (in EditorBenchmark) + 568  [0x104251a54]  TextRope+ComposedSequences.swift:32
+    + ! : |         1 -[NSString substringWithRange:]  (in Foundation) + 92  [0x1963348cc]
+    + ! : |           1 __CFStringCreateImmutableFunnel3  (in CoreFoundation) + 2040  [0x194be3d9c]
+    + ! : |             1 _CFRuntimeCreateInstance  (in CoreFoundation) + 496  [0x194be46cc]
+    + ! : |               1 _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1949be0f8]
+    + ! : |                 1 _xzm_xzone_malloc_from_empty_freelist_chunk  (in libsystem_malloc.dylib) + 308  [0x1949bf3ec]
+    + ! : 1 benchmarkLoad(_:)  (in EditorBenchmark) + 1452  [0x104232508]  /<compiler-generated>:0
+    + ! : | 1 outlined destroy of EditorFile  (in EditorBenchmark) + 44  [0x1042333f4]  /<compiler-generated>:0
+    + ! : |   1 destroy for EditorFile  (in EditorBenchmark) + 92  [0x104238d24]  /<compiler-generated>:0
+    + ! : |     1 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    + ! : |       1 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    + ! : |         1 __DataStorage.__deallocating_deinit  (in Foundation) + 84  [0x1967d0bb0]
+    + ! : |           1 partial apply for closure #1 in Data.init(referencing:)  (in Foundation) + 0  [0x196e1f174]
+    + ! : 1 benchmarkLoad(_:)  (in EditorBenchmark) + 740  [0x104232240]  main.swift:20
+    + ! :   1 String.init(format:_:)  (in Foundation) + 44  [0x197025ad8]
+    + ! :     1 specialized String.init(format:locale:arguments:)  (in Foundation) + 444  [0x19702f41c]
+    + ! :       1 closure #1 in String.init(format:locale:arguments:)  (in Foundation) + 1476  [0x1970260f4]
+    + ! :         1 +[NSString _stringWithValidatedFormat:validFormatSpecifiers:locale:arguments:error:]  (in Foundation) + 72  [0x196514570]
+    + ! :           1 -[NSPlaceholderString initWithValidatedFormat:validFormatSpecifiers:locale:arguments:error:]  (in Foundation) + 104  [0x196515e90]
+    + ! :             1 _CFStringCreateStringWithValidatedFormatAuxWithDesc  (in CoreFoundation) + 160  [0x194d4fbd0]
+    + ! :               1 __CFStringAppendFormatCore  (in CoreFoundation) + 10008  [0x194c0e9a4]
+    + ! :                 1 snprintf_l  (in libsystem_c.dylib) + 32  [0x194a35814]
+    + ! :                   1 _vsnprintf  (in libsystem_c.dylib) + 212  [0x194a575c0]
+    + ! :                     1 __vfprintf  (in libsystem_c.dylib) + 4056  [0x194a2baac]
+    + ! :                       1 __dtoa  (in libsystem_c.dylib) + 224  [0x194a38358]
+    + ! :                         1 __d2b_D2A  (in libsystem_c.dylib) + 60  [0x194a390bc]
+    + ! :                           1 __Balloc_D2A  (in libsystem_c.dylib) + 0  [0x194a39194]
+    + ! 1 EditorBenchmark_main  (in EditorBenchmark) + 960  [0x104231828]  main.swift:29
+    + !   1 swift_task_getMainExecutorImpl  (in libswift_Concurrency.dylib) + 44  [0x2c14f3f24]
+    + !     1 _stdlib_isOSVersionAtLeastOrVariantVersionAtLeast(_:_:_:_:_:_:)  (in libswiftCore.dylib) + 0  [0x1a91207dc]
+    + 2 start  (in dyld) + 6596  [0x1947cbe24]
+    +   2 dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const  (in dyld) + 320  [0x1947cca84]
+    +     2 dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)  (in dyld) + 4724  [0x1947cdd14]
+    +       1 dyld4::APIs::runAllInitializersForMain()  (in dyld) + 100  [0x1947c0e30]
+    +       : 1 dyld4::PrebuiltLoader::runInitializers(dyld4::RuntimeState&) const  (in dyld) + 44  [0x1948005a8]
+    +       :   1 dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const  (in dyld) + 680  [0x1947f8614]
+    +       :     1 mach_o::Image::forEachInitializer(void (unsigned int) block_pointer) const  (in dyld) + 244  [0x194830f9c]
+    +       :       1 mach_o::Header::forEachSection(void (mach_o::Header::SectionInfo const&, bool&) block_pointer) const  (in dyld) + 128  [0x19482b07c]
+    +       :         1 mach_o::Header::forEachLoadCommand(void (mach_o::Header::LoadCommandInfo const&, bool&) block_pointer, mach_o::Error*) const  (in dyld) + 228  [0x194827004]
+    +       :           1 invocation function for block in mach_o::Header::forEachSection(void (mach_o::Header::SectionInfo const&, bool&) block_pointer) const  (in dyld) + 156  [0x19482d974]
+    +       :             1 mach_o::Header::parse_segment_command<true>(mach_o::Header::LoadCommandInfo const&, unsigned short, void (mach_o::Header::SegmentInfo const&, mach_o::Header::SectionInfo const&) block_pointer, mach_o::Error*) const  (in dyld) + 580  [0x194828508]
+    +       :               1 invocation function for block in mach_o::Image::forEachInitializer(void (unsigned int) block_pointer) const  (in dyld) + 84  [0x19483106c]
+    +       :                 1 invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const::$_0::operator()() const  (in dyld) + 360  [0x1947fd758]
+    +       :                   1 libSystem_initializer  (in libSystem.B.dylib) + 244  [0x1a57b3358]
+    +       :                     1 libdispatch_init  (in libdispatch.dylib) + 480  [0x194a1742c]
+    +       :                       1 _os_object_init  (in libdispatch.dylib) + 24  [0x1949e1788]
+    +       :                         1 _objc_init  (in libobjc.A.dylib) + 2212  [0x194719b40]
+    +       :                           1 _dyld_objc_register_callbacks  (in libdyld.dylib) + 344  [0x1947791e4]
+    +       :                             1 dyld4::APIs::_dyld_objc_register_callbacks(dyld4::ObjCCallbacks const*)  (in dyld) + 128  [0x1947b6558]
+    +       :                               1 dyld4::RuntimeState::setObjCNotifiers(dyld4::ReadOnlyCallback<void (*)(char const*, mach_header const*)>, dyld4::ReadOnlyCallback<void (*)(mach_header const*, void*, mach_header const*, void const*)>, dyld4::ReadOnlyCallback<void (*)(_dyld_objc_notify_mapped_info const*)>, dyld4::ReadOnlyCallback<void (*)(unsigned int, _dyld_objc_notify_mapped_info const*, void (unsigned int) block_pointer)>)  (in dyld) + 540  [0x1947e00fc]
+    +       :                                 1 dyld4::RuntimeLocks::withLoadersReadLock(void () block_pointer)  (in dyld) + 84  [0x1947d703c]
+    +       :                                   1 invocation function for block in dyld4::RuntimeState::setObjCNotifiers(dyld4::ReadOnlyCallback<void (*)(char const*, mach_header const*)>, dyld4::ReadOnlyCallback<void (*)(mach_header const*, void*, mach_header const*, void const*)>, dyld4::ReadOnlyCallback<void (*)(_dyld_objc_notify_mapped_info const*)>, dyld4::ReadOnlyCallback<void (*)(unsigned int, _dyld_objc_notify_mapped_info const*, void (unsigned int) block_pointer)>)::$_0::operator()() const  (in dyld) + 1120  [0x1947e6bec]
+    +       :                                     1 map_images  (in libobjc.A.dylib) + 112  [0x194719e20]
+    +       :                                       1 map_images_nolock  (in libobjc.A.dylib) + 1984  [0x19471a66c]
+    +       1 dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const  (in dyld) + 196  [0x1947f8d58]
+    +         1 dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const::$_0::operator()() const  (in dyld) + 124  [0x1947fd7f8]
+    +           1 dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*>>&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*>>&) const  (in dyld) + 336  [0x1947f8b70]
+    +             1 dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*>>&, lsl::Vector<AuthenticatedValue<dyld4::Loader const*>>&) const  (in dyld) + 476  [0x1947f8bfc]
+    +               1 dyld4::RuntimeState::notifyObjCInit(dyld4::Loader const*)  (in dyld) + 560  [0x1947e05fc]
+    +                 1 load_images  (in libobjc.A.dylib) + 992  [0x194722128]
+    +                   1 _NSInitializePlatform  (in Foundation) + 428  [0x19630d7e0]
+    +                     1 @objc _NSSwiftProcessInfo.arguments.getter  (in Foundation) + 68  [0x196a0cc04]
+    +                       1 closure #1 in _ProcessInfo.arguments.getter  (in Foundation) + 88  [0x196a0b008]
+    +                         1 String.standardizingPath.getter  (in Foundation) + 904  [0x196b5df28]
+    +                           1 swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+    +                             1 _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+    +                               1 __StringStorage.__deallocating_deinit  (in libswiftCore.dylib) + 100  [0x1a944688c]
+    +                                 1 outlined destroy of (AnyHashable?, AnyHashable?)  (in libswiftCore.dylib) + 32  [0x1a959c52c]
+    +                                   1 __swift_instantiateConcreteTypeFromMangledNameV2  (in libswiftCore.dylib) + 68  [0x1a9558890]
+    +                                     1 swift_getTypeByMangledNameInContextImpl(char const*, unsigned long, swift::TargetContextDescriptor<swift::InProcess> const*, void const* const*)  (in libswiftCore.dylib) + 188  [0x1a91a8914]
+    +                                       1 swift_getTypeByMangledName  (in libswiftCore.dylib) + 336  [0x1a91a842c]
+    +                                         1 swift_getTypeByMangledNameImpl(swift::MetadataRequest, __swift::__runtime::llvm::StringRef, void const* const*, std::function<void const* (unsigned int, unsigned int)>, std::function<swift::TargetWitnessTable<swift::InProcess> const* (swift::TargetMetadata<swift::InProcess> const*, unsigned int)>)  (in libswiftCore.dylib) + 1172  [0x1a91ae5f0]
+    +                                           1 swift_getTypeByMangledNode  (in libswiftCore.dylib) + 336  [0x1a91aa614]
+    +                                             1 swift_getTypeByMangledNodeImpl(swift::MetadataRequest, swift::Demangle::__runtime::Demangler&, swift::Demangle::__runtime::Node*, void const* const*, std::function<void const* (unsigned int, unsigned int)>, std::function<swift::TargetWitnessTable<swift::InProcess> const* (swift::TargetMetadata<swift::InProcess> const*, unsigned int)>)  (in libswiftCore.dylib) + 788  [0x1a91adc0c]
+    +                                               1 swift::Demangle::__runtime::TypeDecoder<(anonymous namespace)::DecodedMetadataBuilder>::decodeMangledType(swift::Demangle::__runtime::Node*, unsigned int, bool, bool)  (in libswiftCore.dylib) + 17752  [0x1a91b684c]
+    +                                                 1 (anonymous namespace)::DecodedMetadataBuilder::createBoundGenericType(swift::TargetContextDescriptor<swift::InProcess> const*, __swift::__runtime::llvm::ArrayRef<swift::MetadataPackOrValue>, swift::MetadataPackOrValue) const  (in libswiftCore.dylib) + 764  [0x1a91b8708]
+    +                                                   1 __swift_instantiateCanonicalPrespecializedGenericMetadata  (in libswiftCore.dylib) + 40  [0x1a959caf4]
+    +                                                     1 swift_getCanonicalPrespecializedGenericMetadata  (in libswiftCore.dylib) + 200  [0x1a9187a6c]
+    +                                                       1 _dispatch_once_callout  (in libdispatch.dylib) + 32  [0x1949e3624]
+    +                                                         1 _dispatch_client_callout  (in libdispatch.dylib) + 16  [0x1949fa5a0]
+    +                                                           1 cacheCanonicalSpecializedMetadata(swift::TargetTypeContextDescriptor<swift::InProcess> const*, long*)::$_0::__invoke(void*)  (in libswiftCore.dylib) + 564  [0x1a919602c]
+    +                                                             1 <deduplicated_symbol>  (in libswiftCore.dylib) + 72  [0x1a91877c4]
+    +                                                               1 <deduplicated_symbol>  (in libswiftCore.dylib) + 316  [0x1a9196a04]
+    +                                                                 1 mfm_free  (in libsystem_malloc.dylib) + 304  [0x1949a8a30]
+    +                                                                   1 __bzero  (in libsystem_platform.dylib) + 0  [0x194baba30]
+    7587 Thread_1945971
+      7587 start_wqthread  (in libsystem_pthread.dylib) + 8  [0x194b9cce0]
+        7587 _pthread_wqthread  (in libsystem_pthread.dylib) + 368  [0x194b9dfe8]
+          7587 __workq_kernreturn  (in libsystem_kernel.dylib) + 8  [0x194b5e9ec]
+
+Total number in stack (recursive counted multiple, when >=5):
+        23       _swift_release_dealloc  (in libswiftCore.dylib) + 64  [0x1a91172a4]
+        23       swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 168  [0x1a917dae4]
+        20       swift_release  (in libswiftCore.dylib) + 0  [0x1a9113564]
+        11       swift_bridgeObjectRelease  (in libswiftCore.dylib) + 0  [0x1a9113398]
+        11       swift_retain  (in libswiftCore.dylib) + 0  [0x1a9113458]
+        8       _ContiguousArrayStorage.__deallocating_deinit  (in libswiftCore.dylib) + 96  [0x1a9117320]
+        8       _xzm_free_main  (in libsystem_malloc.dylib) + 0  [0x1949c4ebc]
+        8       swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib) + 64  [0x1a917b26c]
+        8       swift_allocObject  (in libswiftCore.dylib) + 136  [0x1a9110ed4]
+        8       swift_arrayDestroy  (in libswiftCore.dylib) + 204  [0x1a9115788]
+        8       swift_deallocClassInstance  (in libswiftCore.dylib) + 0  [0x1a9117344]
+        7       DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark) + 0  [0x104260f58]
+        7       TextRope.Node.__deallocating_deinit  (in EditorBenchmark) + 24  [0x10425a3c8]  /<compiler-generated>:0
+        7       swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib) + 0  [0x1a917da3c]
+        6       specialized collect #1 (_:) in TextRope.content(in:)  (in EditorBenchmark) + 200  [0x10425f900]  TextRope+Navigation.swift:60
+        6       specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)  (in EditorBenchmark) + 196  [0x10425fbb8]  TextRope+Navigation.swift:112
+        6       swift_bridgeObjectRetain  (in libswiftCore.dylib) + 0  [0x1a9112804]
+        5       _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib) + 324  [0x1949be0f8]
+        5       _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib) + 0  [0x1949bca4c]
+        5       swift_allocObject  (in libswiftCore.dylib) + 0  [0x1a9110e4c]
+
+Sort by top of stack, same collapsed (when >= 5):
+        __workq_kernreturn  (in libsystem_kernel.dylib)        7587
+        specialized static TextRope.Summary.of(_:)  (in EditorBenchmark)        3002
+        specialized static EditorTextPreparation.scan(_:file:)  (in EditorBenchmark)        2426
+        _platform_memmove  (in libsystem_platform.dylib)        268
+        _dyld_start  (in dyld)        252
+        destroy for ClosedRange<>.Index  (in libswiftCore.dylib)        252
+        _allASCII(_:)  (in libswiftCore.dylib)        222
+        swift_release  (in libswiftCore.dylib)        131
+        _swift_release_dealloc  (in libswiftCore.dylib)        122
+        read  (in libsystem_kernel.dylib)        114
+        specialized static TextRope.redistributeStarvedChunks(in:)  (in EditorBenchmark)        92
+        _xzm_xzone_malloc_tiny  (in libsystem_malloc.dylib)        78
+        _xzm_free_main  (in libsystem_malloc.dylib)        73
+        swift_retain  (in libswiftCore.dylib)        68
+        mach_absolute_time  (in libsystem_kernel.dylib)        52
+        DYLD-STUB$$swift_deallocClassInstance  (in EditorBenchmark)        43
+        tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)  (in libswiftCore.dylib)        43
+        swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)  (in libswiftCore.dylib)        35
+        swift_bridgeObjectRelease  (in libswiftCore.dylib)        27
+        mach_msg2_trap  (in dyld)        26
+        outlined destroy of (AnyHashable?, AnyHashable?)  (in libswiftCore.dylib)        24
+        swift_deallocClassInstance  (in libswiftCore.dylib)        22
+        specialized Substring.subscript.getter  (in libswiftCore.dylib)        21
+        <deduplicated_symbol>  (in libsystem_malloc.dylib)        19
+        _xzm_xzone_malloc_freelist_outlined  (in libsystem_malloc.dylib)        18
+        swift_allocObject  (in libswiftCore.dylib)        17
+        xzm_malloc_zone_size  (in libsystem_malloc.dylib)        17
+        DYLD-STUB$$swift_bridgeObjectRelease  (in EditorBenchmark)        15
+        malloc_size  (in libsystem_malloc.dylib)        14
+        String.Index.init<A>(_:within:)  (in libswiftCore.dylib)        13
+        swift_bridgeObjectRetain  (in libswiftCore.dylib)        13
+        _free  (in libsystem_malloc.dylib)        12
+        specialized static String._copying(_:)  (in libswiftCore.dylib)        12
+        specialized static TextRope.Node.boundary(in:nearest:within:)  (in EditorBenchmark)        12
+        malloc_type_malloc  (in libsystem_malloc.dylib)        11
+        specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)  (in libswiftCore.dylib)        11
+        specialized static TextRope.chunkLeaves(from:)  (in EditorBenchmark)        11
+        swift_arrayDestroy  (in libswiftCore.dylib)        11
+        hasBreakWhenPaired #1 (_:) in _quickHasGraphemeBreakBetween(_:_:)  (in libswiftCore.dylib)        10
+        __StringStorage.__deallocating_deinit  (in libswiftCore.dylib)        9
+        initializeWithCopy for Substring  (in libswiftCore.dylib)        9
+        specialized static TextRope.buildTree(from:)  (in EditorBenchmark)        8
+        String.UTF16View._nativeGetOffset(for:)  (in libswiftCore.dylib)        7
+        _StringGuts.scalarAlignSlow(_:)  (in libswiftCore.dylib)        7
+        objc_opt_self  (in libobjc.A.dylib)        7
+        <deduplicated_symbol>  (in libswiftCore.dylib)        6
+        DYLD-STUB$$swift_bridgeObjectRetain  (in EditorBenchmark)        6
+        Substring._isValidIndex(_:)  (in libswiftCore.dylib)        6
+        _StringGuts.isOnUnicodeScalarBoundary(_:)  (in libswiftCore.dylib)        6
+        _xzm_chunk_list_pop  (in libsystem_malloc.dylib)        6
+        _xzm_xzone_malloc_from_freelist_chunk  (in libsystem_malloc.dylib)        6
+        objc_release  (in libobjc.A.dylib)        6
+        swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)  (in libswiftCore.dylib)        6
+        swift_beginAccess  (in libswiftCore.dylib)        6
+        Substring.subscript.getter  (in libswiftCore.dylib)        5
+        _StringGuts._opaqueCharacterStride(endingAt:in:)  (in libswiftCore.dylib)        5
+        _allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)  (in libswiftCore.dylib)        5
+        _xzm_chunk_batch_list_push  (in libsystem_malloc.dylib)        5
+        mach_msg2_trap  (in libsystem_kernel.dylib)        5
+        specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)  (in EditorBenchmark)        5
+        specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)  (in libswiftCore.dylib)        5
+
+Binary images description not available

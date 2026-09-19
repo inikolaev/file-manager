@@ -1,0 +1,982 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1305" viewBox="0 0 1600 1305">
+<rect width="100%" height="100%" fill="#faf8f3"/>
+<style>text{font:12px monospace;pointer-events:none}rect.frame{stroke:white;stroke-width:.4}</style>
+<text x="16" y="25" style="font:bold 19px sans-serif">Commander · 100 MiB editor load · sampled flame graph</text>
+<text x="16" y="49">7587 load-cycle samples · 1 ms interval · release · width = inclusive samples · startup excluded</text>
+<text x="16" y="70">Includes document teardown between repeated loads. Not a timeline or an allocation graph.</text>
+<g><title>benchmarkLoad(_:): 7587 samples (100.00%)</title><rect class="frame" x="16.00" y="1275" width="1568.00" height="19" fill="hsl(32,85%,70%)"/>
+<text x="19.00" y="1289">benchmarkLoad(_:)</text>
+</g>
+<g><title>static EditorDocuments.make(file:): 3963 samples (52.23%)</title><rect class="frame" x="16.00" y="1255" width="819.03" height="19" fill="hsl(18,85%,70%)"/>
+<text x="19.00" y="1269">static EditorDocuments.make(file:)</text>
+</g>
+<g><title>RopeDocument.init(text:lineStarts:): 3963 samples (52.23%)</title><rect class="frame" x="16.00" y="1235" width="819.03" height="19" fill="hsl(30,85%,70%)"/>
+<text x="19.00" y="1249">RopeDocument.init(text:lineStarts:)</text>
+</g>
+<g><title>TextRope.init(_:): 3962 samples (52.22%)</title><rect class="frame" x="16.00" y="1215" width="818.82" height="19" fill="hsl(10,85%,70%)"/>
+<text x="19.00" y="1229">TextRope.init(_:)</text>
+</g>
+<g><title>specialized static TextRope.chunkLeaves(from:): 3883 samples (51.18%)</title><rect class="frame" x="16.00" y="1195" width="802.50" height="19" fill="hsl(14,85%,70%)"/>
+<text x="19.00" y="1209">specialized static TextRope.chunkLeaves(from:)</text>
+</g>
+<g><title>specialized static TextRope.Summary.of(_:): 3032 samples (39.96%)</title><rect class="frame" x="16.00" y="1175" width="626.62" height="19" fill="hsl(48,85%,70%)"/>
+<text x="19.00" y="1189">specialized static TextRope.Summary.of(_:)</text>
+</g>
+<g><title>swift_retain: 8 samples (0.11%)</title><rect class="frame" x="16.00" y="1155" width="1.65" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_release: 7 samples (0.09%)</title><rect class="frame" x="17.65" y="1155" width="1.45" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>String.UTF16View._nativeGetOffset(for:): 4 samples (0.05%)</title><rect class="frame" x="19.10" y="1155" width="0.83" height="19" fill="hsl(29,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRetain: 3 samples (0.04%)</title><rect class="frame" x="19.93" y="1155" width="0.62" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRelease: 2 samples (0.03%)</title><rect class="frame" x="20.55" y="1155" width="0.41" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRetain: 2 samples (0.03%)</title><rect class="frame" x="20.96" y="1155" width="0.41" height="19" fill="hsl(8,85%,70%)"/>
+</g>
+<g><title>specialized Collection.underestimatedCount.getter: 2 samples (0.03%)</title><rect class="frame" x="21.37" y="1155" width="0.41" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$String.UTF16View.count.getter: 1 samples (0.01%)</title><rect class="frame" x="21.79" y="1155" width="0.21" height="19" fill="hsl(7,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 1 samples (0.01%)</title><rect class="frame" x="21.99" y="1155" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:): 273 samples (3.60%)</title><rect class="frame" x="642.62" y="1175" width="56.42" height="19" fill="hsl(20,85%,70%)"/>
+<text x="645.62" y="1189">specia</text>
+</g>
+<g><title>specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:): 189 samples (2.49%)</title><rect class="frame" x="642.62" y="1155" width="39.06" height="19" fill="hsl(50,85%,70%)"/>
+<text x="645.62" y="1169">spec</text>
+</g>
+<g><title>_allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:): 170 samples (2.24%)</title><rect class="frame" x="642.62" y="1135" width="35.13" height="19" fill="hsl(45,85%,70%)"/>
+<text x="645.62" y="1149">_al</text>
+</g>
+<g><title>swift_allocObject: 137 samples (1.81%)</title><rect class="frame" x="642.62" y="1115" width="28.31" height="19" fill="hsl(36,85%,70%)"/>
+<text x="645.62" y="1129">sw</text>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 131 samples (1.73%)</title><rect class="frame" x="642.62" y="1095" width="27.07" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_freelist_outlined: 67 samples (0.88%)</title><rect class="frame" x="642.62" y="1075" width="13.85" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_find_and_malloc_from_freelist_chunk: 40 samples (0.53%)</title><rect class="frame" x="642.62" y="1055" width="8.27" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>xzm_chunk_mark_used: 35 samples (0.46%)</title><rect class="frame" x="642.62" y="1035" width="7.23" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>_xzm_reclaim_mark_used: 33 samples (0.43%)</title><rect class="frame" x="642.62" y="1015" width="6.82" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>_xzm_reclaim_mark_used_locked: 32 samples (0.42%)</title><rect class="frame" x="642.62" y="995" width="6.61" height="19" fill="hsl(3,85%,70%)"/>
+</g>
+<g><title>mach_vm_reclaim_try_cancel: 32 samples (0.42%)</title><rect class="frame" x="642.62" y="975" width="6.61" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>mach_absolute_time: 29 samples (0.38%)</title><rect class="frame" x="642.62" y="955" width="5.99" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_list_pop: 4 samples (0.05%)</title><rect class="frame" x="649.85" y="1035" width="0.83" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_from_freelist_chunk: 6 samples (0.08%)</title><rect class="frame" x="650.89" y="1055" width="1.24" height="19" fill="hsl(28,85%,70%)"/>
+</g>
+<g><title>_malloc_ulock_self_owner_value: 3 samples (0.04%)</title><rect class="frame" x="652.13" y="1055" width="0.62" height="19" fill="hsl(18,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_list_pop: 1 samples (0.01%)</title><rect class="frame" x="652.75" y="1055" width="0.21" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_tiny: 48 samples (0.63%)</title><rect class="frame" x="656.47" y="1075" width="9.92" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>&lt;deduplicated_symbol&gt;: 11 samples (0.14%)</title><rect class="frame" x="666.39" y="1075" width="2.27" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>malloc_type_malloc: 3 samples (0.04%)</title><rect class="frame" x="668.66" y="1075" width="0.62" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_find_and_malloc_from_freelist_chunk: 1 samples (0.01%)</title><rect class="frame" x="669.28" y="1075" width="0.21" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>???: 1 samples (0.01%)</title><rect class="frame" x="669.70" y="1095" width="0.21" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>malloc_size: 22 samples (0.29%)</title><rect class="frame" x="670.94" y="1115" width="4.55" height="19" fill="hsl(45,85%,70%)"/>
+</g>
+<g><title>xzm_malloc_zone_size: 12 samples (0.16%)</title><rect class="frame" x="670.94" y="1095" width="2.48" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>type metadata accessor for __StringStorage: 3 samples (0.04%)</title><rect class="frame" x="675.48" y="1115" width="0.62" height="19" fill="hsl(7,85%,70%)"/>
+</g>
+<g><title>objc_opt_self: 3 samples (0.04%)</title><rect class="frame" x="675.48" y="1095" width="0.62" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>???: 2 samples (0.03%)</title><rect class="frame" x="676.10" y="1115" width="0.41" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>xzm_malloc_zone_size: 2 samples (0.03%)</title><rect class="frame" x="676.52" y="1115" width="0.41" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 7 samples (0.09%)</title><rect class="frame" x="677.76" y="1135" width="1.45" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>???: 3 samples (0.04%)</title><rect class="frame" x="679.20" y="1135" width="0.62" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>malloc_size: 3 samples (0.04%)</title><rect class="frame" x="679.82" y="1135" width="0.62" height="19" fill="hsl(45,85%,70%)"/>
+</g>
+<g><title>type metadata accessor for __StringStorage: 2 samples (0.03%)</title><rect class="frame" x="680.44" y="1135" width="0.41" height="19" fill="hsl(7,85%,70%)"/>
+</g>
+<g><title>_platform_memmove: 73 samples (0.96%)</title><rect class="frame" x="681.68" y="1155" width="15.09" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>_allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:): 1 samples (0.01%)</title><rect class="frame" x="696.77" y="1155" width="0.21" height="19" fill="hsl(45,85%,70%)"/>
+</g>
+<g><title>specialized UnsafeMutablePointer.initialize(from:count:): 1 samples (0.01%)</title><rect class="frame" x="696.98" y="1155" width="0.21" height="19" fill="hsl(4,85%,70%)"/>
+</g>
+<g><title>specialized static TextRope.Node.boundary(in:nearest:within:): 186 samples (2.45%)</title><rect class="frame" x="699.04" y="1175" width="38.44" height="19" fill="hsl(19,85%,70%)"/>
+<text x="702.04" y="1189">spec</text>
+</g>
+<g><title>String.Index.init&lt;A&gt;(_:within:): 130 samples (1.71%)</title><rect class="frame" x="699.04" y="1155" width="26.87" height="19" fill="hsl(42,85%,70%)"/>
+</g>
+<g><title>swift_dynamicCast: 51 samples (0.67%)</title><rect class="frame" x="699.04" y="1135" width="10.54" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>tryCast(swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*, swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*, swift::TargetMetadata&lt;swift::InProcess&gt; const*&amp;, swift::TargetMetadata&lt;swift::InProcess&gt; const*&amp;, bool, bool, bool): 43 samples (0.57%)</title><rect class="frame" x="699.04" y="1115" width="8.89" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>tryCastToString(swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*, swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*, swift::TargetMetadata&lt;swift::InProcess&gt; const*&amp;, swift::TargetMetadata&lt;swift::InProcess&gt; const*&amp;, bool, bool, bool): 4 samples (0.05%)</title><rect class="frame" x="699.04" y="1095" width="0.83" height="19" fill="hsl(18,85%,70%)"/>
+</g>
+<g><title>swift_release: 4 samples (0.05%)</title><rect class="frame" x="707.93" y="1115" width="0.83" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 2 samples (0.03%)</title><rect class="frame" x="708.76" y="1115" width="0.41" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>Substring._isValidIndex(_:): 28 samples (0.37%)</title><rect class="frame" x="709.58" y="1135" width="5.79" height="19" fill="hsl(3,85%,70%)"/>
+</g>
+<g><title>_StringGuts._slowRoundDownToNearestCharacter(_:in:): 16 samples (0.21%)</title><rect class="frame" x="709.58" y="1115" width="3.31" height="19" fill="hsl(28,85%,70%)"/>
+</g>
+<g><title>_StringGuts._opaqueCharacterStride(endingAt:in:): 13 samples (0.17%)</title><rect class="frame" x="709.58" y="1095" width="2.69" height="19" fill="hsl(24,85%,70%)"/>
+</g>
+<g><title>hasBreakWhenPaired #1 (_:) in _quickHasGraphemeBreakBetween(_:_:): 10 samples (0.13%)</title><rect class="frame" x="709.58" y="1075" width="2.07" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_StringGuts._opaqueCharacterStride(endingAt:in:): 1 samples (0.01%)</title><rect class="frame" x="711.65" y="1075" width="0.21" height="19" fill="hsl(24,85%,70%)"/>
+</g>
+<g><title>_StringGuts._slowRoundDownToNearestCharacter(_:in:): 2 samples (0.03%)</title><rect class="frame" x="712.27" y="1095" width="0.41" height="19" fill="hsl(28,85%,70%)"/>
+</g>
+<g><title>_StringGuts._opaqueCharacterStride(endingAt:in:): 2 samples (0.03%)</title><rect class="frame" x="712.27" y="1075" width="0.41" height="19" fill="hsl(24,85%,70%)"/>
+</g>
+<g><title>_StringGuts.isOnUnicodeScalarBoundary(_:): 5 samples (0.07%)</title><rect class="frame" x="712.89" y="1115" width="1.03" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>Substring._isValidIndex(_:): 3 samples (0.04%)</title><rect class="frame" x="713.92" y="1115" width="0.62" height="19" fill="hsl(3,85%,70%)"/>
+</g>
+<g><title>_StringGuts.isOnUnicodeScalarBoundary(_:): 1 samples (0.01%)</title><rect class="frame" x="713.92" y="1095" width="0.21" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>swift_release: 15 samples (0.20%)</title><rect class="frame" x="715.37" y="1135" width="3.10" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>initializeWithCopy for Substring: 12 samples (0.16%)</title><rect class="frame" x="718.47" y="1135" width="2.48" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>swift_retain: 4 samples (0.05%)</title><rect class="frame" x="718.47" y="1115" width="0.83" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRetain: 3 samples (0.04%)</title><rect class="frame" x="719.30" y="1115" width="0.62" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 7 samples (0.09%)</title><rect class="frame" x="720.95" y="1135" width="1.45" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>tryCast(swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*, swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*, swift::TargetMetadata&lt;swift::InProcess&gt; const*&amp;, swift::TargetMetadata&lt;swift::InProcess&gt; const*&amp;, bool, bool, bool): 4 samples (0.05%)</title><rect class="frame" x="722.40" y="1135" width="0.83" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>___chkstk_darwin: 2 samples (0.03%)</title><rect class="frame" x="723.22" y="1135" width="0.41" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>swift_retain: 21 samples (0.28%)</title><rect class="frame" x="725.91" y="1155" width="4.34" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_release: 8 samples (0.11%)</title><rect class="frame" x="730.25" y="1155" width="1.65" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>initializeWithCopy for Substring: 4 samples (0.05%)</title><rect class="frame" x="731.90" y="1155" width="0.83" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRelease: 3 samples (0.04%)</title><rect class="frame" x="732.73" y="1155" width="0.62" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRetain: 3 samples (0.04%)</title><rect class="frame" x="733.35" y="1155" width="0.62" height="19" fill="hsl(8,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 2 samples (0.03%)</title><rect class="frame" x="733.97" y="1155" width="0.41" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRetain: 2 samples (0.03%)</title><rect class="frame" x="734.38" y="1155" width="0.41" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>swift_dynamicCast: 1 samples (0.01%)</title><rect class="frame" x="734.80" y="1155" width="0.21" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>specialized static TextRope.redistributeStarvedChunks(in:): 137 samples (1.81%)</title><rect class="frame" x="737.48" y="1175" width="28.31" height="19" fill="hsl(44,85%,70%)"/>
+<text x="740.48" y="1189">sp</text>
+</g>
+<g><title>swift_retain: 15 samples (0.20%)</title><rect class="frame" x="737.48" y="1155" width="3.10" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_beginAccess: 7 samples (0.09%)</title><rect class="frame" x="740.58" y="1155" width="1.45" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>&lt;deduplicated_symbol&gt;: 1 samples (0.01%)</title><rect class="frame" x="740.58" y="1135" width="0.21" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>swift_release: 6 samples (0.08%)</title><rect class="frame" x="742.03" y="1155" width="1.24" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>&lt;deduplicated_symbol&gt;: 4 samples (0.05%)</title><rect class="frame" x="743.27" y="1155" width="0.83" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 4 samples (0.05%)</title><rect class="frame" x="744.10" y="1155" width="0.83" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRetain: 4 samples (0.05%)</title><rect class="frame" x="744.92" y="1155" width="0.83" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_beginAccess: 2 samples (0.03%)</title><rect class="frame" x="745.75" y="1155" width="0.41" height="19" fill="hsl(8,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRelease: 1 samples (0.01%)</title><rect class="frame" x="746.16" y="1155" width="0.21" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRetain: 1 samples (0.01%)</title><rect class="frame" x="746.37" y="1155" width="0.21" height="19" fill="hsl(8,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_retain: 1 samples (0.01%)</title><rect class="frame" x="746.58" y="1155" width="0.21" height="19" fill="hsl(51,85%,70%)"/>
+</g>
+<g><title>specialized static String._copying(_:): 101 samples (1.33%)</title><rect class="frame" x="765.80" y="1175" width="20.87" height="19" fill="hsl(31,85%,70%)"/>
+</g>
+<g><title>_allASCII(_:): 92 samples (1.21%)</title><rect class="frame" x="765.80" y="1155" width="19.01" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 45 samples (0.59%)</title><rect class="frame" x="786.67" y="1175" width="9.30" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 42 samples (0.55%)</title><rect class="frame" x="786.67" y="1155" width="8.68" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_tiny: 25 samples (0.33%)</title><rect class="frame" x="786.67" y="1135" width="5.17" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>&lt;deduplicated_symbol&gt;: 6 samples (0.08%)</title><rect class="frame" x="791.84" y="1135" width="1.24" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_freelist_outlined: 4 samples (0.05%)</title><rect class="frame" x="793.08" y="1135" width="0.83" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_find_and_malloc_from_freelist_chunk: 3 samples (0.04%)</title><rect class="frame" x="793.08" y="1115" width="0.62" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>xzm_chunk_mark_used: 3 samples (0.04%)</title><rect class="frame" x="793.08" y="1095" width="0.62" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>_xzm_reclaim_mark_used: 3 samples (0.04%)</title><rect class="frame" x="793.08" y="1075" width="0.62" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>_xzm_reclaim_mark_used_locked: 3 samples (0.04%)</title><rect class="frame" x="793.08" y="1055" width="0.62" height="19" fill="hsl(3,85%,70%)"/>
+</g>
+<g><title>mach_vm_reclaim_try_cancel: 3 samples (0.04%)</title><rect class="frame" x="793.08" y="1035" width="0.62" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>mach_absolute_time: 2 samples (0.03%)</title><rect class="frame" x="793.08" y="1015" width="0.41" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>malloc_type_malloc: 3 samples (0.04%)</title><rect class="frame" x="793.90" y="1135" width="0.62" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>xzm_malloc_zone_malloc_type_malloc_main: 1 samples (0.01%)</title><rect class="frame" x="794.52" y="1135" width="0.21" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>Substring.subscript.getter: 35 samples (0.46%)</title><rect class="frame" x="795.97" y="1175" width="7.23" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>specialized Substring.subscript.getter: 23 samples (0.30%)</title><rect class="frame" x="795.97" y="1155" width="4.75" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>_StringGuts.scalarAlignSlow(_:): 4 samples (0.05%)</title><rect class="frame" x="795.97" y="1135" width="0.83" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>specialized Substring.subscript.getter: 3 samples (0.04%)</title><rect class="frame" x="796.80" y="1135" width="0.62" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>_StringGuts.scalarAlignSlow(_:): 3 samples (0.04%)</title><rect class="frame" x="796.80" y="1115" width="0.62" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>swift_retain: 11 samples (0.14%)</title><rect class="frame" x="800.72" y="1155" width="2.27" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRetain: 1 samples (0.01%)</title><rect class="frame" x="803.00" y="1155" width="0.21" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>swift_release: 16 samples (0.21%)</title><rect class="frame" x="803.20" y="1175" width="3.31" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRelease: 5 samples (0.07%)</title><rect class="frame" x="806.51" y="1175" width="1.03" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>specialized Substring.subscript.getter: 5 samples (0.07%)</title><rect class="frame" x="807.54" y="1175" width="1.03" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>type metadata accessor for TextRope.Node: 5 samples (0.07%)</title><rect class="frame" x="808.58" y="1175" width="1.03" height="19" fill="hsl(3,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$objc_opt_self: 3 samples (0.04%)</title><rect class="frame" x="808.58" y="1155" width="0.62" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>objc_opt_self: 2 samples (0.03%)</title><rect class="frame" x="809.20" y="1155" width="0.41" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>Substring.description.getter: 4 samples (0.05%)</title><rect class="frame" x="809.61" y="1175" width="0.83" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:): 4 samples (0.05%)</title><rect class="frame" x="810.44" y="1175" width="0.83" height="19" fill="hsl(14,85%,70%)"/>
+</g>
+<g><title>specialized _ArrayBuffer._copyContents(subRange:initializing:): 1 samples (0.01%)</title><rect class="frame" x="810.44" y="1155" width="0.21" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>swift_release: 1 samples (0.01%)</title><rect class="frame" x="810.44" y="1135" width="0.21" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>specialized _ContiguousArrayBuffer.init(_uninitializedCount:minimumCapacity:): 1 samples (0.01%)</title><rect class="frame" x="810.64" y="1155" width="0.21" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>malloc_size: 1 samples (0.01%)</title><rect class="frame" x="810.64" y="1135" width="0.21" height="19" fill="hsl(45,85%,70%)"/>
+</g>
+<g><title>xzm_malloc_zone_size: 1 samples (0.01%)</title><rect class="frame" x="810.64" y="1115" width="0.21" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 1 samples (0.01%)</title><rect class="frame" x="810.85" y="1155" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 1 samples (0.01%)</title><rect class="frame" x="810.85" y="1135" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 1 samples (0.01%)</title><rect class="frame" x="810.85" y="1115" width="0.21" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$Substring.UTF8View.distance(from:to:): 3 samples (0.04%)</title><rect class="frame" x="811.26" y="1175" width="0.62" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>String.UTF16View._nativeGetOffset(for:): 3 samples (0.04%)</title><rect class="frame" x="811.88" y="1175" width="0.62" height="19" fill="hsl(29,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 3 samples (0.04%)</title><rect class="frame" x="812.50" y="1175" width="0.62" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>swift_isUniquelyReferenced_nonNull_bridgeObject: 3 samples (0.04%)</title><rect class="frame" x="813.12" y="1175" width="0.62" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$Substring.subscript.getter: 2 samples (0.03%)</title><rect class="frame" x="813.74" y="1175" width="0.41" height="19" fill="hsl(31,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$static String._fromSubstring(_:): 2 samples (0.03%)</title><rect class="frame" x="814.16" y="1175" width="0.41" height="19" fill="hsl(15,85%,70%)"/>
+</g>
+<g><title>String.Index.init&lt;A&gt;(_:within:): 2 samples (0.03%)</title><rect class="frame" x="814.57" y="1175" width="0.41" height="19" fill="hsl(42,85%,70%)"/>
+</g>
+<g><title>Substring.UTF8View.distance(from:to:): 2 samples (0.03%)</title><rect class="frame" x="814.98" y="1175" width="0.41" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>???: 1 samples (0.01%)</title><rect class="frame" x="815.40" y="1175" width="0.21" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_isUniquelyReferenced_nonNull_bridgeObject: 1 samples (0.01%)</title><rect class="frame" x="815.60" y="1175" width="0.21" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>specialized UnsafeMutablePointer.initialize(from:count:): 1 samples (0.01%)</title><rect class="frame" x="815.81" y="1175" width="0.21" height="19" fill="hsl(4,85%,70%)"/>
+</g>
+<g><title>specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:): 1 samples (0.01%)</title><rect class="frame" x="816.02" y="1175" width="0.21" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>specialized static TextRope.buildTree(from:): 61 samples (0.80%)</title><rect class="frame" x="818.50" y="1195" width="12.61" height="19" fill="hsl(41,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 15 samples (0.20%)</title><rect class="frame" x="818.50" y="1175" width="3.10" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 14 samples (0.18%)</title><rect class="frame" x="818.50" y="1155" width="2.89" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>malloc_type_malloc: 5 samples (0.07%)</title><rect class="frame" x="818.50" y="1135" width="1.03" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_tiny: 4 samples (0.05%)</title><rect class="frame" x="819.53" y="1135" width="0.83" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>&lt;deduplicated_symbol&gt;: 2 samples (0.03%)</title><rect class="frame" x="820.36" y="1135" width="0.41" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>mfm_alloc: 1 samples (0.01%)</title><rect class="frame" x="820.77" y="1135" width="0.21" height="19" fill="hsl(43,85%,70%)"/>
+</g>
+<g><title>swift_arrayInitWithCopy: 11 samples (0.14%)</title><rect class="frame" x="821.60" y="1175" width="2.27" height="19" fill="hsl(0,85%,70%)"/>
+</g>
+<g><title>swift::metadataimpl::ValueWitnesses&lt;swift::metadataimpl::SwiftRetainableBox&gt;::initializeWithCopy(swift::OpaqueValue*, swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*): 9 samples (0.12%)</title><rect class="frame" x="821.60" y="1155" width="1.86" height="19" fill="hsl(22,85%,70%)"/>
+</g>
+<g><title>swift_retain: 8 samples (0.11%)</title><rect class="frame" x="821.60" y="1135" width="1.65" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>type metadata accessor for TextRope.Node: 4 samples (0.05%)</title><rect class="frame" x="823.87" y="1175" width="0.83" height="19" fill="hsl(3,85%,70%)"/>
+</g>
+<g><title>objc_opt_self: 2 samples (0.03%)</title><rect class="frame" x="823.87" y="1155" width="0.41" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$objc_opt_self: 1 samples (0.01%)</title><rect class="frame" x="824.28" y="1155" width="0.21" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>type metadata accessor for __ContiguousArrayStorageBase: 4 samples (0.05%)</title><rect class="frame" x="824.70" y="1175" width="0.83" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>objc_msgSend: 4 samples (0.05%)</title><rect class="frame" x="824.70" y="1155" width="0.83" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 3 samples (0.04%)</title><rect class="frame" x="825.52" y="1175" width="0.62" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 3 samples (0.04%)</title><rect class="frame" x="825.52" y="1155" width="0.62" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 3 samples (0.04%)</title><rect class="frame" x="825.52" y="1135" width="0.62" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_arrayDestroy: 3 samples (0.04%)</title><rect class="frame" x="825.52" y="1115" width="0.62" height="19" fill="hsl(51,85%,70%)"/>
+</g>
+<g><title>swift_release: 3 samples (0.04%)</title><rect class="frame" x="825.52" y="1095" width="0.62" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>swift::metadataimpl::ValueWitnesses&lt;swift::metadataimpl::SwiftRetainableBox&gt;::initializeWithCopy(swift::OpaqueValue*, swift::OpaqueValue*, swift::TargetMetadata&lt;swift::InProcess&gt; const*): 3 samples (0.04%)</title><rect class="frame" x="826.14" y="1175" width="0.62" height="19" fill="hsl(22,85%,70%)"/>
+</g>
+<g><title>swift_release: 3 samples (0.04%)</title><rect class="frame" x="826.76" y="1175" width="0.62" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>swift_unknownObjectRelease: 3 samples (0.04%)</title><rect class="frame" x="827.38" y="1175" width="0.62" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>malloc_size: 2 samples (0.03%)</title><rect class="frame" x="828.00" y="1175" width="0.41" height="19" fill="hsl(45,85%,70%)"/>
+</g>
+<g><title>xzm_malloc_zone_size: 2 samples (0.03%)</title><rect class="frame" x="828.00" y="1155" width="0.41" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:): 2 samples (0.03%)</title><rect class="frame" x="828.42" y="1175" width="0.41" height="19" fill="hsl(14,85%,70%)"/>
+</g>
+<g><title>_platform_memmove: 1 samples (0.01%)</title><rect class="frame" x="828.42" y="1155" width="0.21" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>specialized _ContiguousArrayBuffer.init(_uninitializedCount:minimumCapacity:): 1 samples (0.01%)</title><rect class="frame" x="828.62" y="1155" width="0.21" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 1 samples (0.01%)</title><rect class="frame" x="828.62" y="1135" width="0.21" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 1 samples (0.01%)</title><rect class="frame" x="828.62" y="1115" width="0.21" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_tiny: 1 samples (0.01%)</title><rect class="frame" x="828.62" y="1095" width="0.21" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>swift_dynamicCastClass: 1 samples (0.01%)</title><rect class="frame" x="828.83" y="1175" width="0.21" height="19" fill="hsl(19,85%,70%)"/>
+</g>
+<g><title>swift_isUniquelyReferenced_nonNull_bridgeObject: 1 samples (0.01%)</title><rect class="frame" x="829.04" y="1175" width="0.21" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>swift_retain_n: 1 samples (0.01%)</title><rect class="frame" x="829.24" y="1175" width="0.21" height="19" fill="hsl(15,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 6 samples (0.08%)</title><rect class="frame" x="831.10" y="1195" width="1.24" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 6 samples (0.08%)</title><rect class="frame" x="831.10" y="1175" width="1.24" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 6 samples (0.08%)</title><rect class="frame" x="831.10" y="1155" width="1.24" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_arrayDestroy: 5 samples (0.07%)</title><rect class="frame" x="831.10" y="1135" width="1.03" height="19" fill="hsl(51,85%,70%)"/>
+</g>
+<g><title>objc_release: 3 samples (0.04%)</title><rect class="frame" x="831.10" y="1115" width="0.62" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>swift_release: 2 samples (0.03%)</title><rect class="frame" x="831.72" y="1115" width="0.41" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>???: 1 samples (0.01%)</title><rect class="frame" x="832.14" y="1135" width="0.21" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>Substring.subscript.getter: 5 samples (0.07%)</title><rect class="frame" x="832.34" y="1195" width="1.03" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>specialized static String._copying(_:): 3 samples (0.04%)</title><rect class="frame" x="833.38" y="1195" width="0.62" height="19" fill="hsl(31,85%,70%)"/>
+</g>
+<g><title>Substring.UTF8View.distance(from:to:): 2 samples (0.03%)</title><rect class="frame" x="834.00" y="1195" width="0.41" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:): 1 samples (0.01%)</title><rect class="frame" x="834.41" y="1195" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 1 samples (0.01%)</title><rect class="frame" x="834.62" y="1195" width="0.21" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>EditorLoadTrace.init(): 1 samples (0.01%)</title><rect class="frame" x="834.82" y="1215" width="0.21" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>@objc _NSSwiftProcessInfo.environment.getter: 1 samples (0.01%)</title><rect class="frame" x="834.82" y="1195" width="0.21" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>specialized String.init(cString:): 1 samples (0.01%)</title><rect class="frame" x="834.82" y="1175" width="0.21" height="19" fill="hsl(29,85%,70%)"/>
+</g>
+<g><title>static EditorFile.open(_:): 2891 samples (38.10%)</title><rect class="frame" x="835.03" y="1255" width="597.48" height="19" fill="hsl(24,85%,70%)"/>
+<text x="838.03" y="1269">static EditorFile.open(_:)</text>
+</g>
+<g><title>specialized static EditorTextPreparation.prepareFile(_:): 2759 samples (36.36%)</title><rect class="frame" x="835.03" y="1235" width="570.20" height="19" fill="hsl(49,85%,70%)"/>
+<text x="838.03" y="1249">specialized static EditorTextPreparation.prepareFile(_:)</text>
+</g>
+<g><title>specialized static EditorTextPreparation.scan(_:file:): 2459 samples (32.41%)</title><rect class="frame" x="835.03" y="1215" width="508.20" height="19" fill="hsl(3,85%,70%)"/>
+<text x="838.03" y="1229">specialized static EditorTextPreparation.scan(_:file:)</text>
+</g>
+<g><title>specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:): 33 samples (0.43%)</title><rect class="frame" x="835.03" y="1195" width="6.82" height="19" fill="hsl(14,85%,70%)"/>
+</g>
+<g><title>_platform_memmove: 25 samples (0.33%)</title><rect class="frame" x="835.03" y="1175" width="5.17" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 2 samples (0.03%)</title><rect class="frame" x="840.20" y="1175" width="0.41" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 2 samples (0.03%)</title><rect class="frame" x="840.20" y="1155" width="0.41" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_xzm_malloc_large_huge: 2 samples (0.03%)</title><rect class="frame" x="840.20" y="1135" width="0.41" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>xzm_segment_group_alloc_chunk: 2 samples (0.03%)</title><rect class="frame" x="840.20" y="1115" width="0.41" height="19" fill="hsl(8,85%,70%)"/>
+</g>
+<g><title>_xzm_segment_group_cache_mark_used: 1 samples (0.01%)</title><rect class="frame" x="840.20" y="1095" width="0.21" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>_xzm_reclaim_mark_used: 1 samples (0.01%)</title><rect class="frame" x="840.20" y="1075" width="0.21" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>malloc_size: 1 samples (0.01%)</title><rect class="frame" x="840.61" y="1175" width="0.21" height="19" fill="hsl(45,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 1 samples (0.01%)</title><rect class="frame" x="840.82" y="1175" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 1 samples (0.01%)</title><rect class="frame" x="840.82" y="1155" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 1 samples (0.01%)</title><rect class="frame" x="840.82" y="1135" width="0.21" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>specialized String.init&lt;A&gt;(bytes:encoding:): 300 samples (3.95%)</title><rect class="frame" x="1343.23" y="1215" width="62.00" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1346.23" y="1229">special</text>
+</g>
+<g><title>static String._tryFromUTF8(_:): 300 samples (3.95%)</title><rect class="frame" x="1343.23" y="1195" width="62.00" height="19" fill="hsl(40,85%,70%)"/>
+<text x="1346.23" y="1209">static </text>
+</g>
+<g><title>specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:): 170 samples (2.24%)</title><rect class="frame" x="1343.23" y="1175" width="35.13" height="19" fill="hsl(20,85%,70%)"/>
+<text x="1346.23" y="1189">spe</text>
+</g>
+<g><title>_platform_memmove: 169 samples (2.23%)</title><rect class="frame" x="1343.23" y="1155" width="34.93" height="19" fill="hsl(53,85%,70%)"/>
+<text x="1346.23" y="1169">_pl</text>
+</g>
+<g><title>validateUTF8(_:): 130 samples (1.71%)</title><rect class="frame" x="1378.36" y="1175" width="26.87" height="19" fill="hsl(21,85%,70%)"/>
+</g>
+<g><title>_allASCII(_:): 130 samples (1.71%)</title><rect class="frame" x="1378.36" y="1155" width="26.87" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>NSFileHandle.readToEnd(): 114 samples (1.50%)</title><rect class="frame" x="1405.23" y="1235" width="23.56" height="19" fill="hsl(1,85%,70%)"/>
+</g>
+<g><title>-[NSConcreteFileHandle readDataToEndOfFileAndReturnError:]: 114 samples (1.50%)</title><rect class="frame" x="1405.23" y="1215" width="23.56" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>-[NSConcreteFileHandle readDataOfLength:]: 114 samples (1.50%)</title><rect class="frame" x="1405.23" y="1195" width="23.56" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>_NSReadFromFileDescriptorWithProgress: 114 samples (1.50%)</title><rect class="frame" x="1405.23" y="1175" width="23.56" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>read: 114 samples (1.50%)</title><rect class="frame" x="1405.23" y="1155" width="23.56" height="19" fill="hsl(43,85%,70%)"/>
+</g>
+<g><title>EditorLoadTrace.init(): 8 samples (0.11%)</title><rect class="frame" x="1428.79" y="1235" width="1.65" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>@objc _NSSwiftProcessInfo.environment.getter: 8 samples (0.11%)</title><rect class="frame" x="1428.79" y="1215" width="1.65" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>specialized _ProcessInfo.environment.getter: 7 samples (0.09%)</title><rect class="frame" x="1428.79" y="1195" width="1.45" height="19" fill="hsl(4,85%,70%)"/>
+</g>
+<g><title>specialized _NativeDictionary._copyOrMoveAndResize(capacity:moveElements:): 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1175" width="0.62" height="19" fill="hsl(15,85%,70%)"/>
+</g>
+<g><title>static _DictionaryStorage.resize(original:capacity:move:): 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1155" width="0.62" height="19" fill="hsl(1,85%,70%)"/>
+</g>
+<g><title>static _DictionaryStorage.allocate(scale:age:seed:): 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1135" width="0.62" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1115" width="0.62" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1095" width="0.62" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_freelist_outlined: 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1075" width="0.62" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_find_and_malloc_from_freelist_chunk: 3 samples (0.04%)</title><rect class="frame" x="1428.79" y="1055" width="0.62" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_list_pop: 1 samples (0.01%)</title><rect class="frame" x="1428.79" y="1035" width="0.21" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>String._uncheckedIndex(after:): 1 samples (0.01%)</title><rect class="frame" x="1429.41" y="1175" width="0.21" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>specialized Collection&lt;&gt;.firstIndex(of:): 1 samples (0.01%)</title><rect class="frame" x="1429.62" y="1175" width="0.21" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:): 1 samples (0.01%)</title><rect class="frame" x="1429.82" y="1175" width="0.21" height="19" fill="hsl(14,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 1 samples (0.01%)</title><rect class="frame" x="1429.82" y="1155" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 1 samples (0.01%)</title><rect class="frame" x="1429.82" y="1135" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 1 samples (0.01%)</title><rect class="frame" x="1429.82" y="1115" width="0.21" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>specialized __RawDictionaryStorage.find&lt;A&gt;(_:): 1 samples (0.01%)</title><rect class="frame" x="1430.03" y="1175" width="0.21" height="19" fill="hsl(13,85%,70%)"/>
+</g>
+<g><title>Hasher._finalize(): 1 samples (0.01%)</title><rect class="frame" x="1430.03" y="1155" width="0.21" height="19" fill="hsl(25,85%,70%)"/>
+</g>
+<g><title>_NativeDictionary.bridged(): 1 samples (0.01%)</title><rect class="frame" x="1430.24" y="1195" width="0.21" height="19" fill="hsl(51,85%,70%)"/>
+</g>
+<g><title>URL.resourceValues(forKeys:): 5 samples (0.07%)</title><rect class="frame" x="1430.44" y="1235" width="1.03" height="19" fill="hsl(31,85%,70%)"/>
+</g>
+<g><title>-[NSURL resourceValuesForKeys:error:]: 5 samples (0.07%)</title><rect class="frame" x="1430.44" y="1215" width="1.03" height="19" fill="hsl(54,85%,70%)"/>
+</g>
+<g><title>CFURLCopyResourcePropertiesForKeys: 5 samples (0.07%)</title><rect class="frame" x="1430.44" y="1195" width="1.03" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>_FSURLCopyResourcePropertiesForKeysInternal(__CFURL const*, __CFArray const*, void*, __CFError**, unsigned char): 5 samples (0.07%)</title><rect class="frame" x="1430.44" y="1175" width="1.03" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>_FileCacheGetForURL(__CFURL const*, void*): 2 samples (0.03%)</title><rect class="frame" x="1430.44" y="1155" width="0.41" height="19" fill="hsl(29,85%,70%)"/>
+</g>
+<g><title>_CFRuntimeCreateInstance: 1 samples (0.01%)</title><rect class="frame" x="1430.44" y="1135" width="0.21" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>os_unfair_lock_lock_with_options: 1 samples (0.01%)</title><rect class="frame" x="1430.44" y="1115" width="0.21" height="19" fill="hsl(1,85%,70%)"/>
+</g>
+<g><title>initGlobalsOnce(): 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1135" width="0.21" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>_dispatch_once_callout: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1115" width="0.21" height="19" fill="hsl(41,85%,70%)"/>
+</g>
+<g><title>_dispatch_client_callout: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1095" width="0.21" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>invocation function for block in initGlobalsOnce(): 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1075" width="0.21" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>init_logging(): 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1055" width="0.21" height="19" fill="hsl(0,85%,70%)"/>
+</g>
+<g><title>os_log_create: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1035" width="0.21" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>_os_trace_prefs_and_mode_refresh_slow: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="1015" width="0.21" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>notify_register_check: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="995" width="0.21" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>mach_msg: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="975" width="0.21" height="19" fill="hsl(17,85%,70%)"/>
+</g>
+<g><title>mach_msg_overwrite: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="955" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>mach_msg2_internal: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="935" width="0.21" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>mach_msg2_trap: 1 samples (0.01%)</title><rect class="frame" x="1430.65" y="915" width="0.21" height="19" fill="hsl(42,85%,70%)"/>
+</g>
+<g><title>prepareValuesForBitmap(__CFURL const*, __FileCache*, _FilePropertyBitmap*, __CFError**): 2 samples (0.03%)</title><rect class="frame" x="1430.86" y="1155" width="0.41" height="19" fill="hsl(22,85%,70%)"/>
+</g>
+<g><title>corePropertyProviderPrepareValues(__CFURL const*, __FileCache*, __CFString const* const*, void const**, long, void const*, __CFError**): 2 samples (0.03%)</title><rect class="frame" x="1430.86" y="1135" width="0.41" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>__getattrlist: 2 samples (0.03%)</title><rect class="frame" x="1430.86" y="1115" width="0.41" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>@objc __SwiftDeferredNSArray.count.getter: 1 samples (0.01%)</title><rect class="frame" x="1431.27" y="1155" width="0.21" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>URL.resolvingSymlinksInPath(): 3 samples (0.04%)</title><rect class="frame" x="1431.48" y="1235" width="0.62" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>protocol witness for _URLProtocol.resolvingSymlinksInPath() in conformance _SwiftURL: 3 samples (0.04%)</title><rect class="frame" x="1431.48" y="1215" width="0.62" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>_SwiftURL.standardizedFileURL.getter: 3 samples (0.04%)</title><rect class="frame" x="1431.48" y="1195" width="0.62" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>String.resolvingSymlinksInPath.getter: 2 samples (0.03%)</title><rect class="frame" x="1431.48" y="1175" width="0.41" height="19" fill="hsl(28,85%,70%)"/>
+</g>
+<g><title>String._resolvingSymlinksInPath(): 1 samples (0.01%)</title><rect class="frame" x="1431.48" y="1155" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>closure #1 in String._resolvingSymlinksInPath(): 1 samples (0.01%)</title><rect class="frame" x="1431.48" y="1135" width="0.21" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>static String._resolvingSymlinksInPathUsingFullPathAttribute(_:): 1 samples (0.01%)</title><rect class="frame" x="1431.48" y="1115" width="0.21" height="19" fill="hsl(24,85%,70%)"/>
+</g>
+<g><title>__getattrlist: 1 samples (0.01%)</title><rect class="frame" x="1431.48" y="1095" width="0.21" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>String.init(unsafeUninitializedCapacity:initializingUTF8With:): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1155" width="0.21" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>specialized static String._fromLargeUTF8Repairing&lt;A&gt;(uninitializedCapacity:initializingWith:): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1135" width="0.21" height="19" fill="hsl(19,85%,70%)"/>
+</g>
+<g><title>specialized static __StringStorage.create&lt;A&gt;(uninitializedCodeUnitCapacity:initializingUncheckedUTF8With:): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1115" width="0.21" height="19" fill="hsl(53,85%,70%)"/>
+</g>
+<g><title>partial apply for thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer&lt;UInt8&gt;) -&gt; (@unowned Int, @error @owned Error): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1095" width="0.21" height="19" fill="hsl(7,85%,70%)"/>
+</g>
+<g><title>partial apply for specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer&lt;UInt8&gt;) -&gt; (@unowned Int, @error @out A): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1075" width="0.21" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>partial apply for specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer&lt;UInt8&gt;) -&gt; (@unowned Int, @error @out A): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1055" width="0.21" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer&lt;UInt8&gt;) -&gt; (@unowned Int, @error @out A): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1035" width="0.21" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>partial apply for closure #1 in String._compressingSlashes(): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="1015" width="0.21" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>closure #1 in String._compressingSlashes(): 1 samples (0.01%)</title><rect class="frame" x="1431.68" y="995" width="0.21" height="19" fill="hsl(40,85%,70%)"/>
+</g>
+<g><title>static _SetStorage.allocate(scale:age:seed:): 1 samples (0.01%)</title><rect class="frame" x="1431.89" y="1175" width="0.21" height="19" fill="hsl(51,85%,70%)"/>
+</g>
+<g><title>swift_allocObject: 1 samples (0.01%)</title><rect class="frame" x="1431.89" y="1155" width="0.21" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long): 1 samples (0.01%)</title><rect class="frame" x="1431.89" y="1135" width="0.21" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_freelist_outlined: 1 samples (0.01%)</title><rect class="frame" x="1431.89" y="1115" width="0.21" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_find_and_malloc_from_freelist_chunk: 1 samples (0.01%)</title><rect class="frame" x="1431.89" y="1095" width="0.21" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_list_push: 1 samples (0.01%)</title><rect class="frame" x="1431.89" y="1075" width="0.21" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>@nonobjc NSFileHandle.__allocating_init(forReadingFrom:): 2 samples (0.03%)</title><rect class="frame" x="1432.10" y="1235" width="0.41" height="19" fill="hsl(4,85%,70%)"/>
+</g>
+<g><title>+[NSFileHandle fileHandleForReadingFromURL:error:]: 2 samples (0.03%)</title><rect class="frame" x="1432.10" y="1215" width="0.41" height="19" fill="hsl(32,85%,70%)"/>
+</g>
+<g><title>-[NSConcreteFileHandle initWithURL:flags:createMode:error:]: 2 samples (0.03%)</title><rect class="frame" x="1432.10" y="1195" width="0.41" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>_NSOpenFileDescriptor: 2 samples (0.03%)</title><rect class="frame" x="1432.10" y="1175" width="0.41" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>open: 2 samples (0.03%)</title><rect class="frame" x="1432.10" y="1155" width="0.41" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>__open: 2 samples (0.03%)</title><rect class="frame" x="1432.10" y="1135" width="0.41" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 726 samples (9.57%)</title><rect class="frame" x="1432.51" y="1255" width="150.04" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="1269">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 726 samples (9.57%)</title><rect class="frame" x="1432.51" y="1235" width="150.04" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="1249">_swift_release_deall</text>
+</g>
+<g><title>RopeDocument.__deallocating_deinit: 726 samples (9.57%)</title><rect class="frame" x="1432.51" y="1215" width="150.04" height="19" fill="hsl(33,85%,70%)"/>
+<text x="1435.51" y="1229">RopeDocument.__deall</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1195" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="1209">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1175" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="1189">_swift_release_deall</text>
+</g>
+<g><title>RopeBuffer.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1155" width="149.84" height="19" fill="hsl(33,85%,70%)"/>
+<text x="1435.51" y="1169">RopeBuffer.__dealloc</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1135" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="1149">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1115" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="1129">_swift_release_deall</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1095" width="149.84" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="1109">TextRope.Node.__deal</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1075" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="1089">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1055" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="1069">_swift_release_deall</text>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1035" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="1049">_ContiguousArrayStor</text>
+</g>
+<g><title>swift_arrayDestroy: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="1015" width="149.84" height="19" fill="hsl(51,85%,70%)"/>
+<text x="1435.51" y="1029">swift_arrayDestroy</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="995" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="1009">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="975" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="989">_swift_release_deall</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="955" width="149.84" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="969">TextRope.Node.__deal</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="935" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="949">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="915" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="929">_swift_release_deall</text>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="895" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="909">_ContiguousArrayStor</text>
+</g>
+<g><title>swift_arrayDestroy: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="875" width="149.84" height="19" fill="hsl(51,85%,70%)"/>
+<text x="1435.51" y="889">swift_arrayDestroy</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="855" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="869">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="835" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="849">_swift_release_deall</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="815" width="149.84" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="829">TextRope.Node.__deal</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="795" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="809">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="775" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="789">_swift_release_deall</text>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="755" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="769">_ContiguousArrayStor</text>
+</g>
+<g><title>swift_arrayDestroy: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="735" width="149.84" height="19" fill="hsl(51,85%,70%)"/>
+<text x="1435.51" y="749">swift_arrayDestroy</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="715" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="729">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="695" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="709">_swift_release_deall</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="675" width="149.84" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="689">TextRope.Node.__deal</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="655" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="669">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="635" width="149.84" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="649">_swift_release_deall</text>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="615" width="149.84" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="629">_ContiguousArrayStor</text>
+</g>
+<g><title>swift_arrayDestroy: 725 samples (9.56%)</title><rect class="frame" x="1432.51" y="595" width="149.84" height="19" fill="hsl(51,85%,70%)"/>
+<text x="1435.51" y="609">swift_arrayDestroy</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 724 samples (9.54%)</title><rect class="frame" x="1432.51" y="575" width="149.63" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="589">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 722 samples (9.52%)</title><rect class="frame" x="1432.51" y="555" width="149.22" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="569">_swift_release_deall</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 720 samples (9.49%)</title><rect class="frame" x="1432.51" y="535" width="148.80" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="549">TextRope.Node.__deal</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 720 samples (9.49%)</title><rect class="frame" x="1432.51" y="515" width="148.80" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="529">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 720 samples (9.49%)</title><rect class="frame" x="1432.51" y="495" width="148.80" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="509">_swift_release_deall</text>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 720 samples (9.49%)</title><rect class="frame" x="1432.51" y="475" width="148.80" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="489">_ContiguousArrayStor</text>
+</g>
+<g><title>swift_arrayDestroy: 720 samples (9.49%)</title><rect class="frame" x="1432.51" y="455" width="148.80" height="19" fill="hsl(51,85%,70%)"/>
+<text x="1435.51" y="469">swift_arrayDestroy</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 719 samples (9.48%)</title><rect class="frame" x="1432.51" y="435" width="148.60" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="449">swift::RefCounts&lt;swi</text>
+</g>
+<g><title>_swift_release_dealloc: 716 samples (9.44%)</title><rect class="frame" x="1432.51" y="415" width="147.98" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="429">_swift_release_deal</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 669 samples (8.82%)</title><rect class="frame" x="1432.51" y="395" width="138.26" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="409">TextRope.Node.__de</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 667 samples (8.79%)</title><rect class="frame" x="1432.51" y="375" width="137.85" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="389">swift::RefCounts&lt;s</text>
+</g>
+<g><title>_swift_release_dealloc: 665 samples (8.76%)</title><rect class="frame" x="1432.51" y="355" width="137.44" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="369">_swift_release_dea</text>
+</g>
+<g><title>_ContiguousArrayStorage.__deallocating_deinit: 642 samples (8.46%)</title><rect class="frame" x="1432.51" y="335" width="132.68" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="349">_ContiguousArrayS</text>
+</g>
+<g><title>swift_arrayDestroy: 638 samples (8.41%)</title><rect class="frame" x="1432.51" y="315" width="131.86" height="19" fill="hsl(51,85%,70%)"/>
+<text x="1435.51" y="329">swift_arrayDestro</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 617 samples (8.13%)</title><rect class="frame" x="1432.51" y="295" width="127.51" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="309">swift::RefCounts&lt;</text>
+</g>
+<g><title>_swift_release_dealloc: 594 samples (7.83%)</title><rect class="frame" x="1432.51" y="275" width="122.76" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="289">_swift_release_d</text>
+</g>
+<g><title>TextRope.Node.__deallocating_deinit: 554 samples (7.30%)</title><rect class="frame" x="1432.51" y="255" width="114.49" height="19" fill="hsl(34,85%,70%)"/>
+<text x="1435.51" y="269">TextRope.Node._</text>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 483 samples (6.37%)</title><rect class="frame" x="1432.51" y="235" width="99.82" height="19" fill="hsl(37,85%,70%)"/>
+<text x="1435.51" y="249">swift::RefCou</text>
+</g>
+<g><title>_swift_release_dealloc: 468 samples (6.17%)</title><rect class="frame" x="1432.51" y="215" width="96.72" height="19" fill="hsl(27,85%,70%)"/>
+<text x="1435.51" y="229">_swift_relea</text>
+</g>
+<g><title>__StringStorage.__deallocating_deinit: 289 samples (3.81%)</title><rect class="frame" x="1432.51" y="195" width="59.73" height="19" fill="hsl(36,85%,70%)"/>
+<text x="1435.51" y="209">__Strin</text>
+</g>
+<g><title>outlined destroy of (AnyHashable?, AnyHashable?): 280 samples (3.69%)</title><rect class="frame" x="1432.51" y="175" width="57.87" height="19" fill="hsl(48,85%,70%)"/>
+<text x="1435.51" y="189">outline</text>
+</g>
+<g><title>destroy for ClosedRange&lt;&gt;.Index: 254 samples (3.35%)</title><rect class="frame" x="1432.51" y="155" width="52.49" height="19" fill="hsl(31,85%,70%)"/>
+<text x="1435.51" y="169">destro</text>
+</g>
+<g><title>swift::metadataimpl::FixedSizeBufferValueWitnesses&lt;swift::metadataimpl::ValueWitnesses&lt;swift::metadataimpl::SwiftRetainableBox&gt;, true, 8ul, 8ul, true&gt;::getEnumTagSinglePayload(swift::OpaqueValue const*, unsigned int, swift::TargetMetadata&lt;swift::InProcess&gt; const*): 2 samples (0.03%)</title><rect class="frame" x="1432.51" y="135" width="0.41" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>__swift_instantiateConcreteTypeFromMangledNameV2: 2 samples (0.03%)</title><rect class="frame" x="1485.01" y="155" width="0.41" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>&lt;deduplicated_symbol&gt;: 1 samples (0.01%)</title><rect class="frame" x="1485.42" y="155" width="0.21" height="19" fill="hsl(46,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_madvise_batch: 26 samples (0.34%)</title><rect class="frame" x="1492.24" y="195" width="5.37" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>xzm_reclaim_mark_free_locked: 25 samples (0.33%)</title><rect class="frame" x="1492.24" y="175" width="5.17" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>mach_vm_reclaim_try_enter: 21 samples (0.28%)</title><rect class="frame" x="1492.24" y="155" width="4.34" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>mach_absolute_time: 20 samples (0.26%)</title><rect class="frame" x="1492.24" y="135" width="4.13" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>mach_vm_reclaim_ring_resize: 4 samples (0.05%)</title><rect class="frame" x="1496.58" y="155" width="0.83" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>mach_vm_deferred_reclamation_buffer_resize: 4 samples (0.05%)</title><rect class="frame" x="1496.58" y="135" width="0.83" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>mach_msg2_internal: 4 samples (0.05%)</title><rect class="frame" x="1496.58" y="115" width="0.83" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>mach_msg2_trap: 4 samples (0.05%)</title><rect class="frame" x="1496.58" y="95" width="0.83" height="19" fill="hsl(42,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 18 samples (0.24%)</title><rect class="frame" x="1497.61" y="195" width="3.72" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>_free: 6 samples (0.08%)</title><rect class="frame" x="1501.33" y="195" width="1.24" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 5 samples (0.07%)</title><rect class="frame" x="1502.57" y="195" width="1.03" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_batch_list_push: 3 samples (0.04%)</title><rect class="frame" x="1503.61" y="195" width="0.62" height="19" fill="hsl(16,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_list_slot_push: 2 samples (0.03%)</title><rect class="frame" x="1504.23" y="195" width="0.41" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_list_push: 1 samples (0.01%)</title><rect class="frame" x="1504.23" y="175" width="0.21" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>outlined destroy of (AnyHashable?, AnyHashable?): 1 samples (0.01%)</title><rect class="frame" x="1504.64" y="195" width="0.21" height="19" fill="hsl(48,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 2 samples (0.03%)</title><rect class="frame" x="1529.23" y="215" width="0.41" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>???: 1 samples (0.01%)</title><rect class="frame" x="1529.65" y="215" width="0.21" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 1 samples (0.01%)</title><rect class="frame" x="1529.85" y="215" width="0.21" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>swift_release: 58 samples (0.76%)</title><rect class="frame" x="1532.33" y="235" width="11.99" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 6 samples (0.08%)</title><rect class="frame" x="1544.32" y="235" width="1.24" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRelease: 3 samples (0.04%)</title><rect class="frame" x="1545.56" y="235" width="0.62" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 3 samples (0.04%)</title><rect class="frame" x="1546.18" y="235" width="0.62" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_release: 1 samples (0.01%)</title><rect class="frame" x="1546.80" y="235" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 24 samples (0.32%)</title><rect class="frame" x="1547.01" y="255" width="4.96" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 7 samples (0.09%)</title><rect class="frame" x="1551.97" y="255" width="1.45" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>_free: 5 samples (0.07%)</title><rect class="frame" x="1553.41" y="255" width="1.03" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_deallocClassInstance: 2 samples (0.03%)</title><rect class="frame" x="1554.45" y="255" width="0.41" height="19" fill="hsl(22,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 2 samples (0.03%)</title><rect class="frame" x="1554.86" y="255" width="0.41" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 4 samples (0.05%)</title><rect class="frame" x="1555.27" y="275" width="0.83" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 3 samples (0.04%)</title><rect class="frame" x="1556.10" y="275" width="0.62" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>???: 1 samples (0.01%)</title><rect class="frame" x="1556.72" y="275" width="0.21" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>swift_release: 5 samples (0.07%)</title><rect class="frame" x="1560.03" y="295" width="1.03" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>objc_release: 3 samples (0.04%)</title><rect class="frame" x="1561.06" y="295" width="0.62" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>swift::TargetMetadata&lt;swift::InProcess&gt;::getTypeContextDescriptor() const: 1 samples (0.01%)</title><rect class="frame" x="1561.68" y="295" width="0.21" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>swift_release$lazyLoadStub: 1 samples (0.01%)</title><rect class="frame" x="1561.89" y="295" width="0.21" height="19" fill="hsl(29,85%,70%)"/>
+</g>
+<g><title>???: 2 samples (0.03%)</title><rect class="frame" x="1564.37" y="315" width="0.41" height="19" fill="hsl(44,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 2 samples (0.03%)</title><rect class="frame" x="1564.78" y="315" width="0.41" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 20 samples (0.26%)</title><rect class="frame" x="1565.19" y="335" width="4.13" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>_xzm_chunk_batch_list_push: 2 samples (0.03%)</title><rect class="frame" x="1569.33" y="335" width="0.41" height="19" fill="hsl(16,85%,70%)"/>
+</g>
+<g><title>_free: 1 samples (0.01%)</title><rect class="frame" x="1569.74" y="335" width="0.21" height="19" fill="hsl(36,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 1 samples (0.01%)</title><rect class="frame" x="1569.95" y="355" width="0.21" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_bridgeObjectRelease: 1 samples (0.01%)</title><rect class="frame" x="1570.36" y="375" width="0.21" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 1 samples (0.01%)</title><rect class="frame" x="1570.57" y="375" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>DYLD-STUB$$swift_deallocClassInstance: 41 samples (0.54%)</title><rect class="frame" x="1570.77" y="395" width="8.47" height="19" fill="hsl(22,85%,70%)"/>
+</g>
+<g><title>_xzm_free_main: 4 samples (0.05%)</title><rect class="frame" x="1579.25" y="395" width="0.83" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 2 samples (0.03%)</title><rect class="frame" x="1580.07" y="395" width="0.41" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>swift_deallocClassInstance: 1 samples (0.01%)</title><rect class="frame" x="1580.49" y="415" width="0.21" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>swift_release: 1 samples (0.01%)</title><rect class="frame" x="1581.11" y="435" width="0.21" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_madvise_batch: 1 samples (0.01%)</title><rect class="frame" x="1581.31" y="535" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>xzm_reclaim_mark_free_locked: 1 samples (0.01%)</title><rect class="frame" x="1581.31" y="515" width="0.21" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>mach_vm_reclaim_try_enter: 1 samples (0.01%)</title><rect class="frame" x="1581.31" y="495" width="0.21" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>mach_absolute_time: 1 samples (0.01%)</title><rect class="frame" x="1581.31" y="475" width="0.21" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>swift_release: 1 samples (0.01%)</title><rect class="frame" x="1582.14" y="575" width="0.21" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>swift_bridgeObjectRelease: 1 samples (0.01%)</title><rect class="frame" x="1582.35" y="1195" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>RopeDocument.text(in:): 5 samples (0.07%)</title><rect class="frame" x="1582.55" y="1255" width="1.03" height="19" fill="hsl(1,85%,70%)"/>
+</g>
+<g><title>RopeBuffer.content(in:): 5 samples (0.07%)</title><rect class="frame" x="1582.55" y="1235" width="1.03" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>RopeBuffer.wordRange(for:): 5 samples (0.07%)</title><rect class="frame" x="1582.55" y="1215" width="1.03" height="19" fill="hsl(10,85%,70%)"/>
+</g>
+<g><title>TextRope.composedCharacterSequences(in:): 5 samples (0.07%)</title><rect class="frame" x="1582.55" y="1195" width="1.03" height="19" fill="hsl(6,85%,70%)"/>
+</g>
+<g><title>TextRope.content(in:): 3 samples (0.04%)</title><rect class="frame" x="1582.55" y="1175" width="0.62" height="19" fill="hsl(26,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 3 samples (0.04%)</title><rect class="frame" x="1582.55" y="1155" width="0.62" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 3 samples (0.04%)</title><rect class="frame" x="1582.55" y="1135" width="0.62" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 3 samples (0.04%)</title><rect class="frame" x="1582.55" y="1115" width="0.62" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 3 samples (0.04%)</title><rect class="frame" x="1582.55" y="1095" width="0.62" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 2 samples (0.03%)</title><rect class="frame" x="1582.55" y="1075" width="0.41" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 2 samples (0.03%)</title><rect class="frame" x="1582.55" y="1055" width="0.41" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>DefaultStringInterpolation.appendLiteral(_:): 1 samples (0.01%)</title><rect class="frame" x="1582.55" y="1035" width="0.21" height="19" fill="hsl(19,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.content(in:): 1 samples (0.01%)</title><rect class="frame" x="1582.76" y="1035" width="0.21" height="19" fill="hsl(2,85%,70%)"/>
+</g>
+<g><title>swift_retain: 1 samples (0.01%)</title><rect class="frame" x="1582.76" y="1015" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>swift_release: 1 samples (0.01%)</title><rect class="frame" x="1582.97" y="1075" width="0.21" height="19" fill="hsl(52,85%,70%)"/>
+</g>
+<g><title>-[NSString substringWithRange:]: 1 samples (0.01%)</title><rect class="frame" x="1583.17" y="1175" width="0.21" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>__CFStringCreateImmutableFunnel3: 1 samples (0.01%)</title><rect class="frame" x="1583.17" y="1155" width="0.21" height="19" fill="hsl(28,85%,70%)"/>
+</g>
+<g><title>_CFRuntimeCreateInstance: 1 samples (0.01%)</title><rect class="frame" x="1583.17" y="1135" width="0.21" height="19" fill="hsl(34,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_freelist_outlined: 1 samples (0.01%)</title><rect class="frame" x="1583.17" y="1115" width="0.21" height="19" fill="hsl(47,85%,70%)"/>
+</g>
+<g><title>_xzm_xzone_malloc_from_empty_freelist_chunk: 1 samples (0.01%)</title><rect class="frame" x="1583.17" y="1095" width="0.21" height="19" fill="hsl(28,85%,70%)"/>
+</g>
+<g><title>TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1175" width="0.21" height="19" fill="hsl(11,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1155" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1135" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1115" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1095" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1075" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1055" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:): 1 samples (0.01%)</title><rect class="frame" x="1583.38" y="1035" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>String.init(format:_:): 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1255" width="0.21" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>specialized String.init(format:locale:arguments:): 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1235" width="0.21" height="19" fill="hsl(50,85%,70%)"/>
+</g>
+<g><title>closure #1 in String.init(format:locale:arguments:): 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1215" width="0.21" height="19" fill="hsl(20,85%,70%)"/>
+</g>
+<g><title>+[NSString _stringWithValidatedFormat:validFormatSpecifiers:locale:arguments:error:]: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1195" width="0.21" height="19" fill="hsl(49,85%,70%)"/>
+</g>
+<g><title>-[NSPlaceholderString initWithValidatedFormat:validFormatSpecifiers:locale:arguments:error:]: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1175" width="0.21" height="19" fill="hsl(33,85%,70%)"/>
+</g>
+<g><title>_CFStringCreateStringWithValidatedFormatAuxWithDesc: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1155" width="0.21" height="19" fill="hsl(19,85%,70%)"/>
+</g>
+<g><title>__CFStringAppendFormatCore: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1135" width="0.21" height="19" fill="hsl(38,85%,70%)"/>
+</g>
+<g><title>snprintf_l: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1115" width="0.21" height="19" fill="hsl(9,85%,70%)"/>
+</g>
+<g><title>_vsnprintf: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1095" width="0.21" height="19" fill="hsl(35,85%,70%)"/>
+</g>
+<g><title>__vfprintf: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1075" width="0.21" height="19" fill="hsl(21,85%,70%)"/>
+</g>
+<g><title>__dtoa: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1055" width="0.21" height="19" fill="hsl(12,85%,70%)"/>
+</g>
+<g><title>__d2b_D2A: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1035" width="0.21" height="19" fill="hsl(1,85%,70%)"/>
+</g>
+<g><title>__Balloc_D2A: 1 samples (0.01%)</title><rect class="frame" x="1583.59" y="1015" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>outlined destroy of EditorFile: 1 samples (0.01%)</title><rect class="frame" x="1583.79" y="1255" width="0.21" height="19" fill="hsl(16,85%,70%)"/>
+</g>
+<g><title>destroy for EditorFile: 1 samples (0.01%)</title><rect class="frame" x="1583.79" y="1235" width="0.21" height="19" fill="hsl(39,85%,70%)"/>
+</g>
+<g><title>swift::RefCounts&lt;swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;&gt;::doDecrementSlow&lt;(swift::PerformDeinit)1&gt;(swift::RefCountBitsT&lt;(swift::RefCountInlinedness)1&gt;, unsigned int): 1 samples (0.01%)</title><rect class="frame" x="1583.79" y="1215" width="0.21" height="19" fill="hsl(37,85%,70%)"/>
+</g>
+<g><title>_swift_release_dealloc: 1 samples (0.01%)</title><rect class="frame" x="1583.79" y="1195" width="0.21" height="19" fill="hsl(27,85%,70%)"/>
+</g>
+<g><title>__DataStorage.__deallocating_deinit: 1 samples (0.01%)</title><rect class="frame" x="1583.79" y="1175" width="0.21" height="19" fill="hsl(30,85%,70%)"/>
+</g>
+<g><title>partial apply for closure #1 in Data.init(referencing:): 1 samples (0.01%)</title><rect class="frame" x="1583.79" y="1155" width="0.21" height="19" fill="hsl(29,85%,70%)"/>
+</g>
+</svg>

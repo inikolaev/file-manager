@@ -28,7 +28,7 @@ struct PaneGeometry {
 enum PaneInput {
     case toggleMark
     case extendSelection(Int), endRangeSelection
-    case activate, switchPane, matchDirectory, open, parent, copy, move, rename, delete, viewFile, quit, createDirectory
+    case activate, switchPane, matchDirectory, open, parent, copy, move, rename, delete, viewFile, editFile, quit, createDirectory
     case select(Int)
 }
 
@@ -165,7 +165,7 @@ final class TerminalPaneView: NSView {
             super.keyDown(with: event)
             return
         }
-        if event.modifierFlags.contains(.shift), [99, 96, 97, 98, 100, 109].contains(event.keyCode) {
+        if event.modifierFlags.contains(.shift), [99, 118, 96, 97, 98, 100, 109].contains(event.keyCode) {
             if event.keyCode == 97 { onInput?(.rename) }
             return
         }
@@ -173,6 +173,7 @@ final class TerminalPaneView: NSView {
         case 49: prefix = ""; if !event.isARepeat { onInput?(.toggleMark) }
         case 109: onInput?(.quit) // F10
         case 99: onInput?(.viewFile) // F3
+        case 118: onInput?(.editFile) // F4
         case 96: onInput?(.copy) // F5
         case 97: onInput?(.move) // F6
         case 98: onInput?(.createDirectory) // F7

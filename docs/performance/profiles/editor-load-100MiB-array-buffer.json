@@ -1,0 +1,2489 @@
+{
+  "name": "benchmarkLoad(_:)",
+  "count": 7224,
+  "children": [
+    {
+      "name": "static EditorDocuments.make(file:)",
+      "count": 3871,
+      "children": [
+        {
+          "name": "RopeDocument.init(text:lineStarts:)",
+          "count": 3870,
+          "children": [
+            {
+              "name": "TextRope.init(_:)",
+              "count": 3869,
+              "children": [
+                {
+                  "name": "specialized static TextRope.chunkLeaves(from:)",
+                  "count": 3805,
+                  "children": [
+                    {
+                      "name": "specialized static TextRope.Summary.of(_:)",
+                      "count": 3001,
+                      "children": [
+                        {
+                          "name": "swift_release",
+                          "count": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_retain",
+                          "count": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_bridgeObjectRetain",
+                          "count": 3,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRelease",
+                          "count": 2,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_bridgeObjectRelease",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "String.UTF16View._nativeGetOffset(for:)",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRetain",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)",
+                      "count": 252,
+                      "children": [
+                        {
+                          "name": "specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)",
+                          "count": 177,
+                          "children": [
+                            {
+                              "name": "_allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)",
+                              "count": 163,
+                              "children": [
+                                {
+                                  "name": "swift_allocObject",
+                                  "count": 135,
+                                  "children": [
+                                    {
+                                      "name": "swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)",
+                                      "count": 135,
+                                      "children": [
+                                        {
+                                          "name": "_xzm_xzone_malloc_freelist_outlined",
+                                          "count": 63,
+                                          "children": [
+                                            {
+                                              "name": "_xzm_xzone_find_and_malloc_from_freelist_chunk",
+                                              "count": 52,
+                                              "children": [
+                                                {
+                                                  "name": "xzm_chunk_mark_used",
+                                                  "count": 43,
+                                                  "children": [
+                                                    {
+                                                      "name": "_xzm_reclaim_mark_used",
+                                                      "count": 42,
+                                                      "children": [
+                                                        {
+                                                          "name": "_xzm_reclaim_mark_used_locked",
+                                                          "count": 41,
+                                                          "children": [
+                                                            {
+                                                              "name": "mach_vm_reclaim_try_cancel",
+                                                              "count": 40,
+                                                              "children": [
+                                                                {
+                                                                  "name": "mach_absolute_time",
+                                                                  "count": 39,
+                                                                  "children": []
+                                                                }
+                                                              ]
+                                                            },
+                                                            {
+                                                              "name": "DYLD-STUB$$mach_vm_reclaim_try_cancel",
+                                                              "count": 1,
+                                                              "children": []
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "name": "_xzm_chunk_list_pop",
+                                                  "count": 4,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "_xzm_xzone_malloc_from_empty_freelist_chunk",
+                                                  "count": 2,
+                                                  "children": []
+                                                },
+                                                {
+                                                  "name": "_xzm_xzone_malloc_from_freelist_chunk",
+                                                  "count": 2,
+                                                  "children": []
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "name": "_xzm_xzone_malloc_from_freelist_chunk",
+                                              "count": 9,
+                                              "children": []
+                                            },
+                                            {
+                                              "name": "_xzm_xzone_malloc_from_empty_freelist_chunk",
+                                              "count": 1,
+                                              "children": []
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "name": "_xzm_xzone_malloc_tiny",
+                                          "count": 54,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "<deduplicated_symbol>",
+                                          "count": 9,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "malloc_type_malloc",
+                                          "count": 6,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "_xzm_xzone_find_and_malloc_from_freelist_chunk",
+                                          "count": 1,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "malloc_size",
+                                  "count": 21,
+                                  "children": [
+                                    {
+                                      "name": "xzm_malloc_zone_size",
+                                      "count": 10,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "???",
+                                  "count": 2,
+                                  "children": []
+                                },
+                                {
+                                  "name": "type metadata accessor for __StringStorage",
+                                  "count": 2,
+                                  "children": [
+                                    {
+                                      "name": "objc_opt_self",
+                                      "count": 2,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "xzm_malloc_zone_size",
+                                  "count": 2,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "swift_allocObject",
+                              "count": 5,
+                              "children": []
+                            },
+                            {
+                              "name": "???",
+                              "count": 3,
+                              "children": []
+                            },
+                            {
+                              "name": "malloc_size",
+                              "count": 3,
+                              "children": []
+                            },
+                            {
+                              "name": "type metadata accessor for __StringStorage",
+                              "count": 1,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "_platform_memmove",
+                          "count": 67,
+                          "children": []
+                        },
+                        {
+                          "name": "_allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "specialized UnsafeMutablePointer.initialize(from:count:)",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "specialized static TextRope.Node.boundary(in:nearest:within:)",
+                      "count": 207,
+                      "children": [
+                        {
+                          "name": "String.Index.init<A>(_:within:)",
+                          "count": 162,
+                          "children": [
+                            {
+                              "name": "swift_dynamicCast",
+                              "count": 60,
+                              "children": [
+                                {
+                                  "name": "tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)",
+                                  "count": 41,
+                                  "children": [
+                                    {
+                                      "name": "tryCastToString(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)",
+                                      "count": 3,
+                                      "children": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "swift_release",
+                                  "count": 6,
+                                  "children": []
+                                },
+                                {
+                                  "name": "swift_bridgeObjectRelease",
+                                  "count": 4,
+                                  "children": []
+                                },
+                                {
+                                  "name": "<deduplicated_symbol>",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Substring._isValidIndex(_:)",
+                              "count": 28,
+                              "children": [
+                                {
+                                  "name": "_StringGuts._slowRoundDownToNearestCharacter(_:in:)",
+                                  "count": 19,
+                                  "children": [
+                                    {
+                                      "name": "_StringGuts._opaqueCharacterStride(endingAt:in:)",
+                                      "count": 13,
+                                      "children": [
+                                        {
+                                          "name": "hasBreakWhenPaired #1 (_:) in _quickHasGraphemeBreakBetween(_:_:)",
+                                          "count": 6,
+                                          "children": []
+                                        },
+                                        {
+                                          "name": "_StringGuts._opaqueCharacterStride(endingAt:in:)",
+                                          "count": 1,
+                                          "children": []
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "_StringGuts._slowRoundDownToNearestCharacter(_:in:)",
+                                      "count": 4,
+                                      "children": [
+                                        {
+                                          "name": "_StringGuts._opaqueCharacterStride(endingAt:in:)",
+                                          "count": 4,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "_StringGuts.isOnUnicodeScalarBoundary(_:)",
+                                  "count": 5,
+                                  "children": []
+                                },
+                                {
+                                  "name": "Substring._isValidIndex(_:)",
+                                  "count": 2,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "initializeWithCopy for Substring",
+                              "count": 18,
+                              "children": [
+                                {
+                                  "name": "swift_bridgeObjectRetain",
+                                  "count": 8,
+                                  "children": []
+                                },
+                                {
+                                  "name": "swift_retain",
+                                  "count": 7,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "swift_release",
+                              "count": 15,
+                              "children": []
+                            },
+                            {
+                              "name": "swift_bridgeObjectRelease",
+                              "count": 11,
+                              "children": []
+                            },
+                            {
+                              "name": "tryCast(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, swift::TargetMetadata<swift::InProcess> const*&, swift::TargetMetadata<swift::InProcess> const*&, bool, bool, bool)",
+                              "count": 8,
+                              "children": []
+                            },
+                            {
+                              "name": "___chkstk_darwin",
+                              "count": 4,
+                              "children": []
+                            },
+                            {
+                              "name": "_StringGuts._slowRoundDownToNearestCharacter(_:in:)",
+                              "count": 1,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "swift_retain",
+                          "count": 10,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_release",
+                          "count": 9,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRetain",
+                          "count": 7,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_bridgeObjectRetain",
+                          "count": 3,
+                          "children": []
+                        },
+                        {
+                          "name": "initializeWithCopy for Substring",
+                          "count": 2,
+                          "children": []
+                        },
+                        {
+                          "name": "lazy protocol witness table accessor for type Substring and conformance Substring",
+                          "count": 2,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRelease",
+                          "count": 2,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_bridgeObjectRelease",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_dynamicCast",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "specialized static TextRope.redistributeStarvedChunks(in:)",
+                      "count": 122,
+                      "children": [
+                        {
+                          "name": "swift_retain",
+                          "count": 18,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_release",
+                          "count": 9,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRelease",
+                          "count": 6,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_beginAccess",
+                          "count": 5,
+                          "children": [
+                            {
+                              "name": "<deduplicated_symbol>",
+                              "count": 1,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_release",
+                          "count": 2,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_beginAccess",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_bridgeObjectRelease",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_bridgeObjectRetain",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "DYLD-STUB$$swift_retain",
+                          "count": 1,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRetain",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "specialized static String._copying(_:)",
+                      "count": 82,
+                      "children": [
+                        {
+                          "name": "_allASCII(_:)",
+                          "count": 78,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift_allocObject",
+                      "count": 43,
+                      "children": [
+                        {
+                          "name": "swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)",
+                          "count": 40,
+                          "children": [
+                            {
+                              "name": "_xzm_xzone_malloc_tiny",
+                              "count": 21,
+                              "children": []
+                            },
+                            {
+                              "name": "<deduplicated_symbol>",
+                              "count": 10,
+                              "children": []
+                            },
+                            {
+                              "name": "_xzm_xzone_malloc_freelist_outlined",
+                              "count": 2,
+                              "children": [
+                                {
+                                  "name": "_xzm_xzone_find_and_malloc_from_freelist_chunk",
+                                  "count": 1,
+                                  "children": [
+                                    {
+                                      "name": "xzm_chunk_mark_used",
+                                      "count": 1,
+                                      "children": [
+                                        {
+                                          "name": "_xzm_reclaim_mark_used",
+                                          "count": 1,
+                                          "children": [
+                                            {
+                                              "name": "_xzm_reclaim_mark_used_locked",
+                                              "count": 1,
+                                              "children": [
+                                                {
+                                                  "name": "mach_vm_reclaim_try_cancel",
+                                                  "count": 1,
+                                                  "children": [
+                                                    {
+                                                      "name": "mach_absolute_time",
+                                                      "count": 1,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "malloc_type_malloc",
+                              "count": 2,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Substring.subscript.getter",
+                      "count": 27,
+                      "children": [
+                        {
+                          "name": "specialized Substring.subscript.getter",
+                          "count": 15,
+                          "children": [
+                            {
+                              "name": "_StringGuts.scalarAlignSlow(_:)",
+                              "count": 5,
+                              "children": []
+                            },
+                            {
+                              "name": "specialized Substring.subscript.getter",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "_StringGuts.scalarAlignSlow(_:)",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "swift_retain",
+                          "count": 8,
+                          "children": []
+                        },
+                        {
+                          "name": "swift_bridgeObjectRetain",
+                          "count": 4,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift_release",
+                      "count": 10,
+                      "children": []
+                    },
+                    {
+                      "name": "specialized Substring.subscript.getter",
+                      "count": 9,
+                      "children": []
+                    },
+                    {
+                      "name": "type metadata accessor for TextRope.Node",
+                      "count": 9,
+                      "children": [
+                        {
+                          "name": "DYLD-STUB$$objc_opt_self",
+                          "count": 5,
+                          "children": []
+                        },
+                        {
+                          "name": "objc_opt_self",
+                          "count": 3,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "DYLD-STUB$$Substring.UTF8View.distance(from:to:)",
+                      "count": 5,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_allocObject",
+                      "count": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_bridgeObjectRelease",
+                      "count": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_isUniquelyReferenced_nonNull_bridgeObject",
+                      "count": 4,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$static String._fromSubstring(_:)",
+                      "count": 3,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_bridgeObjectRelease",
+                      "count": 3,
+                      "children": []
+                    },
+                    {
+                      "name": "String.Index.init<A>(_:within:)",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "String.UTF16View._nativeGetOffset(for:)",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "Substring.UTF8View.distance(from:to:)",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "Substring.description.getter",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)",
+                      "count": 2,
+                      "children": [
+                        {
+                          "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                          "count": 2,
+                          "children": [
+                            {
+                              "name": "_swift_release_dealloc",
+                              "count": 2,
+                              "children": [
+                                {
+                                  "name": "xzm_segment_group_free_chunk",
+                                  "count": 2,
+                                  "children": [
+                                    {
+                                      "name": "_xzm_segment_group_segment_span_free_coalesce",
+                                      "count": 1,
+                                      "children": [
+                                        {
+                                          "name": "_xzm_segment_group_span_mark_used",
+                                          "count": 1,
+                                          "children": [
+                                            {
+                                              "name": "_xzm_reclaim_mark_used",
+                                              "count": 1,
+                                              "children": [
+                                                {
+                                                  "name": "_xzm_reclaim_mark_used_locked",
+                                                  "count": 1,
+                                                  "children": [
+                                                    {
+                                                      "name": "mach_vm_reclaim_try_cancel",
+                                                      "count": 1,
+                                                      "children": [
+                                                        {
+                                                          "name": "mach_absolute_time",
+                                                          "count": 1,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_beginAccess",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "???",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$Substring.subscript.getter",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_isUniquelyReferenced_nonNull_bridgeObject",
+                      "count": 1,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "specialized static TextRope.buildTree(from:)",
+                  "count": 41,
+                  "children": [
+                    {
+                      "name": "swift_allocObject",
+                      "count": 10,
+                      "children": [
+                        {
+                          "name": "swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)",
+                          "count": 9,
+                          "children": [
+                            {
+                              "name": "_xzm_xzone_malloc_tiny",
+                              "count": 3,
+                              "children": []
+                            },
+                            {
+                              "name": "_xzm_xzone_malloc_freelist_outlined",
+                              "count": 2,
+                              "children": [
+                                {
+                                  "name": "_xzm_xzone_find_and_malloc_from_freelist_chunk",
+                                  "count": 2,
+                                  "children": [
+                                    {
+                                      "name": "xzm_chunk_mark_used",
+                                      "count": 2,
+                                      "children": [
+                                        {
+                                          "name": "_xzm_reclaim_mark_used",
+                                          "count": 2,
+                                          "children": [
+                                            {
+                                              "name": "_xzm_reclaim_mark_used_locked",
+                                              "count": 2,
+                                              "children": [
+                                                {
+                                                  "name": "mach_vm_reclaim_try_cancel",
+                                                  "count": 2,
+                                                  "children": [
+                                                    {
+                                                      "name": "mach_absolute_time",
+                                                      "count": 2,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "name": "malloc_type_malloc",
+                              "count": 2,
+                              "children": []
+                            },
+                            {
+                              "name": "<deduplicated_symbol>",
+                              "count": 1,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift_arrayInitWithCopy",
+                      "count": 6,
+                      "children": [
+                        {
+                          "name": "swift::metadataimpl::ValueWitnesses<swift::metadataimpl::SwiftRetainableBox>::initializeWithCopy(swift::OpaqueValue*, swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*)",
+                          "count": 4,
+                          "children": [
+                            {
+                              "name": "swift_retain",
+                              "count": 4,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "swift::TargetMetadata<swift::InProcess>::getTypeContextDescriptor() const",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift_retain",
+                      "count": 2,
+                      "children": []
+                    },
+                    {
+                      "name": "type metadata accessor for __ContiguousArrayStorageBase",
+                      "count": 2,
+                      "children": [
+                        {
+                          "name": "objc_msgSend",
+                          "count": 2,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "???",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$malloc_size",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_arrayInitWithCopy",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_bridgeObjectRetain",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_unknownObjectRelease",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "DYLD-STUB$$swift_unknownObjectRetain_n",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "_platform_memmove",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "_swift_release_dealloc",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "swift_arrayDestroy",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift_bridgeObjectRetain",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_isUniquelyReferenced_nonNull_bridgeObject",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_release",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_retain_n",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "swift_unknownObjectRelease",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "xzm_malloc_zone_size",
+                      "count": 1,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                  "count": 13,
+                  "children": [
+                    {
+                      "name": "_swift_release_dealloc",
+                      "count": 13,
+                      "children": [
+                        {
+                          "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                          "count": 13,
+                          "children": [
+                            {
+                              "name": "swift_arrayDestroy",
+                              "count": 10,
+                              "children": [
+                                {
+                                  "name": "swift_release",
+                                  "count": 5,
+                                  "children": []
+                                },
+                                {
+                                  "name": "objc_release",
+                                  "count": 2,
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "???",
+                              "count": 3,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Substring.UTF8View.distance(from:to:)",
+                  "count": 2,
+                  "children": []
+                },
+                {
+                  "name": "specialized static String._copying(_:)",
+                  "count": 2,
+                  "children": []
+                },
+                {
+                  "name": "specialized static TextRope.Node.boundary(in:nearest:within:)",
+                  "count": 2,
+                  "children": []
+                },
+                {
+                  "name": "Substring.subscript.getter",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "specialized static TextRope.Summary.of(_:)",
+                  "count": 1,
+                  "children": []
+                },
+                {
+                  "name": "swift_allocObject",
+                  "count": 1,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "EditorLoadTrace.init()",
+              "count": 1,
+              "children": [
+                {
+                  "name": "@objc _NSSwiftProcessInfo.environment.getter",
+                  "count": 1,
+                  "children": [
+                    {
+                      "name": "specialized _ProcessInfo.environment.getter",
+                      "count": 1,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "type metadata accessor for RopeDocument",
+          "count": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "static EditorFile.open(_:)",
+      "count": 2634,
+      "children": [
+        {
+          "name": "specialized static EditorTextPreparation.prepareFile(_:)",
+          "count": 2502,
+          "children": [
+            {
+              "name": "specialized static EditorTextPreparation.scan(_:file:)",
+              "count": 2217,
+              "children": [
+                {
+                  "name": "specialized _ArrayBuffer._consumeAndCreateNew(bufferIsUnique:minimumCapacity:growForAppend:)",
+                  "count": 4,
+                  "children": [
+                    {
+                      "name": "_platform_memmove",
+                      "count": 4,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "specialized String.init<A>(bytes:encoding:)",
+              "count": 285,
+              "children": [
+                {
+                  "name": "static String._tryFromUTF8(_:)",
+                  "count": 285,
+                  "children": [
+                    {
+                      "name": "specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)",
+                      "count": 151,
+                      "children": [
+                        {
+                          "name": "_platform_memmove",
+                          "count": 150,
+                          "children": []
+                        },
+                        {
+                          "name": "specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "_allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "swift_allocObject",
+                                  "count": 1,
+                                  "children": [
+                                    {
+                                      "name": "swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)",
+                                      "count": 1,
+                                      "children": [
+                                        {
+                                          "name": "_xzm_malloc_large_huge",
+                                          "count": 1,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "validateUTF8(_:)",
+                      "count": 134,
+                      "children": [
+                        {
+                          "name": "_allASCII(_:)",
+                          "count": 134,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "NSFileHandle.readToEnd()",
+          "count": 109,
+          "children": [
+            {
+              "name": "-[NSConcreteFileHandle readDataToEndOfFileAndReturnError:]",
+              "count": 109,
+              "children": [
+                {
+                  "name": "-[NSConcreteFileHandle readDataOfLength:]",
+                  "count": 109,
+                  "children": [
+                    {
+                      "name": "_NSReadFromFileDescriptorWithProgress",
+                      "count": 109,
+                      "children": [
+                        {
+                          "name": "read",
+                          "count": 109,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "URL.resolvingSymlinksInPath()",
+          "count": 9,
+          "children": [
+            {
+              "name": "protocol witness for _URLProtocol.resolvingSymlinksInPath() in conformance _SwiftURL",
+              "count": 9,
+              "children": [
+                {
+                  "name": "_SwiftURL.standardizedFileURL.getter",
+                  "count": 9,
+                  "children": [
+                    {
+                      "name": "String.resolvingSymlinksInPath.getter",
+                      "count": 7,
+                      "children": [
+                        {
+                          "name": "String._resolvingSymlinksInPath()",
+                          "count": 4,
+                          "children": [
+                            {
+                              "name": "closure #1 in String._resolvingSymlinksInPath()",
+                              "count": 4,
+                              "children": [
+                                {
+                                  "name": "static String._resolvingSymlinksInPathUsingFullPathAttribute(_:)",
+                                  "count": 4,
+                                  "children": [
+                                    {
+                                      "name": "__getattrlist",
+                                      "count": 4,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "@objc _NSFileManagerBridge.fileExists(atPath:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "_FileManagerImpl._fileExists(_:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "stat",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "String._droppingTrailingSlashes.getter",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "String.index(after:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "_StringGuts.validateCharacterIndex(_:)",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "String.init(unsafeUninitializedCapacity:initializingUTF8With:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "specialized static String._fromLargeUTF8Repairing<A>(uninitializedCapacity:initializingWith:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "specialized static __StringStorage.create<A>(uninitializedCodeUnitCapacity:initializingUncheckedUTF8With:)",
+                                  "count": 1,
+                                  "children": [
+                                    {
+                                      "name": "partial apply for thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer<UInt8>) -> (@unowned Int, @error @owned Error)",
+                                      "count": 1,
+                                      "children": [
+                                        {
+                                          "name": "partial apply for specialized thunk for @callee_guaranteed (@unowned UnsafeMutableBufferPointer<UInt8>) -> (@unowned Int, @error @out A)",
+                                          "count": 1,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "_SwiftURL.absolutePath(percentEncoded:)",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "_SwiftURL.hasDirectoryPath.getter",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "specialized static String._uncheckedFromUTF8(_:isASCII:precalculatedUTF16Count:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "specialized static __StringStorage.create(codeUnitCapacity:countAndFlags:precalculatedUTF16Count:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "_allocateStringStorage(codeUnitCapacity:precalculatedUTF16Count:)",
+                                  "count": 1,
+                                  "children": [
+                                    {
+                                      "name": "swift_allocObject",
+                                      "count": 1,
+                                      "children": [
+                                        {
+                                          "name": "swift::swift_slowAllocTyped(unsigned long, unsigned long, unsigned long long)",
+                                          "count": 1,
+                                          "children": [
+                                            {
+                                              "name": "_xzm_xzone_malloc_tiny",
+                                              "count": 1,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "URL.resourceValues(forKeys:)",
+          "count": 7,
+          "children": [
+            {
+              "name": "-[NSURL resourceValuesForKeys:error:]",
+              "count": 4,
+              "children": [
+                {
+                  "name": "CFURLCopyResourcePropertiesForKeys",
+                  "count": 4,
+                  "children": [
+                    {
+                      "name": "_FSURLCopyResourcePropertiesForKeysInternal(__CFURL const*, __CFArray const*, void*, __CFError**, unsigned char)",
+                      "count": 4,
+                      "children": [
+                        {
+                          "name": "prepareValuesForBitmap(__CFURL const*, __FileCache*, _FilePropertyBitmap*, __CFError**)",
+                          "count": 3,
+                          "children": [
+                            {
+                              "name": "corePropertyProviderPrepareValues(__CFURL const*, __FileCache*, __CFString const* const*, void const**, long, void const*, __CFError**)",
+                              "count": 2,
+                              "children": [
+                                {
+                                  "name": "__getattrlist",
+                                  "count": 2,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "@objc __SwiftNativeNSArrayWithContiguousStorage.objectAtSubscript(_:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "__SwiftDeferredNSArray.withUnsafeBufferOfObjects<A>(_:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "_ContiguousArrayStorage._getNonVerbatimBridgingBuffer()",
+                                  "count": 1,
+                                  "children": [
+                                    {
+                                      "name": "bridgeAnythingNonVerbatimToObjectiveC(swift::OpaqueValue*, swift::TargetMetadata<swift::InProcess> const*, bool)",
+                                      "count": 1,
+                                      "children": [
+                                        {
+                                          "name": "protocol witness for _ObjectiveCBridgeable._bridgeToObjectiveC() in conformance NSURLResourceKey",
+                                          "count": 1,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "protocol witness for _URLProtocol.bridgeToNSURL() in conformance _SwiftURL",
+              "count": 1,
+              "children": [
+                {
+                  "name": "closure #1 in _SwiftURL._nsurl.getter",
+                  "count": 1,
+                  "children": [
+                    {
+                      "name": "_SwiftURL._swiftCFURL()",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "_CFURLCreateWithCanonicalFileURLString",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "_CFRuntimeCreateInstance",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "object_setClass",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "specialized static Dictionary._forceBridgeFromObjectiveC(_:result:)",
+              "count": 1,
+              "children": [
+                {
+                  "name": "static Dictionary._bridgeFromObjectiveCAdoptingNativeStorageOf(_:)",
+                  "count": 1,
+                  "children": [
+                    {
+                      "name": "__swift_instantiateGenericMetadata",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "_swift_getGenericMetadata(swift::MetadataRequest, void const* const*, swift::TargetTypeContextDescriptor<swift::InProcess> const*)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "swift::LockingConcurrentMap<swift::GenericCacheEntry, swift::LockingConcurrentMapStorage<swift::GenericCacheEntry, (unsigned short)14>>::getOrInsert<swift::MetadataCacheKey, swift::MetadataRequest&, swift::TargetTypeContextDescriptor<swift::InProcess> const*&, void const* const*&>(swift::MetadataCacheKey, swift::MetadataRequest&, swift::TargetTypeContextDescriptor<swift::InProcess> const*&, void const* const*&)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "swift::StableAddressConcurrentReadableHashMap<swift::GenericCacheEntry, swift::TaggedMetadataAllocator<(unsigned short)14>, swift::Mutex>::getOrInsert<swift::MetadataCacheKey, swift::MetadataWaitQueue::Worker&, swift::MetadataRequest&, swift::TargetTypeContextDescriptor<swift::InProcess> const*&, void const* const*&>(swift::MetadataCacheKey, swift::MetadataWaitQueue::Worker&, swift::MetadataRequest&, swift::TargetTypeContextDescriptor<swift::InProcess> const*&, void const* const*&)",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+              "count": 1,
+              "children": [
+                {
+                  "name": "_swift_release_dealloc",
+                  "count": 1,
+                  "children": [
+                    {
+                      "name": "__SwiftDeferredNSArray.__deallocating_deinit",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "swift_retain",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "@nonobjc NSFileHandle.__allocating_init(forReadingFrom:)",
+          "count": 3,
+          "children": [
+            {
+              "name": "+[NSFileHandle fileHandleForReadingFromURL:error:]",
+              "count": 3,
+              "children": [
+                {
+                  "name": "-[NSConcreteFileHandle initWithURL:flags:createMode:error:]",
+                  "count": 3,
+                  "children": [
+                    {
+                      "name": "_NSOpenFileDescriptor",
+                      "count": 3,
+                      "children": [
+                        {
+                          "name": "open",
+                          "count": 3,
+                          "children": [
+                            {
+                              "name": "__open",
+                              "count": 3,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "EditorLoadTrace.init()",
+          "count": 3,
+          "children": [
+            {
+              "name": "@objc _NSSwiftProcessInfo.environment.getter",
+              "count": 3,
+              "children": [
+                {
+                  "name": "specialized _ProcessInfo.environment.getter",
+                  "count": 2,
+                  "children": [
+                    {
+                      "name": "os_unfair_lock_lock_with_options",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "specialized Collection<>.firstIndex(of:)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "String.subscript.getter",
+                          "count": 1,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "_NativeDictionary.bridged()",
+                  "count": 1,
+                  "children": [
+                    {
+                      "name": "__swift_instantiateGenericMetadata",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "_swift_getGenericMetadata(swift::MetadataRequest, void const* const*, swift::TargetTypeContextDescriptor<swift::InProcess> const*)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "getCache(swift::TargetTypeContextDescriptor<swift::InProcess> const&)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "swift::TargetContextDescriptor<swift::InProcess>::getGenericContext() const",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "$defer #1 () in static EditorFile.open(_:)",
+          "count": 1,
+          "children": [
+            {
+              "name": "-[NSConcreteFileHandle closeAndReturnError:]",
+              "count": 1,
+              "children": [
+                {
+                  "name": "-[NSConcreteFileHandle closeFile]",
+                  "count": 1,
+                  "children": [
+                    {
+                      "name": "close",
+                      "count": 1,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+      "count": 709,
+      "children": [
+        {
+          "name": "_swift_release_dealloc",
+          "count": 709,
+          "children": [
+            {
+              "name": "RopeDocument.__deallocating_deinit",
+              "count": 709,
+              "children": [
+                {
+                  "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                  "count": 709,
+                  "children": [
+                    {
+                      "name": "_swift_release_dealloc",
+                      "count": 709,
+                      "children": [
+                        {
+                          "name": "RopeBuffer.__deallocating_deinit",
+                          "count": 709,
+                          "children": [
+                            {
+                              "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                              "count": 709,
+                              "children": [
+                                {
+                                  "name": "_swift_release_dealloc",
+                                  "count": 709,
+                                  "children": [
+                                    {
+                                      "name": "TextRope.Node.__deallocating_deinit",
+                                      "count": 709,
+                                      "children": [
+                                        {
+                                          "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                          "count": 709,
+                                          "children": [
+                                            {
+                                              "name": "_swift_release_dealloc",
+                                              "count": 709,
+                                              "children": [
+                                                {
+                                                  "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                                                  "count": 709,
+                                                  "children": [
+                                                    {
+                                                      "name": "swift_arrayDestroy",
+                                                      "count": 709,
+                                                      "children": [
+                                                        {
+                                                          "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                          "count": 709,
+                                                          "children": [
+                                                            {
+                                                              "name": "_swift_release_dealloc",
+                                                              "count": 709,
+                                                              "children": [
+                                                                {
+                                                                  "name": "TextRope.Node.__deallocating_deinit",
+                                                                  "count": 709,
+                                                                  "children": [
+                                                                    {
+                                                                      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                      "count": 709,
+                                                                      "children": [
+                                                                        {
+                                                                          "name": "_swift_release_dealloc",
+                                                                          "count": 709,
+                                                                          "children": [
+                                                                            {
+                                                                              "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                                                                              "count": 709,
+                                                                              "children": [
+                                                                                {
+                                                                                  "name": "swift_arrayDestroy",
+                                                                                  "count": 709,
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                      "count": 709,
+                                                                                      "children": [
+                                                                                        {
+                                                                                          "name": "_swift_release_dealloc",
+                                                                                          "count": 709,
+                                                                                          "children": [
+                                                                                            {
+                                                                                              "name": "TextRope.Node.__deallocating_deinit",
+                                                                                              "count": 709,
+                                                                                              "children": [
+                                                                                                {
+                                                                                                  "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                  "count": 708,
+                                                                                                  "children": [
+                                                                                                    {
+                                                                                                      "name": "_swift_release_dealloc",
+                                                                                                      "count": 708,
+                                                                                                      "children": [
+                                                                                                        {
+                                                                                                          "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                                                                                                          "count": 708,
+                                                                                                          "children": [
+                                                                                                            {
+                                                                                                              "name": "swift_arrayDestroy",
+                                                                                                              "count": 708,
+                                                                                                              "children": [
+                                                                                                                {
+                                                                                                                  "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                  "count": 708,
+                                                                                                                  "children": [
+                                                                                                                    {
+                                                                                                                      "name": "_swift_release_dealloc",
+                                                                                                                      "count": 708,
+                                                                                                                      "children": [
+                                                                                                                        {
+                                                                                                                          "name": "TextRope.Node.__deallocating_deinit",
+                                                                                                                          "count": 708,
+                                                                                                                          "children": [
+                                                                                                                            {
+                                                                                                                              "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                              "count": 707,
+                                                                                                                              "children": [
+                                                                                                                                {
+                                                                                                                                  "name": "_swift_release_dealloc",
+                                                                                                                                  "count": 707,
+                                                                                                                                  "children": [
+                                                                                                                                    {
+                                                                                                                                      "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                                                                                                                                      "count": 707,
+                                                                                                                                      "children": [
+                                                                                                                                        {
+                                                                                                                                          "name": "swift_arrayDestroy",
+                                                                                                                                          "count": 707,
+                                                                                                                                          "children": [
+                                                                                                                                            {
+                                                                                                                                              "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                              "count": 707,
+                                                                                                                                              "children": [
+                                                                                                                                                {
+                                                                                                                                                  "name": "_swift_release_dealloc",
+                                                                                                                                                  "count": 707,
+                                                                                                                                                  "children": [
+                                                                                                                                                    {
+                                                                                                                                                      "name": "TextRope.Node.__deallocating_deinit",
+                                                                                                                                                      "count": 707,
+                                                                                                                                                      "children": [
+                                                                                                                                                        {
+                                                                                                                                                          "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                          "count": 707,
+                                                                                                                                                          "children": [
+                                                                                                                                                            {
+                                                                                                                                                              "name": "_swift_release_dealloc",
+                                                                                                                                                              "count": 706,
+                                                                                                                                                              "children": [
+                                                                                                                                                                {
+                                                                                                                                                                  "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                                                                                                                                                                  "count": 705,
+                                                                                                                                                                  "children": [
+                                                                                                                                                                    {
+                                                                                                                                                                      "name": "swift_arrayDestroy",
+                                                                                                                                                                      "count": 705,
+                                                                                                                                                                      "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                          "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                                          "count": 701,
+                                                                                                                                                                          "children": [
+                                                                                                                                                                            {
+                                                                                                                                                                              "name": "_swift_release_dealloc",
+                                                                                                                                                                              "count": 700,
+                                                                                                                                                                              "children": [
+                                                                                                                                                                                {
+                                                                                                                                                                                  "name": "TextRope.Node.__deallocating_deinit",
+                                                                                                                                                                                  "count": 661,
+                                                                                                                                                                                  "children": [
+                                                                                                                                                                                    {
+                                                                                                                                                                                      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                                                      "count": 661,
+                                                                                                                                                                                      "children": [
+                                                                                                                                                                                        {
+                                                                                                                                                                                          "name": "_swift_release_dealloc",
+                                                                                                                                                                                          "count": 661,
+                                                                                                                                                                                          "children": [
+                                                                                                                                                                                            {
+                                                                                                                                                                                              "name": "_ContiguousArrayStorage.__deallocating_deinit",
+                                                                                                                                                                                              "count": 641,
+                                                                                                                                                                                              "children": [
+                                                                                                                                                                                                {
+                                                                                                                                                                                                  "name": "swift_arrayDestroy",
+                                                                                                                                                                                                  "count": 635,
+                                                                                                                                                                                                  "children": [
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                                                                      "count": 623,
+                                                                                                                                                                                                      "children": [
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                          "name": "_swift_release_dealloc",
+                                                                                                                                                                                                          "count": 605,
+                                                                                                                                                                                                          "children": [
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "TextRope.Node.__deallocating_deinit",
+                                                                                                                                                                                                              "count": 556,
+                                                                                                                                                                                                              "children": [
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                                                                                  "count": 481,
+                                                                                                                                                                                                                  "children": [
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                      "name": "_swift_release_dealloc",
+                                                                                                                                                                                                                      "count": 469,
+                                                                                                                                                                                                                      "children": [
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "__StringStorage.__deallocating_deinit",
+                                                                                                                                                                                                                          "count": 267,
+                                                                                                                                                                                                                          "children": [
+                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                              "name": "outlined destroy of (AnyHashable?, AnyHashable?)",
+                                                                                                                                                                                                                              "count": 259,
+                                                                                                                                                                                                                              "children": [
+                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                  "name": "destroy for ClosedRange<>.Index",
+                                                                                                                                                                                                                                  "count": 238,
+                                                                                                                                                                                                                                  "children": [
+                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                      "name": "swift::metadataimpl::FixedSizeBufferValueWitnesses<swift::metadataimpl::ValueWitnesses<swift::metadataimpl::SwiftRetainableBox>, true, 8ul, 8ul, true>::getEnumTagSinglePayload(swift::OpaqueValue const*, unsigned int, swift::TargetMetadata<swift::InProcess> const*)",
+                                                                                                                                                                                                                                      "count": 1,
+                                                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                  ]
+                                                                                                                                                                                                                                },
+                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                  "name": "<deduplicated_symbol>",
+                                                                                                                                                                                                                                  "count": 2,
+                                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                                },
+                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                  "name": "__swift_instantiateConcreteTypeFromMangledNameV2",
+                                                                                                                                                                                                                                  "count": 1,
+                                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                              ]
+                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                              "name": "destroy for ClosedRange<>.Index",
+                                                                                                                                                                                                                              "count": 4,
+                                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                              "name": "__swift_instantiateConcreteTypeFromMangledNameV2",
+                                                                                                                                                                                                                              "count": 1,
+                                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                          ]
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "_xzm_free_main",
+                                                                                                                                                                                                                          "count": 29,
+                                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "_xzm_xzone_madvise_batch",
+                                                                                                                                                                                                                          "count": 21,
+                                                                                                                                                                                                                          "children": [
+                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                              "name": "xzm_reclaim_mark_free_locked",
+                                                                                                                                                                                                                              "count": 20,
+                                                                                                                                                                                                                              "children": [
+                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                  "name": "mach_vm_reclaim_try_enter",
+                                                                                                                                                                                                                                  "count": 17,
+                                                                                                                                                                                                                                  "children": [
+                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                      "name": "mach_absolute_time",
+                                                                                                                                                                                                                                      "count": 17,
+                                                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                  ]
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                              ]
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                          ]
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "swift_deallocClassInstance",
+                                                                                                                                                                                                                          "count": 4,
+                                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "_free",
+                                                                                                                                                                                                                          "count": 2,
+                                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "_xzm_chunk_batch_list_push",
+                                                                                                                                                                                                                          "count": 1,
+                                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "outlined destroy of (AnyHashable?, AnyHashable?)",
+                                                                                                                                                                                                                          "count": 1,
+                                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      ]
+                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                      "name": "???",
+                                                                                                                                                                                                                      "count": 3,
+                                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                      "name": "_xzm_free_main",
+                                                                                                                                                                                                                      "count": 2,
+                                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                  ]
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "swift_release",
+                                                                                                                                                                                                                  "count": 60,
+                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "DYLD-STUB$$swift_bridgeObjectRelease",
+                                                                                                                                                                                                                  "count": 6,
+                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "DYLD-STUB$$swift_release",
+                                                                                                                                                                                                                  "count": 4,
+                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "_swift_release_dealloc",
+                                                                                                                                                                                                                  "count": 4,
+                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                },
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "swift_bridgeObjectRelease",
+                                                                                                                                                                                                                  "count": 1,
+                                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              ]
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "_xzm_free_main",
+                                                                                                                                                                                                              "count": 22,
+                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "_free",
+                                                                                                                                                                                                              "count": 12,
+                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "swift_deallocClassInstance",
+                                                                                                                                                                                                              "count": 8,
+                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "DYLD-STUB$$swift_deallocClassInstance",
+                                                                                                                                                                                                              "count": 2,
+                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                                                                              "count": 2,
+                                                                                                                                                                                                              "children": []
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                              "name": "_xzm_xzone_madvise_batch",
+                                                                                                                                                                                                              "count": 1,
+                                                                                                                                                                                                              "children": [
+                                                                                                                                                                                                                {
+                                                                                                                                                                                                                  "name": "xzm_reclaim_mark_free_locked",
+                                                                                                                                                                                                                  "count": 1,
+                                                                                                                                                                                                                  "children": [
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                      "name": "mach_vm_reclaim_try_enter",
+                                                                                                                                                                                                                      "count": 1,
+                                                                                                                                                                                                                      "children": [
+                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                          "name": "mach_absolute_time",
+                                                                                                                                                                                                                          "count": 1,
+                                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      ]
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                  ]
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              ]
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                          ]
+                                                                                                                                                                                                        },
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                          "name": "_xzm_free_main",
+                                                                                                                                                                                                          "count": 5,
+                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                        },
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                          "name": "swift_deallocClassInstance",
+                                                                                                                                                                                                          "count": 2,
+                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                        },
+                                                                                                                                                                                                        {
+                                                                                                                                                                                                          "name": "???",
+                                                                                                                                                                                                          "count": 1,
+                                                                                                                                                                                                          "children": []
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                      ]
+                                                                                                                                                                                                    },
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                      "name": "objc_release",
+                                                                                                                                                                                                      "count": 2,
+                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                    },
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                      "name": "swift_release$lazyLoadStub",
+                                                                                                                                                                                                      "count": 2,
+                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                    },
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                      "name": "_swift_release_dealloc",
+                                                                                                                                                                                                      "count": 1,
+                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                    },
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                      "name": "swift::TargetMetadata<swift::InProcess>::getTypeContextDescriptor() const",
+                                                                                                                                                                                                      "count": 1,
+                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                    },
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                      "name": "swift_release",
+                                                                                                                                                                                                      "count": 1,
+                                                                                                                                                                                                      "children": []
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                  ]
+                                                                                                                                                                                                },
+                                                                                                                                                                                                {
+                                                                                                                                                                                                  "name": "???",
+                                                                                                                                                                                                  "count": 3,
+                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                },
+                                                                                                                                                                                                {
+                                                                                                                                                                                                  "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                                                                                                                                                                                                  "count": 3,
+                                                                                                                                                                                                  "children": []
+                                                                                                                                                                                                }
+                                                                                                                                                                                              ]
+                                                                                                                                                                                            },
+                                                                                                                                                                                            {
+                                                                                                                                                                                              "name": "_xzm_free_main",
+                                                                                                                                                                                              "count": 18,
+                                                                                                                                                                                              "children": []
+                                                                                                                                                                                            },
+                                                                                                                                                                                            {
+                                                                                                                                                                                              "name": "_xzm_chunk_batch_list_push",
+                                                                                                                                                                                              "count": 1,
+                                                                                                                                                                                              "children": []
+                                                                                                                                                                                            },
+                                                                                                                                                                                            {
+                                                                                                                                                                                              "name": "swift_arrayDestroy",
+                                                                                                                                                                                              "count": 1,
+                                                                                                                                                                                              "children": []
+                                                                                                                                                                                            }
+                                                                                                                                                                                          ]
+                                                                                                                                                                                        }
+                                                                                                                                                                                      ]
+                                                                                                                                                                                    }
+                                                                                                                                                                                  ]
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                  "name": "DYLD-STUB$$swift_deallocClassInstance",
+                                                                                                                                                                                  "count": 33,
+                                                                                                                                                                                  "children": []
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                  "name": "_xzm_free_main",
+                                                                                                                                                                                  "count": 4,
+                                                                                                                                                                                  "children": []
+                                                                                                                                                                                },
+                                                                                                                                                                                {
+                                                                                                                                                                                  "name": "swift_deallocClassInstance",
+                                                                                                                                                                                  "count": 2,
+                                                                                                                                                                                  "children": []
+                                                                                                                                                                                }
+                                                                                                                                                                              ]
+                                                                                                                                                                            }
+                                                                                                                                                                          ]
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                          "name": "_swift_release_dealloc",
+                                                                                                                                                                          "count": 1,
+                                                                                                                                                                          "children": []
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                          "name": "swift::TargetMetadata<swift::InProcess>::getTypeContextDescriptor() const",
+                                                                                                                                                                          "count": 1,
+                                                                                                                                                                          "children": []
+                                                                                                                                                                        },
+                                                                                                                                                                        {
+                                                                                                                                                                          "name": "swift_release",
+                                                                                                                                                                          "count": 1,
+                                                                                                                                                                          "children": []
+                                                                                                                                                                        }
+                                                                                                                                                                      ]
+                                                                                                                                                                    }
+                                                                                                                                                                  ]
+                                                                                                                                                                },
+                                                                                                                                                                {
+                                                                                                                                                                  "name": "_xzm_xzone_madvise_batch",
+                                                                                                                                                                  "count": 1,
+                                                                                                                                                                  "children": [
+                                                                                                                                                                    {
+                                                                                                                                                                      "name": "xzm_reclaim_mark_free_locked",
+                                                                                                                                                                      "count": 1,
+                                                                                                                                                                      "children": [
+                                                                                                                                                                        {
+                                                                                                                                                                          "name": "mach_vm_reclaim_try_enter",
+                                                                                                                                                                          "count": 1,
+                                                                                                                                                                          "children": [
+                                                                                                                                                                            {
+                                                                                                                                                                              "name": "mach_absolute_time",
+                                                                                                                                                                              "count": 1,
+                                                                                                                                                                              "children": []
+                                                                                                                                                                            }
+                                                                                                                                                                          ]
+                                                                                                                                                                        }
+                                                                                                                                                                      ]
+                                                                                                                                                                    }
+                                                                                                                                                                  ]
+                                                                                                                                                                }
+                                                                                                                                                              ]
+                                                                                                                                                            },
+                                                                                                                                                            {
+                                                                                                                                                              "name": "???",
+                                                                                                                                                              "count": 1,
+                                                                                                                                                              "children": []
+                                                                                                                                                            }
+                                                                                                                                                          ]
+                                                                                                                                                        }
+                                                                                                                                                      ]
+                                                                                                                                                    }
+                                                                                                                                                  ]
+                                                                                                                                                }
+                                                                                                                                              ]
+                                                                                                                                            }
+                                                                                                                                          ]
+                                                                                                                                        }
+                                                                                                                                      ]
+                                                                                                                                    }
+                                                                                                                                  ]
+                                                                                                                                }
+                                                                                                                              ]
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                              "name": "swift_bridgeObjectRelease",
+                                                                                                                              "count": 1,
+                                                                                                                              "children": []
+                                                                                                                            }
+                                                                                                                          ]
+                                                                                                                        }
+                                                                                                                      ]
+                                                                                                                    }
+                                                                                                                  ]
+                                                                                                                }
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          ]
+                                                                                                        }
+                                                                                                      ]
+                                                                                                    }
+                                                                                                  ]
+                                                                                                },
+                                                                                                {
+                                                                                                  "name": "swift_bridgeObjectRelease",
+                                                                                                  "count": 1,
+                                                                                                  "children": []
+                                                                                                }
+                                                                                              ]
+                                                                                            }
+                                                                                          ]
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  ]
+                                                                                }
+                                                                              ]
+                                                                            }
+                                                                          ]
+                                                                        }
+                                                                      ]
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RopeDocument.text(in:)",
+      "count": 10,
+      "children": [
+        {
+          "name": "RopeBuffer.content(in:)",
+          "count": 10,
+          "children": [
+            {
+              "name": "RopeBuffer.wordRange(for:)",
+              "count": 10,
+              "children": [
+                {
+                  "name": "TextRope.composedCharacterSequences(in:)",
+                  "count": 10,
+                  "children": [
+                    {
+                      "name": "TextRope.utf16CodeUnits(in:)",
+                      "count": 3,
+                      "children": [
+                        {
+                          "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                          "count": 3,
+                          "children": [
+                            {
+                              "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                              "count": 3,
+                              "children": [
+                                {
+                                  "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                                  "count": 3,
+                                  "children": [
+                                    {
+                                      "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                                      "count": 3,
+                                      "children": [
+                                        {
+                                          "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                                          "count": 3,
+                                          "children": [
+                                            {
+                                              "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                                              "count": 3,
+                                              "children": [
+                                                {
+                                                  "name": "specialized collect #1 (_:) in TextRope.utf16CodeUnits(in:)",
+                                                  "count": 3,
+                                                  "children": [
+                                                    {
+                                                      "name": "String.UTF8View.subscript.getter",
+                                                      "count": 1,
+                                                      "children": []
+                                                    },
+                                                    {
+                                                      "name": "specialized Array.append<A>(contentsOf:)",
+                                                      "count": 1,
+                                                      "children": [
+                                                        {
+                                                          "name": "specialized Sequence._copySequenceContents(initializing:)",
+                                                          "count": 1,
+                                                          "children": []
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "name": "swift_release",
+                                                      "count": 1,
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "-[NSString rangeOfComposedCharacterSequencesForRange:]",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "CFStringGetRangeOfCharacterClusterAtIndex",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "???",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "???",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "@objc __StringStorage.UTF16Length.getter",
+                      "count": 1,
+                      "children": []
+                    },
+                    {
+                      "name": "TextRope.content(in:)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "specialized collect #1 (_:) in TextRope.content(in:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "specialized collect #1 (_:) in TextRope.content(in:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "<deduplicated_symbol>",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "TextRope.scalarAlignedStart(at:)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "_swift_release_dealloc",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "_xzm_free_main",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "static String._unconditionallyBridgeFromObjectiveC(_:)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "String.init(_cocoaString:)",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "_bridgeCocoaString(_:)",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "objcRetainAndReturn(void*)",
+                                  "count": 1,
+                                  "children": [
+                                    {
+                                      "name": "objc_msgSend",
+                                      "count": 1,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::doDecrementSlow<(swift::PerformDeinit)1>(swift::RefCountBitsT<(swift::RefCountInlinedness)1>, unsigned int)",
+                      "count": 1,
+                      "children": [
+                        {
+                          "name": "_swift_release_dealloc",
+                          "count": 1,
+                          "children": [
+                            {
+                              "name": "__StringStorage.__deallocating_deinit",
+                              "count": 1,
+                              "children": [
+                                {
+                                  "name": "outlined destroy of (AnyHashable?, AnyHashable?)",
+                                  "count": 1,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "swift_release",
+                      "count": 1,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

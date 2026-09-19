@@ -1,0 +1,26 @@
+editor-load resolve-and-open 0.013323 s
+editor-load read-bytes 0.010236 s
+editor-load prepare-text 0.038502 s
+editor-load build-rope 0.069281 s
+editor-load reuse-line-index 0.000000 s
+document-ready 0.131786 s
+first-page-read 0.000207 s
+lines 809757, utf16 104857600, first-page-utf8 5076
+
+editor-load resolve-and-open 0.002005 s
+editor-load read-bytes 0.010004 s
+editor-load prepare-text 0.038419 s
+editor-load build-rope 0.054817 s
+editor-load reuse-line-index 0.000000 s
+document-ready 0.105701 s
+first-page-read 0.000225 s
+lines 809757, utf16 104857600, first-page-utf8 5076
+
+editor-load resolve-and-open 0.002074 s
+editor-load read-bytes 0.010124 s
+editor-load prepare-text 0.038401 s
+editor-load build-rope 0.054256 s
+editor-load reuse-line-index 0.000000 s
+document-ready 0.105282 s
+first-page-read 0.000207 s
+lines 809757, utf16 104857600, first-page-utf8 5076

@@ -13,8 +13,10 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
         case error(message: String, title: String = "Copy error")
         case decision(title: String, message: String, confirmTitle: String, destructive: Bool = true)
         case busy(title: String, message: String)
+        case choice(title: String, message: String, buttons: [String])
     }
     let mode: Mode
+    var onChoice: ((Int) -> Void)?
     var onConfirm: ((String) -> Void)?
     var onCancel: (() -> Void)?
     var onDismiss: (() -> Void)?
@@ -25,6 +27,7 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
     private(set) var focusedControl = 0
     private let gray = NSColor(srgbRed: 0.75, green: 0.75, blue: 0.75, alpha: 1)
     private let red = NSColor(srgbRed: 0.52, green: 0, blue: 0, alpha: 1)
+    private var choiceButtons: [String]? { if case .choice(_, _, let buttons) = mode { buttons } else { nil } }
     private var isError: Bool { if case .error = mode { true } else { false } }
     private var isDecision: Bool { if case .decision = mode { true } else { false } }
     private var isBusy: Bool { if case .busy = mode { true } else { false } }
@@ -49,6 +52,10 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
     private var buttonRects: [NSRect] {
         let panel = panelRect
         if isBusy { return [] }
+        if let buttons = choiceButtons {
+            let width = min(140, (panel.width - 52) / CGFloat(buttons.count))
+            return buttons.indices.map { NSRect(x: panel.midX - width * CGFloat(buttons.count) / 2 + width * CGFloat($0), y: panel.maxY - 47, width: width, height: 24) }
+        }
         if hasTextInput || isDecision {
             return [NSRect(x: panel.midX - 126, y: panel.maxY - 47, width: 112, height: 24),
                     NSRect(x: panel.midX + 14, y: panel.maxY - 47, width: 112, height: 24)]
@@ -96,7 +103,7 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
     }
 
     func focusInitialControl() {
-        focusedControl = isDecision ? 1 : 0 // Cancel is the default for deletion.
+        focusedControl = choiceButtons.map { $0.count - 1 } ?? (isDecision ? 1 : 0) // Cancel is the default for deletion.
         if hasTextInput {
             window?.makeFirstResponder(pathField)
             pathField.selectText(nil)
@@ -139,7 +146,7 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
         }
         let title: String
         switch mode {
-        case .error(_, let heading), .decision(let heading, _, _, _), .busy(let heading, _), .textInput(let heading, _, _, _): title = heading
+        case .error(_, let heading), .decision(let heading, _, _, _), .busy(let heading, _), .textInput(let heading, _, _, _), .choice(let heading, _, _): title = heading
         default: title = "Copy"
         }
         let titleWidth = ceil((title as NSString).size(withAttributes: [.font: TerminalTheme.font]).width) + 8
@@ -176,7 +183,7 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
             if progress.totalBytes > 0 && progress.copiedBytes >= progress.totalBytes && !cancelling {
                 label("Finishing file metadata…", y: 174)
             }
-        case .error(let message, _), .decision(_, let message, _, _), .busy(_, let message):
+        case .error(let message, _), .decision(_, let message, _, _), .busy(_, let message), .choice(_, let message, _):
             // Wrap errors instead of truncating away the useful failure reason.
             let paragraph = NSMutableParagraphStyle()
             paragraph.alignment = .center
@@ -202,9 +209,10 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
         case .error: titles = ["OK"]
         case .progress: titles = [cancelling ? "Cancelling…" : "Cancel"]
         case .busy: titles = []
+        case .choice(_, _, let buttons): titles = buttons
         }
         for (index, rect) in buttonRects.enumerated() {
-            let focused = hasTextInput ? focusedControl == index + 1 : isDecision ? focusedControl == index : true
+            let focused = hasTextInput ? focusedControl == index + 1 : (isDecision || choiceButtons != nil) ? focusedControl == index : true
             let title = "[ \(titles[index]) ]"
             let titleSize = (title as NSString).size(withAttributes: [.font: TerminalTheme.font])
             let backgroundRect = rect.insetBy(dx: 2, dy: 2)
@@ -242,6 +250,7 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
 
     private func activateButton(_ index: Int) {
         guard !isBusy else { return }
+        if choiceButtons != nil { onChoice?(index); return }
         if hasTextInput || isDecision {
             if index == 0 { onConfirm?(pathField.stringValue) }
             else { onCancel?() }
@@ -250,6 +259,11 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
     }
 
     private func advanceFocus(backward: Bool) {
+        if let buttons = choiceButtons {
+            focusedControl = (focusedControl + (backward ? buttons.count - 1 : 1)) % buttons.count
+            needsDisplay = true
+            return
+        }
         if isDecision {
             focusedControl = 1 - focusedControl
             needsDisplay = true
@@ -266,7 +280,7 @@ final class TerminalOperationDialog: NSView, NSTextFieldDelegate {
         guard !isBusy else { return }
         switch event.keyCode {
         case 53: if isError { onDismiss?() } else if !cancelling { onCancel?() }
-        case 36, 76: activateButton(isDecision ? focusedControl : hasTextInput && focusedControl == 2 ? 1 : 0)
+        case 36, 76: activateButton((isDecision || choiceButtons != nil) ? focusedControl : hasTextInput && focusedControl == 2 ? 1 : 0)
         case 48: advanceFocus(backward: event.modifierFlags.contains(.shift))
         case 123, 124: advanceFocus(backward: event.keyCode == 123)
         default: break

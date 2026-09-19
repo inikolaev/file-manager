@@ -3,10 +3,11 @@ import AppKit
 @MainActor
 final class TerminalKeyBar: NSView {
     enum Command: Int, CaseIterable {
-        case viewFile = 3, copy = 5, move = 6, createDirectory = 7, delete = 8, quit = 10, rename = 106
+        case viewFile = 3, editFile = 4, copy = 5, move = 6, createDirectory = 7, delete = 8, quit = 10, rename = 106
         var label: String {
             switch self {
             case .viewFile: "View"
+            case .editFile: "Edit"
             case .copy: "Copy"
             case .move: "Move"
             case .rename: "Rename"

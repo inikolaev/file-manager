@@ -1,0 +1,128 @@
+import AppKit
+import Testing
+import EditorCore
+@testable import CommanderUI
+
+@Test @MainActor func f4OpensEditorActionAndShiftF4IsEmpty() throws {
+    _ = NSApplication.shared
+    let pane = TerminalPaneView(name: "Test")
+    var actions: [PaneInput] = []
+    pane.onInput = { actions.append($0) }
+    for flags: NSEvent.ModifierFlags in [[], [.shift]] {
+        pane.keyDown(with: try #require(NSEvent.keyEvent(with: .keyDown, location: .zero,
+            modifierFlags: flags, timestamp: 0, windowNumber: 0, context: nil,
+            characters: "", charactersIgnoringModifiers: "", isARepeat: false, keyCode: 118)))
+    }
+    #expect(actions.count == 1)
+    if case .editFile = actions.first {} else { Issue.record("Expected edit action") }
+    #expect(TerminalKeyBar().labels[4] == "Edit")
+}
+
+@Test @MainActor func editorTextInputCompositionAndRendering() throws {
+    _ = NSApplication.shared
+    let document = EditorDocuments.make(text: "Hello, Commander!\nUnicode: Märkätilan 👩‍💻\n\tIndented text\n")
+    let editor = TerminalFileEditor(document: document, path: "/tmp/example.txt")
+    editor.frame = NSRect(x: 0, y: 0, width: 1080, height: 600)
+    let window = NSWindow(contentRect: editor.frame, styleMask: [.titled], backing: .buffered, defer: false)
+    window.contentView = editor
+    window.makeFirstResponder(editor)
+    editor.selection.set(document.length)
+    editor.setMarkedText("e", selectedRange: NSRange(location: 1, length: 0), replacementRange: NSRange(location: NSNotFound, length: 0))
+    editor.insertText("é", replacementRange: NSRange(location: NSNotFound, length: 0))
+    #expect(!editor.hasMarkedText())
+    #expect(document.text(in: document.lineRange(3)) == "é")
+    editor.selection.undo()
+    #expect(!document.isModified)
+    editor.selection.redo()
+    editor.selection.select(NSRange(location: 7, length: 9))
+    editor.changed()
+    if let output = ProcessInfo.processInfo.environment["COMMANDER_EDITOR_RENDER_PATH"] {
+        let bitmap = try #require(editor.bitmapImageRepForCachingDisplay(in: editor.bounds))
+        editor.cacheDisplay(in: editor.bounds, to: bitmap)
+        try #require(bitmap.representation(using: .png, properties: [:])).write(to: URL(fileURLWithPath: output))
+    }
+}
+
+@Test @MainActor func editorSaveCloseAndConflictKeepEditsSafe() async throws {
+    _ = NSApplication.shared
+    let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+    try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+    defer { try? FileManager.default.removeItem(at: root) }
+    let url = root.appendingPathComponent("test.txt")
+    try Data("original".utf8).write(to: url)
+    let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 780, height: 400), styleMask: [.titled], backing: .buffered, defer: false)
+    let pane = TerminalPaneView(name: "Test")
+    window.contentView = pane
+    window.makeFirstResponder(pane)
+    let coordinator = FileEditorCoordinator()
+    var closed = false
+    coordinator.onClose = { closed = true }
+    coordinator.present(url: url, window: window)
+    for _ in 0..<200 {
+        if !coordinator.isBusy { break }
+        try await Task.sleep(for: .milliseconds(5))
+    }
+    let editor = try #require(pane.subviews.compactMap { $0 as? TerminalFileEditor }.first)
+    editor.insertText("new ", replacementRange: NSRange(location: NSNotFound, length: 0))
+    coordinator.requestClose()
+    let prompt = try #require(pane.subviews.compactMap { $0 as? TerminalOperationDialog }.first)
+    #expect(prompt.focusedControl == 2)
+    prompt.onChoice?(2)
+    #expect(!closed)
+    #expect(window.firstResponder === editor)
+    coordinator.requestClose()
+    try #require(pane.subviews.compactMap { $0 as? TerminalOperationDialog }.first).onChoice?(0)
+    for _ in 0..<200 {
+        if closed { break }
+        try await Task.sleep(for: .milliseconds(5))
+    }
+    #expect(closed)
+    #expect(try String(contentsOf: url, encoding: .utf8) == "new original")
+    #expect(window.firstResponder === pane)
+
+    closed = false
+    coordinator.present(url: url, window: window)
+    for _ in 0..<200 {
+        if !coordinator.isBusy { break }
+        try await Task.sleep(for: .milliseconds(5))
+    }
+    let next = try #require(pane.subviews.compactMap { $0 as? TerminalFileEditor }.first)
+    next.insertText("unsaved ", replacementRange: NSRange(location: NSNotFound, length: 0))
+    try Data("external".utf8).write(to: url)
+    coordinator.save()
+    for _ in 0..<200 {
+        if let dialog = pane.subviews.compactMap({ $0 as? TerminalOperationDialog }).first,
+            case .error = dialog.mode { break }
+        try await Task.sleep(for: .milliseconds(5))
+    }
+    let error = try #require(pane.subviews.compactMap { $0 as? TerminalOperationDialog }.first)
+    guard case .error = error.mode else { Issue.record("Expected save conflict"); return }
+    error.onDismiss?()
+    #expect(next.document.isModified)
+    #expect(!closed)
+    #expect(window.firstResponder === next)
+    #expect(try String(contentsOf: url, encoding: .utf8) == "external")
+    coordinator.requestClose()
+    try #require(pane.subviews.compactMap { $0 as? TerminalOperationDialog }.first).onChoice?(1)
+    #expect(closed)
+}
+
+@Test @MainActor func editorOpenErrorStaysOverPanes() async throws {
+    _ = NSApplication.shared
+    let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 780, height: 400), styleMask: [.titled], backing: .buffered, defer: false)
+    let pane = TerminalPaneView(name: "Test")
+    window.contentView = pane
+    window.makeFirstResponder(pane)
+    let coordinator = FileEditorCoordinator()
+    coordinator.present(url: URL(fileURLWithPath: "/tmp/\(UUID().uuidString)/missing"), window: window)
+    for _ in 0..<200 {
+        if let dialog = pane.subviews.compactMap({ $0 as? TerminalOperationDialog }).first,
+            case .error = dialog.mode { break }
+        try await Task.sleep(for: .milliseconds(5))
+    }
+    #expect(!pane.subviews.contains { $0 is TerminalFileEditor })
+    let error = try #require(pane.subviews.compactMap { $0 as? TerminalOperationDialog }.first)
+    guard case .error = error.mode else { Issue.record("Expected open error"); return }
+    error.onDismiss?()
+    #expect(window.firstResponder === pane)
+}

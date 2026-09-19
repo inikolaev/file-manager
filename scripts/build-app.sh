@@ -16,6 +16,7 @@ mkdir -p "$APP/Contents/MacOS"
 mkdir -p "$APP/Contents/Resources"
 cp Assets/Commander.icns "$APP/Contents/Resources/Commander.icns"
 cp LICENSE "$APP/Contents/Resources/LICENSE"
+cp THIRD-PARTY-NOTICES.txt "$APP/Contents/Resources/THIRD-PARTY-NOTICES.txt"
 cp "$BIN_DIR/Commander" "$APP/Contents/MacOS/Commander"
 cat > "$APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>

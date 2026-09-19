@@ -67,7 +67,7 @@ final class TerminalPaneView: NSView {
         self.status = status
         self.isError = isError
         updateViewport()
-        toolTip = isError ? status : state.selectedRow?.url.path ?? state.directory.path
+        toolTip = isError ? status : nil
         setAccessibilityValue("\(state.directory.path). \(state.selectedRow?.name ?? "Empty folder"). \(status)")
         needsDisplay = true
     }

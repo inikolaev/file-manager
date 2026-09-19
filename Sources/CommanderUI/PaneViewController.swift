@@ -2,7 +2,7 @@ import AppKit
 import FileManagerCore
 
 enum PaneAction {
-    case activate, switchPane, open, parent, copy, move, rename, delete, viewFile, quit, createDirectory
+    case activate, switchPane, matchDirectory, open, parent, copy, move, rename, delete, viewFile, quit, createDirectory
 }
 
 /// Coordinates filesystem snapshots and navigation, without knowing how rows are drawn.
@@ -44,6 +44,7 @@ final class PaneViewController: NSViewController {
             case .endRangeSelection: self.state.endRangeSelection()
             case .activate: self.onAction?(.activate)
             case .switchPane: self.onAction?(.switchPane)
+            case .matchDirectory: self.onAction?(.matchDirectory)
             case .open: self.onAction?(.open)
             case .parent: self.onAction?(.parent)
             case .viewFile: self.onAction?(.viewFile)

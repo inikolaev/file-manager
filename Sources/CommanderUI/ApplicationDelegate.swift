@@ -49,6 +49,9 @@ public final class ApplicationDelegate: NSObject, NSApplicationDelegate {
 
         let navigation = NSMenu(title: "Navigate")
         navigation.addItem(withTitle: "Go to Folder…", action: #selector(CommanderWindowController.goToFolder(_:)), keyEquivalent: "l")
+        let matchDirectory = navigation.addItem(withTitle: "Open Current Directory in Other Pane",
+            action: #selector(CommanderWindowController.matchDirectory(_:)), keyEquivalent: "d")
+        matchDirectory.keyEquivalentModifierMask = [.command]
         navigation.addItem(withTitle: "Go Home", action: #selector(CommanderWindowController.goHome(_:)), keyEquivalent: "~")
         navigation.addItem(withTitle: "Refresh", action: #selector(CommanderWindowController.refresh(_:)), keyEquivalent: "r")
         navigation.addItem(withTitle: "Show Hidden Files", action: #selector(CommanderWindowController.toggleHidden(_:)), keyEquivalent: ".")
@@ -174,6 +177,7 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
             activeIndex = index
             for (paneIndex, pane) in panes.enumerated() { pane.setActive(paneIndex == index) }
         case .switchPane: activate(1 - index)
+        case .matchDirectory: matchDirectory(nil)
         case .open: panes[index].openSelected()
         case .parent: panes[index].goToParent()
         case .viewFile: viewSelected()
@@ -210,6 +214,12 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
                 }
             }
         }
+    }
+
+    @objc func matchDirectory(_ sender: Any?) {
+        guard !operationInProgress, !activePane.isLoading else { return }
+        let destination = panes[1 - activeIndex]
+        destination.load(activePane.state.directory, preferredSelection: activePane.state.selectedRow?.url)
     }
 
     private func viewSelected() {

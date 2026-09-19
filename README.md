@@ -42,6 +42,7 @@ The universal bundle is also available at `dist/universal/Commander.app`.
 | --- | --- |
 | Up / Down | Move selection |
 | Tab / Shift-Tab | Switch active pane |
+| Command-D | Open the active pane’s current directory in the other pane, keeping focus |
 | Space | Toggle marking the current entry |
 | Shift + arrows | Extend or shrink a selection range |
 | Enter | Enter selected folder |

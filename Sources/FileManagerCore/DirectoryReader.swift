@@ -47,8 +47,14 @@ public struct LocalDirectoryReader: DirectoryReading {
             // An individual unreadable or vanished entry must not break the entire listing.
             let values = try? url.resourceValues(forKeys: keys)
             let isLink = values?.isSymbolicLink == true
-            let target = isLink ? try? url.resolvingSymlinksInPath().resourceValues(forKeys: [.isDirectoryKey]) : nil
-            let isDirectory = target?.isDirectory ?? values?.isDirectory ?? false
+            var isDirectory = values?.isDirectory ?? false
+            if isLink {
+                // Query the target through the filesystem. URL path normalization can
+                // retain aliases such as /tmp, whose resource values describe the link.
+                var targetIsDirectory: ObjCBool = false
+                isDirectory = FileManager.default.fileExists(atPath: url.path, isDirectory: &targetIsDirectory)
+                    && targetIsDirectory.boolValue
+            }
             return FileEntry(
                 url: url, name: url.lastPathComponent,
                 isDirectory: isDirectory,

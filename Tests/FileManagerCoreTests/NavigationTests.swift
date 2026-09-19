@@ -139,3 +139,32 @@ import Testing
     pane.extendSelection(to: 0)
     #expect(!pane.isMarked(.parent(root.deletingLastPathComponent())))
 }
+
+@Test func systemTmpSymlinkIsNavigableDirectory() throws {
+    let entries = try LocalDirectoryReader().entries(at: URL(fileURLWithPath: "/"), showHidden: true)
+    let tmp = try #require(entries.first { $0.name == "tmp" })
+    #expect(tmp.isSymbolicLink)
+    #expect(tmp.isDirectory)
+    #expect(tmp.url.path == "/tmp")
+    _ = try LocalDirectoryReader().entries(at: tmp.url, showHidden: false)
+}
+
+@Test func directoryReaderDistinguishesFileBrokenAndChainedLinks() throws {
+    let manager = FileManager.default
+    let root = manager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+    try manager.createDirectory(at: root, withIntermediateDirectories: true)
+    defer { try? manager.removeItem(at: root) }
+    try manager.createDirectory(at: root.appendingPathComponent("folder"), withIntermediateDirectories: false)
+    try Data("text".utf8).write(to: root.appendingPathComponent("file"))
+    for (name, target) in [("directory-link", "folder"), ("chain", "directory-link"),
+                           ("file-link", "file"), ("broken", "missing"), ("loop", "loop")] {
+        try manager.createSymbolicLink(atPath: root.appendingPathComponent(name).path, withDestinationPath: target)
+    }
+    let entries = try LocalDirectoryReader().entries(at: root, showHidden: true)
+    for name in ["directory-link", "chain", "file-link", "broken", "loop"] {
+        let entry = try #require(entries.first { $0.name == name })
+        #expect(entry.isSymbolicLink)
+        #expect(entry.isDirectory == ["directory-link", "chain"].contains(name))
+        #expect(entry.url.lastPathComponent == name)
+    }
+}

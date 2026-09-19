@@ -9,13 +9,15 @@ final class TerminalFileEditor: NSView, @preconcurrency NSTextInputClient {
     let path: String
     var onSave: (() -> Void)?
     var onClose: (() -> Void)?
-    private var topLine = 0
+    private(set) var topLine = 0
     private var leftColumn = 0
     private var scrollRemainder: CGFloat = 0
     private var marked = NSRange(location: NSNotFound, length: 0)
     private var dragging = false
     private var cell: CGFloat { ceil(("M" as NSString).size(withAttributes: [.font: TerminalTheme.font]).width) }
-    private var rows: Int { max(1, Int(bounds.height / TerminalTheme.lineHeight) - 2) }
+    var visibleRows: Int { textGeometry.visibleRows }
+    private var rows: Int { visibleRows }
+    private var textGeometry: TerminalTextGeometry { TerminalTextGeometry(bounds: bounds) }
     private var columns: Int { max(1, Int((bounds.width - 4) / cell)) }
 
     init(document: any EditorDocument, path: String) {
@@ -97,6 +99,8 @@ final class TerminalFileEditor: NSView, @preconcurrency NSTextInputClient {
         TerminalTheme.text(path, in: NSRect(x: 2, y: 0, width: bounds.width - statusWidth - 6, height: height), color: .black)
         TerminalTheme.text(status, in: NSRect(x: bounds.width - statusWidth, y: 0, width: statusWidth - 2, height: height),
             color: .black, alignment: .right)
+        NSGraphicsContext.saveGraphicsState()
+        textGeometry.contentRect.clip()
         for row in 0..<rows {
             let line = topLine + row
             guard line < document.lineCount else { break }
@@ -137,6 +141,7 @@ final class TerminalFileEditor: NSView, @preconcurrency NSTextInputClient {
             NSRect(x: 2 + CGFloat(cursorColumn() - leftColumn) * cell,
                 y: CGFloat(selection.line - topLine + 1) * height + 1, width: 2, height: height - 2).fill()
         }
+        NSGraphicsContext.restoreGraphicsState()
         TerminalFunctionKeys.draw(in: footerRect, labels: [2: "Save", 10: "Close"])
     }
     private var footerRect: NSRect {
@@ -174,8 +179,8 @@ final class TerminalFileEditor: NSView, @preconcurrency NSTextInputClient {
         case "moveRight:", "moveForward:": selection.moveHorizontal(1, extending: extending)
         case "moveUp:": selection.moveVertical(-1, extending: extending)
         case "moveDown:": selection.moveVertical(1, extending: extending)
-        case "pageUp:", "scrollPageUp:": selection.moveVertical(-rows, extending: extending)
-        case "pageDown:", "scrollPageDown:": selection.moveVertical(rows, extending: extending)
+        case "pageUp:", "scrollPageUp:": movePage(-1, extending: extending)
+        case "pageDown:", "scrollPageDown:": movePage(1, extending: extending)
         case "moveToBeginningOfLine:", "moveToLeftEndOfLine:": selection.set(document.lineRange(selection.line).location, extending: extending)
         case "moveToEndOfLine:", "moveToRightEndOfLine:": selection.set(NSMaxRange(document.lineRange(selection.line)), extending: extending)
         case "moveToBeginningOfDocument:", "scrollToBeginningOfDocument:": selection.set(0, extending: extending)
@@ -189,6 +194,12 @@ final class TerminalFileEditor: NSView, @preconcurrency NSTextInputClient {
         }
         changed()
     }
+    private func movePage(_ direction: Int, extending: Bool) {
+        let distance = direction * rows
+        selection.moveVertical(distance, extending: extending)
+        topLine = min(max(0, topLine + distance), max(0, document.lineCount - rows))
+    }
+
     @objc func copy(_ sender: Any?) {
         guard selection.range.length > 0 else { return }
         NSPasteboard.general.clearContents()

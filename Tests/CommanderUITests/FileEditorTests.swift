@@ -126,3 +126,49 @@ import EditorCore
     error.onDismiss?()
     #expect(window.firstResponder === pane)
 }
+
+@Test @MainActor func editorPageNavigationScrollsViewportAndPreservesScreenRow() {
+    _ = NSApplication.shared
+    let document = EditorDocuments.make(text: (0..<100).map { "Line \($0)" }.joined(separator: "\n"))
+    let editor = TerminalFileEditor(document: document, path: "/tmp/pages.txt")
+    editor.frame = NSRect(x: 0, y: 0, width: 800, height: 216)
+    let rows = editor.visibleRows
+    editor.doCommand(by: NSSelectorFromString("pageDown:"))
+    #expect(editor.topLine == rows)
+    #expect(editor.selection.line == rows)
+    editor.doCommand(by: NSSelectorFromString("pageUp:"))
+    #expect(editor.topLine == 0)
+    #expect(editor.selection.line == 0)
+
+    editor.selection.set(document.lineRange(3).location + 2)
+    editor.changed()
+    editor.doCommand(by: NSSelectorFromString("pageDownAndModifySelection:"))
+    #expect(editor.topLine == rows)
+    #expect(editor.selection.line == rows + 3)
+    #expect(editor.selection.column == 2)
+    #expect(editor.selection.range.location == document.lineRange(3).location + 2)
+    #expect(editor.selection.range.length > 0)
+    for _ in 0..<20 { editor.doCommand(by: NSSelectorFromString("pageDown:")) }
+    #expect(editor.selection.line == 99)
+    #expect(editor.topLine == 100 - rows)
+    for _ in 0..<20 { editor.doCommand(by: NSSelectorFromString("pageUp:")) }
+    #expect(editor.selection.line == 0)
+    #expect(editor.topLine == 0)
+}
+
+@Test @MainActor func editorAndViewerUseLastRowWhenTextFitsAboveFooter() {
+    _ = NSApplication.shared
+    let textHeight = ceil(("Mg" as NSString).size(withAttributes: [.font: TerminalTheme.font]).height)
+    let height = 2 * TerminalTheme.lineHeight + 9 * TerminalTheme.lineHeight + textHeight
+    let editor = TerminalFileEditor(document: EditorDocuments.make(text: "test"), path: "/tmp/test")
+    let viewer = TerminalFileViewer(path: "/tmp/test")
+    for view in [editor as NSView, viewer as NSView] {
+        view.frame = NSRect(x: 0, y: 0, width: 800, height: height)
+    }
+    #expect(editor.visibleRows == 10)
+    #expect(viewer.visibleRows == 10)
+    editor.setFrameSize(NSSize(width: 800, height: height - 1))
+    viewer.setFrameSize(NSSize(width: 800, height: height - 1))
+    #expect(editor.visibleRows == 9)
+    #expect(viewer.visibleRows == 9)
+}

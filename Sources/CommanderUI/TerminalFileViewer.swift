@@ -10,7 +10,7 @@ final class TerminalFileViewer: NSView {
     private var horizontalOffset = 0
     private var scrollRemainder: CGFloat = 0
     var onResize: (() -> Void)?
-    var visibleRows: Int { min(200, max(1, Int(bounds.height / TerminalTheme.lineHeight) - 2)) }
+    var visibleRows: Int { min(200, TerminalTextGeometry(bounds: bounds).visibleRows) }
 
     init(path: String) {
         self.path = path
@@ -55,6 +55,8 @@ final class TerminalFileViewer: NSView {
         TerminalTheme.text(status, in: NSRect(x: bounds.width - statusWidth - 2, y: 0,
             width: statusWidth, height: line), color: .black, alignment: .right)
         drawFunctionKeys(in: footer)
+        NSGraphicsContext.saveGraphicsState()
+        TerminalTextGeometry(bounds: bounds).contentRect.clip()
         if let page {
             for (index, row) in page.lines.prefix(visibleRows).enumerated() {
                 let rect = NSRect(x: 1, y: CGFloat(index + 1) * line, width: bounds.width - 2, height: line)
@@ -69,6 +71,7 @@ final class TerminalFileViewer: NSView {
         } else {
             TerminalTheme.text("Opening file…", in: NSRect(x: 8, y: line, width: bounds.width - 16, height: line))
         }
+        NSGraphicsContext.restoreGraphicsState()
     }
 
     private func drawFunctionKeys(in footer: NSRect) {

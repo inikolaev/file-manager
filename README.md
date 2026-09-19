@@ -55,6 +55,7 @@ The universal bundle is also available at `dist/universal/Commander.app`.
 | F3 | Open selected file in the read-only text viewer |
 | F5 | Copy selected file to the opposite pane (editable destination) |
 | F6 | Move marked entries or the cursor entry |
+| Shift-F6 | Rename the entry under the cursor |
 | F7 | Create a directory in the active pane |
 | F8 | Move selected file or folder to macOS Trash after confirmation |
 | F10 / Command-Q | Confirm quitting |
@@ -126,6 +127,13 @@ keeps the original file descriptor open; if a file is replaced by a new inode,
 close and reopen the viewer to see the replacement. There is no automatic tailing.
 
 ### File operations
+
+Shift-F6 opens a rename dialog prefilled with the current entry’s name, ignoring
+marked entries. It renames within the current folder and never overwrites an
+existing destination. Errors return to the entered name for correction. While
+Shift is held, the panels’ footer shows only supported Shift commands (6 Rename);
+release Shift to restore the usual commands. Shift-clicking that slot also renames.
+
 
 F6 (or Move) relocates marked entries, falling back to the cursor entry. It uses
 native macOS moves, including folders and symlinks. A single entry can be renamed

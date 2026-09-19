@@ -75,11 +75,13 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
     private let panes: [PaneViewController]
     private var activeIndex = 0
     private let copyCoordinator = CopyCoordinator()
+    private let renameCoordinator = RenameCoordinator()
+    private let shortcuts = TerminalKeyBar()
     private let moveCoordinator = MoveCoordinator()
     private let createDirectoryCoordinator = CreateDirectoryCoordinator()
     private let deleteCoordinator = DeleteCoordinator()
     private var viewer: FileViewerCoordinator?
-    var fileOperationInProgress: Bool { moveCoordinator.isBusy || createDirectoryCoordinator.isBusy || copyCoordinator.isBusy || deleteCoordinator.isBusy }
+    var fileOperationInProgress: Bool { renameCoordinator.isBusy || moveCoordinator.isBusy || createDirectoryCoordinator.isBusy || copyCoordinator.isBusy || deleteCoordinator.isBusy }
     private var operationInProgress: Bool { isExitPromptVisible || fileOperationInProgress || viewer != nil }
     private var activePane: PaneViewController { panes[activeIndex] }
 
@@ -90,7 +92,7 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
             PaneViewController(title: "LEFT PANE", directory: home, reader: reader),
             PaneViewController(title: "RIGHT PANE", directory: home, reader: reader),
         ]
-        let window = NSWindow(
+        let window = CommanderWindow(
             contentRect: NSRect(x: 0, y: 0, width: 1080, height: 700),
             styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false
         )
@@ -106,13 +108,14 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
         window.contentViewController = root
         for pane in panes { root.addChild(pane) }
 
-        let shortcuts = TerminalKeyBar()
+        window.onModifiersChanged = { [weak self] flags in self?.shortcuts.shiftPressed = flags.contains(.shift) }
         shortcuts.onCommand = { [weak self] command in
             guard let self else { return }
             switch command {
             case .viewFile: self.viewSelected()
             case .copy: self.copySelected()
             case .move: self.moveSelected()
+            case .rename: self.renameSelected()
             case .createDirectory: self.createDirectory()
             case .delete: self.deleteSelected()
             case .quit: self.onQuitRequested()
@@ -176,9 +179,36 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
         case .viewFile: viewSelected()
         case .copy: copySelected()
         case .move: moveSelected()
+        case .rename: renameSelected()
         case .createDirectory: createDirectory()
         case .delete: deleteSelected()
         case .quit: self.onQuitRequested()
+        }
+    }
+
+    func windowDidResignKey(_ notification: Notification) { shortcuts.shiftPressed = false }
+    func windowDidBecomeKey(_ notification: Notification) { shortcuts.shiftPressed = NSEvent.modifierFlags.contains(.shift) }
+
+    private func renameSelected() {
+        guard let window, !operationInProgress, !activePane.isLoading,
+              case .entry(let entry) = activePane.state.selectedRow else { return }
+        let source = entry.url
+        let canonicalSource = source.deletingLastPathComponent().resolvingSymlinksInPath().appendingPathComponent(source.lastPathComponent)
+        renameCoordinator.begin(source: source, window: window) { [weak self] destination in
+            guard let self else { return }
+            for pane in self.panes {
+                let directory = pane.state.directory.resolvingSymlinksInPath()
+                if entry.isDirectory && !entry.isSymbolicLink &&
+                    (directory == canonicalSource || directory.path.hasPrefix(canonicalSource.path + "/")) {
+                    let suffix = String(directory.path.dropFirst(canonicalSource.path.count))
+                    pane.load(URL(fileURLWithPath: destination.path + suffix))
+                } else {
+                    let sameParent = directory == canonicalSource.deletingLastPathComponent()
+                    let selected = pane.state.selectedRow?.url.lastPathComponent == source.lastPathComponent
+                    pane.load(pane.state.directory, preferredSelection: sameParent && selected
+                        ? pane.state.directory.appendingPathComponent(destination.lastPathComponent) : pane.state.selectedRow?.url)
+                }
+            }
         }
     }
 
@@ -336,5 +366,15 @@ final class CommanderWindowController: NSWindowController, NSWindowDelegate {
             }
             pane.focus()
         }
+    }
+}
+
+/// Observes modifiers before dispatch, including while a dialog owns keyboard focus.
+@MainActor
+private final class CommanderWindow: NSWindow {
+    var onModifiersChanged: ((NSEvent.ModifierFlags) -> Void)?
+    override func sendEvent(_ event: NSEvent) {
+        onModifiersChanged?(event.modifierFlags)
+        super.sendEvent(event)
     }
 }

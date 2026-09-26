@@ -1,0 +1,81 @@
+name: macOS release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: macos-15
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      actions: read
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.2.app/Contents/Developer
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Determine version
+        id: version
+        shell: bash
+        run: |
+          # The original run date and run number stay stable when retrying a run.
+          created_at=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq .created_at)
+          year=${created_at:0:4}
+          month=${created_at:5:2}
+          version="$year.$((10#$month)).$GITHUB_RUN_NUMBER"
+          echo "APP_VERSION=$version" >> "$GITHUB_ENV"
+          echo "APP_BUILD_NUMBER=$GITHUB_RUN_NUMBER" >> "$GITHUB_ENV"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Test
+        run: |
+          swift --version
+          swift test
+
+      - name: Build universal app and package
+        run: |
+          bash scripts/package-app.sh
+          lipo dist/universal/Commander.app/Contents/MacOS/Commander -verify_arch arm64 x86_64
+          codesign --verify --deep --strict dist/universal/Commander.app
+          (cd dist && shasum -a 256 -c "Commander-$APP_VERSION-macOS-universal.zip.sha256")
+
+      - name: Publish release
+        env:
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+        shell: bash
+        run: |
+          archive="dist/Commander-$APP_VERSION-macOS-universal.zip"
+          # A draft lets a failed upload be retried without publishing an incomplete release.
+          if gh release view "$RELEASE_TAG" --json isDraft > "$RUNNER_TEMP/release.json"; then
+            if [[ $(jq -r .isDraft "$RUNNER_TEMP/release.json") == false ]]; then
+              echo "Release $RELEASE_TAG is already published; leaving its assets unchanged."
+              exit 0
+            fi
+          else
+            cat > "$RUNNER_TEMP/release-notes.md" <<NOTES
+          Universal macOS app for Apple silicon and Intel. Requires macOS 13 or later.
+
+          Download the ZIP, extract it, and move Commander.app to Applications.
+          The app is ad-hoc signed, not Developer ID signed or notarized. On first launch, macOS may require System Settings → Privacy & Security → Open Anyway.
+
+          Version: $APP_VERSION · Build: $APP_BUILD_NUMBER · Commit: $GITHUB_SHA
+          NOTES
+            gh release create "$RELEASE_TAG" --target "$GITHUB_SHA" --draft \
+              --title "Commander $APP_VERSION" --generate-notes \
+              --notes-file "$RUNNER_TEMP/release-notes.md"
+          fi
+          gh release upload "$RELEASE_TAG" "$archive" "$archive.sha256" --clobber
+          gh release edit "$RELEASE_TAG" --draft=false
+          echo "Released [$RELEASE_TAG](https://github.com/$GITHUB_REPOSITORY/releases/tag/$RELEASE_TAG)" >> "$GITHUB_STEP_SUMMARY"

@@ -37,9 +37,11 @@ selection. Changing directories also clears selection.
 F10: quit. On some keyboards, hold Fn to use function keys.
 The numbered footer buttons are clickable too.
 
-This is an early preview. Folder copying and editing are not implemented.
+This is an early preview. Folder copying is not implemented.
 macOS may ask permission to access your folders.
 TEXT
 codesign --verify --deep --strict "$STAGING/$NAME/Commander.app"
 ditto -c -k --sequesterRsrc --keepParent "$STAGING/$NAME" "$ARCHIVE"
+# Use a relative filename so recipients can run shasum -a 256 -c beside the ZIP.
+(cd dist && shasum -a 256 "$NAME-macOS-universal.zip" > "$NAME-macOS-universal.zip.sha256")
 printf 'Packaged %s\n' "$ARCHIVE"

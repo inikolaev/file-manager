@@ -7,6 +7,29 @@ final class TerminalFileViewer: NSView {
     var onInput: ((Input) -> Void)?
     let path: String
     private(set) var page: ViewerPage?
+    private struct Position: Comparable {
+        let row: Int
+        let column: Int
+        static func < (lhs: Self, rhs: Self) -> Bool {
+            lhs.row == rhs.row ? lhs.column < rhs.column : lhs.row < rhs.row
+        }
+    }
+    private var anchor: Position?
+    private var endpoint: Position?
+    private var isSelecting = false
+    private var selection: (start: Position, end: Position)? {
+        guard let anchor, let endpoint, anchor != endpoint else { return nil }
+        return (min(anchor, endpoint), max(anchor, endpoint))
+    }
+    var selectedText: String {
+        guard let page, let selection else { return "" }
+        return (selection.start.row...selection.end.row).map { row in
+            let text = page.lines[row].text
+            let start = row == selection.start.row ? selection.start.column : 0
+            let end = row == selection.end.row ? selection.end.column : text.count
+            return String(text.dropFirst(start).prefix(end - start))
+        }.joined(separator: "\n")
+    }
     private var horizontalOffset = 0
     private var scrollRemainder: CGFloat = 0
     var onResize: (() -> Void)?
@@ -26,6 +49,12 @@ final class TerminalFileViewer: NSView {
 
     func update(_ page: ViewerPage) {
         if self.page?.mode != page.mode { horizontalOffset = 0 }
+        if self.page?.mode != page.mode || self.page?.offset != page.offset
+            || self.page?.lines.map(\.text) != page.lines.map(\.text) {
+            anchor = nil
+            endpoint = nil
+            isSelecting = false
+        }
         self.page = page
         setAccessibilityValue(page.lines.map(\.text).joined(separator: "\n"))
         needsDisplay = true
@@ -61,8 +90,24 @@ final class TerminalFileViewer: NSView {
             for (index, row) in page.lines.prefix(visibleRows).enumerated() {
                 let rect = NSRect(x: 1, y: CGFloat(index + 1) * line, width: bounds.width - 2, height: line)
                 if rect.intersects(dirtyRect) {
-                    TerminalTheme.text(String(row.text.dropFirst(horizontalOffset)), in: rect,
-                        color: TerminalTheme.cyan, truncate: .byClipping)
+                    let displayed = String(row.text.dropFirst(horizontalOffset))
+                    TerminalTheme.text(displayed, in: rect, color: TerminalTheme.cyan, truncate: .byClipping)
+                    if let selection, index >= selection.start.row, index <= selection.end.row {
+                        let start = index == selection.start.row ? selection.start.column : 0
+                        let end = index == selection.end.row ? selection.end.column : row.text.count
+                        let left = rect.minX + textWidth(String(displayed.prefix(max(0, start - horizontalOffset))))
+                        var right = rect.minX + textWidth(String(displayed.prefix(max(0, end - horizontalOffset))))
+                        // Give selected line breaks a visible cell, including on empty lines.
+                        if index < selection.end.row { right += textWidth(" ") }
+                        if right > left {
+                            NSGraphicsContext.saveGraphicsState()
+                            NSRect(x: left, y: rect.minY, width: right - left, height: rect.height).clip()
+                            TerminalTheme.selection.setFill()
+                            rect.fill()
+                            TerminalTheme.text(displayed, in: rect, color: .black, truncate: .byClipping)
+                            NSGraphicsContext.restoreGraphicsState()
+                        }
+                    }
                 }
             }
             if page.fileSize == 0 {
@@ -81,6 +126,7 @@ final class TerminalFileViewer: NSView {
     override func keyDown(with event: NSEvent) {
         if event.modifierFlags.contains(.command) {
             if event.charactersIgnoringModifiers == "r" { onInput?(.navigate(.stay)) }
+            else if event.charactersIgnoringModifiers?.lowercased() == "c" { copy(nil) }
             else { super.keyDown(with: event) }
             return
         }
@@ -99,13 +145,70 @@ final class TerminalFileViewer: NSView {
         }
     }
     override func mouseDown(with event: NSEvent) {
+        isSelecting = false
         window?.makeFirstResponder(self)
         let point = convert(event.locationInWindow, from: nil)
         let footer = NSRect(x: 0, y: bounds.height - TerminalTheme.lineHeight, width: bounds.width, height: TerminalTheme.lineHeight)
         if let slot = TerminalFunctionKeys.number(at: point, in: footer) {
             if slot == 3 || slot == 10 { onInput?(.close) }
             else if slot == 4 { onInput?(.toggleMode) }
+            return
         }
+        guard TerminalTextGeometry(bounds: bounds).contentRect.contains(point), let position = position(at: point) else { return }
+        if !event.modifierFlags.contains(.shift) || anchor == nil { anchor = position }
+        endpoint = position
+        isSelecting = true
+        needsDisplay = true
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        guard isSelecting else { return }
+        endpoint = position(at: convert(event.locationInWindow, from: nil))
+        needsDisplay = true
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        guard isSelecting else { return }
+        endpoint = position(at: convert(event.locationInWindow, from: nil))
+        isSelecting = false
+        needsDisplay = true
+    }
+
+    override func resetCursorRects() {
+        addCursorRect(TerminalTextGeometry(bounds: bounds).contentRect, cursor: .iBeam)
+    }
+
+    @objc func copy(_ sender: Any?) {
+        let text = selectedText
+        guard !text.isEmpty else { return }
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(text, forType: .string)
+    }
+
+    private func textWidth(_ text: String) -> CGFloat {
+        (text as NSString).size(withAttributes: [.font: TerminalTheme.font]).width
+    }
+
+    private func position(at point: NSPoint) -> Position? {
+        guard let page, !page.lines.isEmpty else { return nil }
+        let row = max(0, min(min(visibleRows, page.lines.count) - 1,
+            Int(floor((point.y - TerminalTheme.lineHeight) / TerminalTheme.lineHeight))))
+        let text = page.lines[row].text
+        let offset = min(horizontalOffset, text.count)
+        let displayed = String(text.dropFirst(offset))
+        let x = max(0, point.x - 1)
+        // Search composed-character boundaries using the same font as the renderer.
+        // This keeps emoji and combining characters intact when hit testing.
+        var low = 0
+        var high = displayed.count
+        while low < high {
+            let middle = (low + high) / 2
+            let left = textWidth(String(displayed.prefix(middle)))
+            let right = textWidth(String(displayed.prefix(middle + 1)))
+            if x < (left + right) / 2 { high = middle }
+            else { low = middle + 1 }
+        }
+        return Position(row: row, column: offset + low)
     }
 
     override func scrollWheel(with event: NSEvent) {

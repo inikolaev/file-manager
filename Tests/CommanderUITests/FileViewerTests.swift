@@ -105,3 +105,88 @@ import FileManagerCore
     #expect(coordinator.view == nil)
     #expect(pane.subviews.isEmpty)
 }
+
+@Test @MainActor func viewerMouseSelectionCopiesDisplayedText() async throws {
+    _ = NSApplication.shared
+    let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+    try "abcdefghijklm\nsecond line\nthird".write(to: url, atomically: false, encoding: .utf8)
+    defer { try? FileManager.default.removeItem(at: url) }
+    let document = try FileViewerDocument(url: url)
+    let page = try await document.page(rows: 10)
+    let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 780, height: 400), styleMask: [.titled], backing: .buffered, defer: false)
+    let viewer = TerminalFileViewer(path: url.path)
+    window.contentView = viewer
+    viewer.update(page)
+    let cell = ("a" as NSString).size(withAttributes: [.font: TerminalTheme.font]).width
+    func mouse(_ type: NSEvent.EventType, row: Int, column: Int) throws -> NSEvent {
+        let point = viewer.convert(NSPoint(x: 1 + CGFloat(column) * cell,
+            y: CGFloat(row + 1) * TerminalTheme.lineHeight + 4), to: nil)
+        return try #require(NSEvent.mouseEvent(with: type, location: point, modifierFlags: [], timestamp: 1,
+            windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1))
+    }
+    viewer.mouseDown(with: try mouse(.leftMouseDown, row: 0, column: 2))
+    viewer.mouseDragged(with: try mouse(.leftMouseDragged, row: 1, column: 6))
+    viewer.mouseUp(with: try mouse(.leftMouseUp, row: 1, column: 6))
+    #expect(window.firstResponder === viewer)
+    #expect(viewer.selectedText == "cdefghijklm\nsecond")
+    let copy = try #require(NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: .command, timestamp: 1,
+        windowNumber: window.windowNumber, context: nil, characters: "c", charactersIgnoringModifiers: "c", isARepeat: false, keyCode: 8))
+    viewer.keyDown(with: copy)
+    #expect(NSPasteboard.general.string(forType: .string) == viewer.selectedText)
+
+    // Backward drags produce the same ordered text, and unchanged refreshes retain selection.
+    viewer.mouseDown(with: try mouse(.leftMouseDown, row: 1, column: 6))
+    viewer.mouseDragged(with: try mouse(.leftMouseDragged, row: 0, column: 2))
+    viewer.mouseUp(with: try mouse(.leftMouseUp, row: 0, column: 2))
+    viewer.update(page)
+    #expect(viewer.selectedText == "cdefghijklm\nsecond")
+    #expect(NSApp.sendAction(#selector(TerminalFileViewer.copy(_:)), to: viewer, from: nil))
+    #expect(NSPasteboard.general.string(forType: .string) == viewer.selectedText)
+
+    // Clicking clears selection; copying nothing leaves the clipboard intact.
+    viewer.mouseDown(with: try mouse(.leftMouseDown, row: 0, column: 2))
+    viewer.mouseUp(with: try mouse(.leftMouseUp, row: 0, column: 2))
+    #expect(viewer.selectedText.isEmpty)
+    viewer.keyDown(with: copy)
+    #expect(NSPasteboard.general.string(forType: .string) == "cdefghijklm\nsecond")
+
+    let right = try #require(NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: [], timestamp: 1,
+        windowNumber: window.windowNumber, context: nil, characters: "", charactersIgnoringModifiers: "", isARepeat: false, keyCode: 124))
+    viewer.keyDown(with: right)
+    viewer.mouseDown(with: try mouse(.leftMouseDown, row: 0, column: 0))
+    viewer.mouseUp(with: try mouse(.leftMouseUp, row: 0, column: 3))
+    #expect(viewer.selectedText == "ijk")
+    viewer.update(try await document.page(.scroll(1), rows: 10))
+    #expect(viewer.selectedText.isEmpty)
+}
+
+@Test @MainActor func viewerSelectionPreservesComposedCharactersAndEmptyLines() async throws {
+    _ = NSApplication.shared
+    let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+    let first = "A😀e\u{301}Z"
+    try (first + "\n\nlast").write(to: url, atomically: false, encoding: .utf8)
+    defer { try? FileManager.default.removeItem(at: url) }
+    let document = try FileViewerDocument(url: url)
+    let page = try await document.page(rows: 10)
+    let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 780, height: 400), styleMask: [.titled], backing: .buffered, defer: false)
+    let viewer = TerminalFileViewer(path: url.path)
+    window.contentView = viewer
+    viewer.update(page)
+    func mouse(_ type: NSEvent.EventType, row: Int, prefix: String) throws -> NSEvent {
+        let width = (prefix as NSString).size(withAttributes: [.font: TerminalTheme.font]).width
+        let point = viewer.convert(NSPoint(x: 1 + width, y: CGFloat(row + 1) * TerminalTheme.lineHeight + 4), to: nil)
+        return try #require(NSEvent.mouseEvent(with: type, location: point, modifierFlags: [], timestamp: 1,
+            windowNumber: window.windowNumber, context: nil, eventNumber: 0, clickCount: 1, pressure: 1))
+    }
+    viewer.mouseDown(with: try mouse(.leftMouseDown, row: 0, prefix: "A"))
+    viewer.mouseUp(with: try mouse(.leftMouseUp, row: 0, prefix: "A😀e\u{301}"))
+    #expect(viewer.selectedText == "😀e\u{301}")
+    viewer.mouseDown(with: try mouse(.leftMouseDown, row: 0, prefix: "A"))
+    viewer.mouseUp(with: try mouse(.leftMouseUp, row: 2, prefix: "la"))
+    #expect(viewer.selectedText == "😀e\u{301}Z\n\nla")
+    // Render with an active selection to exercise highlighting too.
+    let bitmap = try #require(viewer.bitmapImageRepForCachingDisplay(in: viewer.bounds))
+    viewer.cacheDisplay(in: viewer.bounds, to: bitmap)
+    viewer.update(try await document.page(rows: 10, mode: .hex))
+    #expect(viewer.selectedText.isEmpty)
+}

@@ -13,7 +13,7 @@ jobs:
   release:
     if: github.ref == 'refs/heads/main'
     runs-on: macos-15
-    timeout-minutes: 30
+    timeout-minutes: 60
     permissions:
       contents: write
       actions: read
@@ -44,7 +44,18 @@ jobs:
           swift --version
           swift test
 
-      - name: Build universal app and package
+      - name: Import signing and notarization credentials
+        env:
+          APPLE_CERTIFICATE_P12_BASE64: ${{ secrets.APPLE_CERTIFICATE_P12_BASE64 }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+        run: bash scripts/prepare-signing.sh
+
+      - name: Build, sign, notarize, and package universal app
+        env:
+          NOTARIZE: '1'
         run: |
           bash scripts/package-app.sh
           lipo dist/universal/Commander.app/Contents/MacOS/Commander -verify_arch arm64 x86_64
@@ -68,7 +79,7 @@ jobs:
           Universal macOS app for Apple silicon and Intel. Requires macOS 13 or later.
 
           Download the ZIP, extract it, and move Commander.app to Applications.
-          The app is ad-hoc signed, not Developer ID signed or notarized. On first launch, macOS may require System Settings → Privacy & Security → Open Anyway.
+          The app is Developer ID signed and notarized by Apple, with the notarization ticket stapled for offline verification.
 
           Version: $APP_VERSION · Build: $APP_BUILD_NUMBER · Commit: $GITHUB_SHA
           NOTES
@@ -79,3 +90,10 @@ jobs:
           gh release upload "$RELEASE_TAG" "$archive" "$archive.sha256" --clobber
           gh release edit "$RELEASE_TAG" --draft=false
           echo "Released [$RELEASE_TAG](https://github.com/$GITHUB_REPOSITORY/releases/tag/$RELEASE_TAG)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Remove signing credentials
+        if: always()
+        run: |
+          keychain="$RUNNER_TEMP/commander-signing.keychain-db"
+          if [[ -f "$keychain" ]]; then security delete-keychain "$keychain"; fi
+          rm -f "$RUNNER_TEMP/commander-certificate.p12"

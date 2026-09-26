@@ -4,6 +4,9 @@ cd "$(dirname "$0")/.."
 
 bash scripts/build-app.sh --universal
 APP="dist/universal/Commander.app"
+if [[ "${NOTARIZE:-0}" == 1 ]]; then
+    bash scripts/notarize-app.sh "$APP"
+fi
 VERSION=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")
 NAME="Commander-$VERSION"
 ARCHIVE="$PWD/dist/$NAME-macOS-universal.zip"
@@ -12,17 +15,19 @@ trap 'rm -rf "$STAGING"' EXIT
 mkdir "$STAGING/$NAME"
 ditto "$APP" "$STAGING/$NAME/Commander.app"
 cp LICENSE "$STAGING/$NAME/LICENSE"
-cat > "$STAGING/$NAME/Read Me.txt" <<'TEXT'
+if [[ "${NOTARIZE:-0}" == 1 ]]; then
+    SIGNING_NOTICE="This app is Developer ID signed and notarized by Apple."
+else
+    SIGNING_NOTICE="This preview is not notarized. macOS may require System Settings > Privacy & Security > Open Anyway on first launch."
+fi
+cat > "$STAGING/$NAME/Read Me.txt" <<TEXT
 Commander — macOS preview
 
 Requires macOS 13 or later. Supports Apple silicon and Intel Macs.
 No Xcode, Swift installation, or terminal is needed.
 
 Drag Commander.app to Applications and open it.
-This preview is ad-hoc signed, but not Developer ID signed or notarized.
-If macOS blocks it, and you trust the sender, attempt to open it once,
-then go to System Settings > Privacy & Security > Open Anyway.
-Apple's instructions: https://support.apple.com/102445
+$SIGNING_NOTICE
 
 Controls
 Tab: switch pane. Arrows: select. Enter: open folder. Backspace: parent.

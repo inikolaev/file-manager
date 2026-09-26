@@ -42,11 +42,25 @@ shasum -a 256 -c Commander-2026.9.42-macOS-universal.zip.sha256
 ## Runner and signing
 
 The workflow uses `macos-15` and Xcode 26.2 (Swift 6.2 or newer), including Apple's
-cross-compilation tools for Intel. No custom secrets are needed: the repository's
-`GITHUB_TOKEN` receives release-writing permission for the release job.
-Organization policies must allow GitHub Actions and that permission.
+cross-compilation tools for Intel. The release job uses these repository secrets:
 
-The app is ad-hoc signed, not Developer ID signed or notarized. Users may need
-System Settings → Privacy & Security → Open Anyway for the first launch. Normal
-Developer ID distribution can be added later with Apple signing credentials and
-notarization; it is independent of this versioning scheme.
+- `APPLE_CERTIFICATE_P12_BASE64`: Base64-encoded Developer ID Application certificate and private key (.p12).
+- `APPLE_CERTIFICATE_PASSWORD`: Password protecting the .p12 export.
+- `APPLE_ID`: Apple Account email used for notarization.
+- `APPLE_TEAM_ID`: Apple Developer team ID.
+- `APPLE_APP_SPECIFIC_PASSWORD`: App-specific password for notarization.
+
+The certificate is imported into a temporary keychain and selected by its signing
+identity hash. The workflow signs with Hardened Runtime and a secure timestamp,
+submits the app to Apple, waits up to 40 minutes for acceptance, staples the ticket,
+and checks both the ticket and Gatekeeper assessment before creating the final ZIP.
+The checksum covers this final stapled archive. Missing credentials, failed signing,
+or unsuccessful notarization block publication. The keychain and exported certificate
+are removed with an always-run cleanup step.
+
+The submission ID is recorded in the job log and summary for troubleshooting.
+If Apple takes longer than the wait limit, the job fails without publishing; the
+submission remains in Apple's notarization history. A workflow retry submits again.
+Local builds remain ad-hoc signed by default. `SIGNING_IDENTITY` enables Developer ID
+signing; `NOTARIZE=1` additionally requires `NOTARY_KEYCHAIN` with the
+`commander-notary` credential profile. Never commit certificates or credentials.

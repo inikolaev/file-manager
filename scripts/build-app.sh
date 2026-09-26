@@ -41,5 +41,9 @@ cat > "$APP/Contents/Info.plist" <<PLIST
     <key>NSHighResolutionCapable</key><true/>
 </dict></plist>
 PLIST
-codesign --force --sign - "$APP"
+if [[ -n "${SIGNING_IDENTITY:-}" ]]; then
+    codesign --force --options runtime --timestamp --sign "$SIGNING_IDENTITY" "$APP"
+else
+    codesign --force --sign - "$APP"
+fi
 printf 'Built %s/%s\n' "$PWD" "$APP"
